@@ -36,7 +36,6 @@
     NeoBundle 'tpope/vim-surround'
     NeoBundle 'AndrewRadev/splitjoin.vim'
     NeoBundle 'reedes/vim-pencil'
-    NeoBundle 'reedes/vim-wheel'
     NeoBundle 'ervandew/supertab'
     NeoBundle 'vim-scripts/gitignore'
     NeoBundle 'vim-scripts/vim-nfo'
@@ -80,10 +79,10 @@
 " Unite
 " -----
   let g:unite_enable_start_insert = 1
-  " let g:unite_prompt='UNITE» '
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
   " buffer switching
+  " <c-u> will remove any range before the command is called
   nnoremap <leader>bu :<c-u>Unite -buffer-name=buffers -quick-match buffer<cr>
 
   " yank history like yankring
@@ -91,15 +90,22 @@
   nnoremap <space>y :<c-u>Unite history/yank<cr>
 
   " ctrlp replacement
-  " <c-u>, which will remove any range before the command is called
-  nnoremap <C-p> :<c-u>Unite -default-action=vsplit -no-split -buffer-name=files -start-insert file_rec<cr>
+  " <c-u> will remove any range before the command is called
+  " -no-split if it should be in full screen mode
+  nnoremap <C-p> :<c-u>Unite -default-action=vsplit -buffer-name=files -start-insert file_rec:!<cr>
 
-  " Use ag for search
+  " limit number of files shown in Ctrl-p mode
+  let g:unite_source_rec_unit = 50
+
+  " Use ag for grepping
   if executable('ag')
+    let g:unite_source_rec_async_command= 'ag --follow --nocolor --nogroup --hidden -g ""'
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
     let g:unite_source_grep_recursive_opt = ''
   endif
+  nnoremap <leader>g :<C-u>Unite -no-split grep:.<cr>
+
 
 " Ag.vim
 " ------
@@ -121,8 +127,8 @@
   endfunction
 
   nnoremap <c-s-F11> :Goyo<CR>
-  let g:goyo_width=90
-  let g:goyo_margin_top=1
+  let g:goyo_width=100
+  let g:goyo_margin_top=0
   let g:goyo_margin_bottom=2
   let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 
@@ -176,12 +182,14 @@
 
 
 " Emmet
-  let g:user_emmet_install_global = 0                     " only use for html/css
+" -----
+  let g:user_emmet_install_global = 0                   " only use for html/css
   autocmd FileType html,css EmmetInstall
-" still needs a trainling comma ,
+  " still needs a trailing comma ,
   let g:user_emmet_leader_key='<C-y>'
 
 " Airline
+" -------
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#whitespace#enabled = 1
@@ -190,12 +198,15 @@
   let g:Powerline_symbols = 'fancy'
 
 " Markdown
+" --------
   let g:markdown_enable_folding = 1
 
 " Vim-Shell
+" ---------
   let g:shell_fullscreen_always_on_top = 0
 
 " CamelCaseMotion
+" ---------------
   map <silent> w <Plug>CamelCaseMotion_w
   map <silent> b <Plug>CamelCaseMotion_b
   map <silent> e <Plug>CamelCaseMotion_e
@@ -210,4 +221,6 @@
   xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 " TComment
+" --------
   map <leader>c <c-_><c-_>
+
