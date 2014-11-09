@@ -132,6 +132,7 @@
   let g:goyo_margin_bottom=2
   let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 
+
 " Vim-Thematic
 " ------------
   let g:thematic#defaults = {

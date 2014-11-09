@@ -1,14 +1,14 @@
-let NERDTreeIgnore=[
-  \ '\~$', '\.pyc', '\.swp$', '\.git', '\.hg', '\.svn',
-  \ '\.ropeproject', '\.o', '\.bzr', '\.ipynb_checkpoints', '__pycache__',
-  \ '\.egg$', '\.egg-info$', '\.tox$', '\.idea$', '\.sass-cache',
-  \ '\.env$', '\.env[0-9]$', '\.coverage$', '\.tmp$', '\.gitkeep$'
-\]
+" Ignore Lists for Vim and plugins
+" ================================
 
-let g:vimfiler_ignore_pattern='\%(.ini\|.sys\|.bat\|.BAK\|.DAT\|.pyc\|.egg-info\)$\|'.
-  \ '^\%(.gitkeep\)$\|'.
-  \ '^\%(.env\|.ebextensions\|.elasticbeanstalk\|Procfile\)$\|'.
-  \ '^\%(.git\|.tmp\|__pycache__\|.DS_Store\|.o\|.tox\|.idea\|.ropeproject\)$'
+" NERDTree
+" --------
+  let NERDTreeIgnore=[
+    \ '\~$', '\.pyc', '\.swp$', '\.git', '\.hg', '\.svn',
+    \ '\.ropeproject', '\.o', '\.bzr', '\.ipynb_checkpoints', '__pycache__',
+    \ '\.egg$', '\.egg-info$', '\.tox$', '\.idea$', '\.sass-cache',
+    \ '\.env$', '\.env[0-9]$', '\.coverage$', '\.tmp$', '\.gitkeep$'
+  \]
 
 " Wildignore
 " ----------
