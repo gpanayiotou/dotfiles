@@ -2,7 +2,10 @@ set fileencoding=utf-8
 scriptencoding utf-8
 set encoding=utf-8
 
-source ~/.vimplugins
+source ~/plugins.vim
+source ~/ignore.vim
+source ~/keymappings.vim
+source ~/autocommands.vim
 
 " 1 important
 " ===========
@@ -71,8 +74,6 @@ source ~/.vimplugins
   set mousehide
 
 
-
-
 " 11 messages and info
 " =====================
   set showcmd                                " show typed commands in status line
@@ -138,21 +139,13 @@ source ~/.vimplugins
 
 " 21 command line editing
 " =======================
+
+  " see ignore.vim for wildignore settings
   set wildmenu                                   " Better command-line completion
   set wildmode=list:longest
   set wildignorecase                                   " ignore case in filenames
-  set wildignore+=.hg,.git,.svn                                 " Version control
-  set wildignore+=*.aux,*.out,*.toc                    " LaTeX intermediate files
-  set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg                  " binary images
-  set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest        " compiled object files
-  set wildignore+=*.sw?                                          " Vim swap files
-  set wildignore+=*.DS_Store,desktop.ini                  " OS bullshit
-  set wildignore+=*.luac                                          " Lua byte code
-  set wildignore+=*.pyc                                        " Python byte code
-  set undofile
   set undodir=~\\vimfiles\\undo\\
   set history=100
-
 
 " 22 executing external commands
 " ==============================
@@ -171,97 +164,3 @@ source ~/.vimplugins
   set gdefault                                   " substitute globally by default
   set sessionoptions-=help                   " don't want to restore help buffers
 
-
-" Keyboard Mappings
-" =================
-
-  let mapleader = "\ "
-  noremap q: :q
-  nnoremap <Leader>w :w<CR>
-  nnoremap <Leader>bd :bd<CR>
-  noremap Y y$
-  nmap <C-V> "+gP
-  imap <C-V> <ESC><C-V>
-  vmap <C-C> "+yy$
-  noremap <Up> <Nop>
-  noremap <Down> <Nop>
-  noremap <Left> <Nop>
-  noremap <Right> <Nop>
-  " disable highlighting on ESC and Ctrl-L
-  nnoremap <silent> <C-L> :nohls<CR><C-L>
-  nnoremap <silent> <ESC> :nohls<CR><ESC>
-  " toggle folding
-  inoremap <F9> <C-O>za
-  nnoremap <F9> za
-  onoremap <F9> <C-C>za
-  vnoremap <F9> zf
-  " Copy & paste to system clipboard with <Space>p and <Space>y:
-  vmap <Leader>y "+y
-  vmap <Leader>d "+d
-  nmap <Leader>p "+p
-  nmap <Leader>P "+P
-  vmap <Leader>p "+p
-  vmap <Leader>P "+P
-  " use python style regex instead of weirdo vim ones
-  "nnoremap / /\v
-  "vnoremap / /\v
-  " delete til end of line
-  nnoremap D d$
-  " center on search results
-  nnoremap n nzzzv
-  nnoremap N Nzzzv
-  " no jumping to next result on *
-  nnoremap * *<c-o>
-  " L and H to jump to b/eol
-  noremap H ^
-  noremap L g_
-  " jump to b/eol in insert mode
-  inoremap <c-a> <esc>I
-  inoremap <c-e> <esc>A
-  " focus on current fold
-  nnoremap <leader>z zMzvzz
-  " show yankring
-  nnoremap <silent> <F6> :YRShow<cr>
-  " formatting
-  noremap Q gqip
-  noremap <leader>bd :bd<cr>
-
-
-" Autocommands
-" ============
-
-  augroup reload_vimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-  augroup END " }
-
-  augroup reload_gvimrc " {
-    autocmd!
-    autocmd BufWritePost $MYGVIMRC source $MYVIMRC
-  augroup END " }
-
-  autocmd FocusLost * :wa                             " auto save on focus lost
-
-  " resize splits on window resize
-  au VimResized * exe "normal! \<c-w>="
-
-
-" Language Specific
-" =================
-
-  " ts = number of spaces that <Tab> in file uses
-  " sts = number of spaces that <Tab> uses while editing
-  " sw = number of spaces to use for (auto)indent step
-
-  " CoffeeScript
-  autocmd FileType litcoffee runtime ftplugin/coffee.vim
-  autocmd Filetype coffee setlocal ts=2 sts=2 sw=2
-
-  " HTML
-  autocmd Filetype html setlocal ts=4 sts=4 sw=4
-
-  " Ruby
-  autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-
-  " JavaScript
-  autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
