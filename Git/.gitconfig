@@ -1,6 +1,6 @@
 [user]
-	email = gpanayiotou@server.fake
-	name = Georgios Panayiotou
+  email = gpanayiotou@server.fake
+  name = Georgios Panayiotou
 [color]
   ui = auto
 [color "branch"]
@@ -23,7 +23,7 @@
 [credential]
 [credential]
 [core]
-	autocrlf = true
-	excludesfile = ~/.gitignore_global
+  autocrlf = true
+  excludesfile = ~/.gitignore_global
 [credential]
-	helper = wincred
+  helper = wincred
