@@ -28,7 +28,7 @@ source ~/autocommands.vim
   set linebreak                   " wrap long lines at a character in 'breakat'
   set cmdheight=2
   set list                                         " show whitespace characters
-  set listchars=tab:»\ ,trail:·,eol:¬
+  set listchars=tab:↹\ ,trail:·,eol:¬
   set number
   set numberwidth=3
   set lines=120
