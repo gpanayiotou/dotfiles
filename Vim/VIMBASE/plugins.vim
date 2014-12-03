@@ -3,10 +3,10 @@
 
   if has('vim_starting')
     set nocompatible
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    set runtimepath+=$VIMBASE/bundle/neobundle.vim/
   endif
-
-  call neobundle#begin(expand('~/.vim/bundle/'))
+  
+  call neobundle#begin(expand($VIMBASE . "/bundle/"))
     NeoBundleFetch 'Shougo/neobundle.vim'
 
     " libraries
@@ -14,7 +14,6 @@
     NeoBundle 'xolox/vim-misc'
     NeoBundle 'xolox/vim-shell'
     NeoBundle 'tomtom/tlib_vim'
-    NeoBundle 'Shougo/unite.vim'
     NeoBundle 'Shougo/vimproc.vim'
 
     " Coding
@@ -47,6 +46,7 @@
 
     " Editor Enhancements
     NeoBundle 'junegunn/goyo.vim'
+    NeoBundle 'Shougo/unite.vim'
     NeoBundle 'junegunn/limelight.vim'
     NeoBundle 'bling/vim-bufferline'
     NeoBundle 'airoblade/vim-gitgutter'
@@ -68,8 +68,9 @@
   filetype plugin indent on
   NeoBundleCheck
 
+
 " Incsearch
-" ---------
+" =========
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
   map g/ <Plug>(incsearch-stay)
