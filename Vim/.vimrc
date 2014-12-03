@@ -2,14 +2,22 @@ set fileencoding=utf-8
 scriptencoding utf-8
 set encoding=utf-8
 
-source ~/plugins.vim
-source ~/ignore.vim
-source ~/keymappings.vim
-source ~/autocommands.vim
+" 0 variables
+" ===========
+  if has('win32')
+    let $VIMBASE = $HOME . '/vimfiles'
+  elseif has('unix')
+    let $VIMBASE = $HOME . '/.vim'
+  endif
+
+  source $VIMBASE/plugins.vim
+  source $VIMBASE/ignore.vim
+  source $VIMBASE/keymappings.vim
+  source $VIMBASE/autocommands.vim
 
 " 1 important
 " ===========
-  set nocompatible                                        " always use vim mode
+  set nocompatible
 
 
 " 2 moving around, searching and patterns
@@ -105,11 +113,6 @@ source ~/autocommands.vim
 
 " 16 folding
 " ==========
-  " set to indent while loading file and then to markers while editing
-  " augroup vimrc
-    " au BufReadPre * setlocal foldmethod=indent
-    " au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=indent| endif
-  " augroup END
   set foldmethod=indent
   set foldmarker=>>>,<<<
   set foldcolumn=2
@@ -127,29 +130,33 @@ source ~/autocommands.vim
 " 19 reading and writing file
 " ===========================
   set backup                                        " backup before overwriting
-  set backupdir=~\\Backup\\Files\\
+  set backupdir=$HOME/Backup/Files/
   set autowriteall
 
 
 " 20 the swap file
 " ================
   set swapfile
-  set directory=~\\vimfiles\\swap\\
+  set directory=$VIMBASE/swap/
 
 
 " 21 command line editing
 " =======================
-
   " see ignore.vim for wildignore settings
   set wildmenu                                   " Better command-line completion
   set wildmode=list:longest
   set wildignorecase                                   " ignore case in filenames
-  set undodir=~\\vimfiles\\undo\\
+  set undodir=vim_base/undo
   set history=100
+
 
 " 22 executing external commands
 " ==============================
-  set shell=bash.exe
+  if has('unix')
+    set shell=bash
+  elseif has('win32')
+    set shell=powershell.exe
+  endif
   set shellslash
 
 
