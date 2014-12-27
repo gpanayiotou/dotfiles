@@ -27,3 +27,6 @@
   excludesfile = ~/.gitignore_global
 [credential]
   helper = wincred
+  helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+[push]
+  default = simple
