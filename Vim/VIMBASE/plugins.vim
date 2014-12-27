@@ -143,7 +143,7 @@
     \   'laststatus': 2,
     \   'linespace': 4,
     \   'font-size': 11,
-    \   'typeface': 'inconsolata-dz for powerline',
+    \   'typeface': 'inconsolata-g for powerline',
   \ }
 
   let g:thematic#themes = {
