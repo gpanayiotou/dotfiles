@@ -49,7 +49,7 @@
     NeoBundle 'Shougo/unite.vim'
     NeoBundle 'junegunn/limelight.vim'
     NeoBundle 'bling/vim-bufferline'
-    NeoBundle 'airoblade/vim-gitgutter'
+    NeoBundle 'airblade/vim-gitgutter'
     NeoBundle 'rking/ag.vim'
     NeoBundle 'haya14busa/incsearch.vim'
 
