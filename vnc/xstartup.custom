@@ -1,0 +1,6 @@
+#!/bin/sh
+
+DESKTOP_SESSION=kde-plasma
+export DESKTOP_SESSION
+startkde
+vncserver-virtual -kill $DISPLAY

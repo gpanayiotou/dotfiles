@@ -49,7 +49,7 @@
     NeoBundle 'Shougo/unite.vim'
     NeoBundle 'junegunn/limelight.vim'
     NeoBundle 'bling/vim-bufferline'
-    NeoBundle 'airoblade/vim-gitgutter'
+    NeoBundle 'airblade/vim-gitgutter'
     NeoBundle 'rking/ag.vim'
     NeoBundle 'haya14busa/incsearch.vim'
 
@@ -143,7 +143,7 @@
     \   'laststatus': 2,
     \   'linespace': 4,
     \   'font-size': 11,
-    \   'typeface': 'inconsolata-dz for powerline',
+    \   'typeface': 'inconsolata-g for powerline',
   \ }
 
   let g:thematic#themes = {
