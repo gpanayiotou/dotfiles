@@ -1,7 +1,7 @@
 " Keymappings for Vim and plugins
 " ===============================
 
-let mapleader = "\ "
+let g:mapleader = "\ "
 
 noremap q: :q
 nnoremap <Leader>w :w<CR>
