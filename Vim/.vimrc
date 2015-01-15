@@ -1,6 +1,7 @@
-set fileencoding=utf-8
+set encoding=utf-8         " Vim can not recognize the character code of .vimrc
+                           " when scriptencoding is defined before set encoding
 scriptencoding utf-8
-set encoding=utf-8
+set fileencoding=utf-8
 
 " 0 variables
 " ===========
