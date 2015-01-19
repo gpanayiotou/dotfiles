@@ -1,69 +1,65 @@
-" Keymappings for Vim and plugins
-" ===============================
+" General
+" =======
+  let g:mapleader = "\ "
+  noremap q: :q
 
-let g:mapleader = "\ "
 
-noremap q: :q
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>bd :bd<CR>
-noremap Y y$
-nmap <C-V> "+gP
-imap <C-V> <ESC><C-V>
-vmap <C-C> "+yy$
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+" Buffers and Windows
+" ===================
+  nnoremap <Leader>bd :bd<CR>
 
-" disable highlighting on ESC and Ctrl-L
-nnoremap <silent> <C-L> :nohls<CR><C-L>
-nnoremap <silent> <ESC> :nohls<CR><ESC>
 
-" toggle folding
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
+" File operations
+" ===============
+  nnoremap <Leader>w :w<CR>
 
-" Copy & paste to system clipboard with <Space>p and <Space>y:
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+" Movement
+" ========
+  noremap Y y$
+  nnoremap D d$
 
-" use python style regex instead of weirdo vim ones
-" NOTE: Using incsearch for now
-" TODO: combine these into incsearch
-"nnoremap / /\v
-"vnoremap / /\v
+  " center on search results
+  nnoremap n nzzzv
+  nnoremap N Nzzzv
 
-" delete til end of line
-nnoremap D d$
+  " L and H to jump to b/eol
+  noremap H ^
+  noremap L g_
 
-" center on search results
-nnoremap n nzzzv
-nnoremap N Nzzzv
 
-" no jumping to next result on *
-nnoremap * *<c-o>
+" Display
+" =======
+  " Disable highlighting on ESC and Ctrl-L
+  nnoremap <silent> <C-L> :nohls<CR><C-L>
+  nnoremap <silent> <ESC> :nohls<CR><ESC>
 
-" L and H to jump to b/eol
-noremap H ^
-noremap L g_
+  " toggle folding
+  inoremap <F9> <C-O>za
+  nnoremap <F9> za
+  onoremap <F9> <C-C>za
+  vnoremap <F9> zf
 
-" jump to b/eol in insert mode
-inoremap <c-a> <esc>I
-inoremap <c-e> <esc>A
+  " focus on current fold
+  nnoremap <leader>z zMzvzz
 
-" focus on current fold
-nnoremap <leader>z zMzvzz
 
-" show yankring
-nnoremap <silent> <F6> :YRShow<cr>
+  " Miscellaneous
+  " =============
+  noremap <Up> <Nop>
+  noremap <Down> <Nop>
+  noremap <Left> <Nop>
+  noremap <Right> <Nop>
 
-" formatting
-noremap Q gqip
-noremap <leader>bd :bd<cr>
+  " no jumping to next result on * search
+  nnoremap * *<c-o>
+
+  " Copy & paste to system clipboard
+  vmap <Leader>y "+y
+  vmap <Leader>d "+d
+  nmap <Leader>p "+p
+  nmap <Leader>P "+P
+  vmap <Leader>p "+p
+  vmap <Leader>P "+P
+  nmap <C-V> "+gP
+  imap <C-V> <ESC><C-V>
 
