@@ -156,7 +156,7 @@ set fileencoding=utf-8
   if has('unix')
     set shell=bash
   elseif has('win32')
-    set shell=powershell.exe
+    set shell=cmd.exe
   endif
   set shellslash
 
