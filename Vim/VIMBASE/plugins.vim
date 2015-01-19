@@ -30,7 +30,6 @@
     NeoBundle 'vim-scripts/matchit.zip'
     NeoBundle 'tpope/vim-surround'
     NeoBundle 'AndrewRadev/splitjoin.vim'
-    NeoBundle 'ervandew/supertab'
     NeoBundle 'vim-scripts/gitignore'
     NeoBundle 'vim-scripts/vim-nfo'
 
@@ -43,26 +42,26 @@
     NeoBundle 'kchmck/vim-coffee-script'
 
     " Functionality Enhancements
-    NeoBundle 'tpope/vim-fugitive'                    " git commands inside vim
+    NeoBundle 'tpope/vim-fugitive'                    " Git commands inside vim
     NeoBundle 'rking/ag.vim'                            " Ag search integration
-    NeoBundle 'scrooloose/nerdcommenter'                " toggle comment blocks
-    NeoBundle 'scrooloose/syntastic'                           " syntax checker
+    NeoBundle 'scrooloose/nerdcommenter'                " Toggle comment blocks
+    NeoBundle 'scrooloose/syntastic'                           " Syntax checker
+    NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'Shougo/neocomplete.vim'                  " Autocompletion engine
 
     " UI Enhancements
     NeoBundle 'bling/vim-airline'                      " status bar enhancement
     NeoBundle 'airblade/vim-gitgutter'                 " git status on sideline
     NeoBundle 'junegunn/limelight.vim'            " centered fullscreen editing
     NeoBundle 'junegunn/goyo.vim'
-    NeoBundle 'Shougo/unite.vim'
     NeoBundle 'bling/vim-bufferline'
     NeoBundle 'haya14busa/incsearch.vim'
 
     " Themes
-    NeoBundle 'reedes/vim-thematic'
+    NeoBundle 'reedes/vim-thematic'                        " Theme organisation
     NeoBundle 'reedes/vim-pencil'
-    NeoBundle 'chriskempson/base16-vim'
+    NeoBundle 'chriskempson/base16-vim'         " The mother of all colorthemes
     NeoBundle 'reedes/vim-colors-pencil'
-    NeoBundle 'DAddYE/soda.vim'
   call neobundle#end()
 
   filetype plugin indent on
@@ -113,7 +112,8 @@
 
 
 " Goyo
-" ----
+" ====
+
   function! GoyoBefore()
     Limelight
     set number
@@ -134,7 +134,7 @@
 
 
 " Vim-Thematic
-" ------------
+" ============
   let g:thematic#defaults = {
     \'fullscreen-background-color-fix': 1,
     \'ruler': 1,
@@ -171,10 +171,10 @@
     \  'background': 'light',
     \  'airline-theme': 'pencil',
     \},
-    \'molokai':{
-    \  'colorscheme': 'molokai',
-    \  'background': 'dark',
-    \  'airline-theme': 'molokai',
+    \'sodal':{
+    \  'colorscheme': 'base16-soda',
+    \  'background': 'light',
+    \  'airline-theme': 'base16',
     \},
     \'jellybeans':{
     \  'colorscheme': 'jellybeans',
@@ -215,6 +215,7 @@
 
 " CamelCaseMotion
 " ===============
+
   map <silent> w <Plug>CamelCaseMotion_w
   map <silent> b <Plug>CamelCaseMotion_b
   map <silent> e <Plug>CamelCaseMotion_e
@@ -231,4 +232,56 @@
 
 " NERDCommenter
 " =============
+
   map <leader>tc NERDComToggleComment
+
+
+" Syntastic
+" =========
+
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+
+
+" neocomplete
+" ===========
+
+  let g:acp_enableAtStartup = 0                          " Disable AutoComplPop
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#sources#syntax#min_keyword_length = 3
+  let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+  " Define dictionary.
+  let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+  \ }
+
+  " Define keyword.
+  if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+  " <CR>: close popup and save indent.
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function()
+    return neocomplete#close_popup() . "\<CR>"
+  endfunction
+
+  " <TAB>: completion.
+  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  " <C-h>, <BS>: close popup and delete backword char.
+  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><C-y> neocomplete#close_popup()
+  inoremap <expr><C-e> neocomplete#cancel_popup()
+
