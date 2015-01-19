@@ -48,6 +48,8 @@
     NeoBundle 'scrooloose/syntastic'                           " Syntax checker
     NeoBundle 'Shougo/unite.vim'
     NeoBundle 'Shougo/neocomplete.vim'                  " Autocompletion engine
+    NeoBundle 'reedes/vim-lexical'
+    NeoBundle 'reedes/vim-wheel'                    " Screen-anchored scrolling
 
     " UI Enhancements
     NeoBundle 'bling/vim-airline'                      " status bar enhancement
@@ -56,12 +58,14 @@
     NeoBundle 'junegunn/goyo.vim'
     NeoBundle 'bling/vim-bufferline'
     NeoBundle 'haya14busa/incsearch.vim'
+    NeoBundle 'kien/rainbow_parentheses.vim'
 
     " Themes
     NeoBundle 'reedes/vim-thematic'                        " Theme organisation
     NeoBundle 'reedes/vim-pencil'
     NeoBundle 'chriskempson/base16-vim'         " The mother of all colorthemes
-    NeoBundle 'reedes/vim-colors-pencil'
+    NeoBundle 'reedes/vim-colors-pencil'                 " iawriter colorscheme
+    NeoBundle 'MaxSt/FlatColor'
   call neobundle#end()
 
   filetype plugin indent on
@@ -70,9 +74,8 @@
 
 " Incsearch
 " =========
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
+  map / <Plug>(incsearch-forward)
+  map ? <Plug>(incsearch-backward)
   let g:incsearch#consistent_n_direction = 1
 
 
@@ -83,11 +86,11 @@
 
   " buffer switching
   " <c-u> will remove any range before the command is called
-  nnoremap <leader>bu :<c-u>Unite -buffer-name=buffers -quick-match buffer<cr>
+  nnoremap <Leader>bu :<c-u>Unite -buffer-name=buffers -quick-match buffer<cr>
 
   " yank history like yankring
   let g:unite_source_history_yank_enable = 1
-  nnoremap <space>y :<c-u>Unite history/yank<cr>
+  nnoremap <Leader>y :<c-u>Unite history/yank<cr>
 
   " ctrlp replacement
   " <c-u> will remove any range before the command is called
@@ -97,19 +100,23 @@
   let g:unite_source_rec_unit = 50 " Limit number of files shown in Ctrl-p mode
 
   " Use ag for grepping
-  if executable('ag')
+  if executable('ag.exe')
     let g:unite_source_rec_async_command= 'ag --follow --nocolor --nogroup --hidden -g ""'
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
     let g:unite_source_grep_recursive_opt = ''
   endif
-  nnoremap <leader>g :<C-u>Unite -no-split grep:.<cr>
+  nmap <Leader>g :<C-u>Unite -no-split grep:<cr>.<cr>
 
 
 " Ag.vim
-" ------
-  let g:agprg='ag.exe --column'
+" ======
 
+  if has('win32')
+    let g:agprg='ag.exe --column'
+  elseif has('unix')
+    let g:agprg='ag --column'
+  endif
 
 " Goyo
 " ====
@@ -135,55 +142,71 @@
 
 " Vim-Thematic
 " ============
+
   let g:thematic#defaults = {
-    \'fullscreen-background-color-fix': 1,
-    \'ruler': 1,
-    \'fullscreen': 1,
-    \'laststatus': 2,
-    \'linespace': 4,
-    \'font-size': 10,
-    \'typeface': 'inconsolata-g for powerline',
-  \}
+    \ 'fullscreen-background-color-fix': 1,
+    \ 'ruler': 1,
+    \ 'fullscreen': 1,
+    \ 'laststatus': 2,
+    \ 'linespace': 4,
+    \ 'font-size': 10,
+    \ 'typeface': 'Inconsolata-g for Powerline',
+  \ }
 
   let g:thematic#themes = {
-    \'oceanl':{
-    \  'colorscheme': 'base16-ocean',
-    \  'background': 'light',
-    \  'airline-theme': 'base16'
-    \},
-    \'oceand':{
-    \  'colorscheme': 'base16-ocean',
-    \  'background': 'dark',
-    \  'airline-theme': 'base16'
-    \},
-    \'ashes':{
-    \  'colorscheme': 'base16-ashes',
-    \  'background': 'dark',
-    \  'airline-theme': 'base16'
-    \},
-    \'eighties':{
-    \  'colorscheme': 'base16-eighties',
-    \  'background': 'dark',
-    \  'airline-theme': 'base16'
-    \},
-    \'pencil':{
-    \  'colorscheme': 'pencil',
-    \  'background': 'light',
-    \  'airline-theme': 'pencil',
-    \},
-    \'sodal':{
-    \  'colorscheme': 'base16-soda',
-    \  'background': 'light',
-    \  'airline-theme': 'base16',
-    \},
-    \'jellybeans':{
-    \  'colorscheme': 'jellybeans',
-    \  'background': 'dark',
-    \  'airline-theme': 'jellybeans',
-    \},
-  \}
+    \ 'ocean_light': {
+    \   'colorscheme': 'base16-ocean',
+    \   'background': 'light',
+    \   'airline-theme': 'base16'
+    \ },
+    \ 'ocean_dark': {
+    \   'colorscheme': 'base16-ocean',
+    \   'background': 'dark',
+    \   'airline-theme': 'base16'
+    \ },
+    \ 'ashes': {
+    \   'colorscheme': 'base16-ashes',
+    \   'background': 'dark',
+    \   'airline-theme': 'base16'
+    \ },
+    \ 'eighties': {
+    \   'colorscheme': 'base16-eighties',
+    \   'background': 'dark',
+    \   'airline-theme': 'base16'
+    \ },
+    \ 'soda_light': {
+    \   'colorscheme': 'base16-soda',
+    \   'background': 'light',
+    \   'airline-theme': 'light',
+    \ },
+    \ 'flatcolor_light': {
+    \   'colorscheme': 'FlatColor',
+    \   'background': 'light',
+    \   'airline-theme': 'light',
+    \  },
+    \ 'flatcolor_dark': {
+    \   'colorscheme': 'FlatColor',
+    \   'background': 'dark',
+    \   'airline-theme': 'dark',
+    \  },
+    \ 'iawriter': {
+    \   'colorscheme': 'pencil',
+    \   'background': 'light',
+    \   'columns': 80,
+    \   'font-size': 18,
+    \   'fullscreen': 1,
+    \   'laststatus': 0,
+    \   'linespace': 8,
+    \   'typeface': 'Cousine',
+    \  },
+    \ 'jellybeans': {
+    \   'colorscheme': 'jellybeans',
+    \   'background': 'dark',
+    \   'airline-theme': 'jellybeans',
+    \ },
+  \ }
 
-  let g:thematic#theme_name = 'oceand'
+  let g:thematic#theme_name = 'ocean_dark'
 
 
 " Emmet
@@ -195,21 +218,31 @@
 
 " Airline
 " =======
+
   let g:airline_powerline_fonts = 1
+  let g:Powerline_symbols = 'fancy'
+
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+
   let g:airline#extensions#whitespace#enabled = 1
   let g:airline#extensions#whitespace#symbol = '·'
   let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
-  let g:Powerline_symbols = 'fancy'
 
+  let g:bufferline_echo = 0
+
+  let g:airline_section_b = airline#section#create(['hunks', 'branch', 'CWD: %{getcwd()}'])
 
 " Markdown
 " ========
+
   let g:markdown_enable_folding = 1
 
 
 " Vim-Shell
 " =========
+
   let g:shell_fullscreen_always_on_top = 0
 
 
@@ -284,4 +317,51 @@
   inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
   inoremap <expr><C-y> neocomplete#close_popup()
   inoremap <expr><C-e> neocomplete#cancel_popup()
+
+
+" FlatColor
+" =========
+
+  let g:flatcolor_asphaltbg = 0
+
+
+" Rainbow Parenthesis
+" ===================
+
+  " Always on
+  au VimEnter * RainbowParenthesesToggle
+  au Syntax * RainbowParenthesesLoadRound
+  au Syntax * RainbowParenthesesLoadSquare
+  au Syntax * RainbowParenthesesLoadBraces
+
+
+" Lexical
+" =======
+
+  let g:lexical#spelllang = ['en_us','de_DE']
+
+  augroup lexical
+    autocmd!
+    autocmd FileType markdown,mkd call lexical#init()
+    autocmd FileType textile call lexical#init()
+    autocmd FileType text call lexical#init({ 'spell': 0 })
+  augroup END
+
+
+" Pencil
+" ======
+
+  augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
+    autocmd FileType latex        call pencil#init({'wrap': 'soft'})
+    autocmd FileType text         call pencil#init({'wrap': 'soft'})
+  augroup END
+
+
+" Vim Wheel
+" =========
+
+  let g:wheel#map#up   = '<c-k>'
+  let g:wheel#map#down = '<c-j>'
 

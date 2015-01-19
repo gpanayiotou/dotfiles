@@ -1,17 +1,23 @@
 " General
 " =======
+
   let g:mapleader = "\ "
   noremap q: :q
+  nnoremap <Leader>qq :q<CR>
+  inoremap jj <ESC>
 
 
 " Buffers and Windows
 " ===================
   nnoremap <Leader>bd :bd<CR>
-
+  nnoremap <Leader>s <C-w>v<C-w>l
 
 " File operations
 " ===============
+
   nnoremap <Leader>w :w<CR>
+  nnoremap ; :
+
 
 " Movement
 " ========
@@ -26,6 +32,10 @@
   noremap H ^
   noremap L g_
 
+  nnoremap <C-h> <C-w>h
+  nnoremap <C-j> <C-w>j
+  nnoremap <C-k> <C-w>k
+  nnoremap <C-l> <C-w>l
 
 " Display
 " =======
@@ -40,7 +50,7 @@
   vnoremap <F9> zf
 
   " focus on current fold
-  nnoremap <leader>z zMzvzz
+  nnoremap <Leader>z zMzvzz
 
 
   " Miscellaneous
