@@ -3,8 +3,10 @@ set encoding=utf-8         " Vim can not recognize the character code of .vimrc
 scriptencoding utf-8
 set fileencoding=utf-8
 
+
 " 0 variables
 " ===========
+
   if has('win32')
     let $VIMBASE = $HOME . '/vimfiles'
   elseif has('unix')
@@ -18,11 +20,13 @@ set fileencoding=utf-8
 
 " 1 important
 " ===========
+
   set nocompatible
 
 
 " 2 moving around, searching and patterns
 " =======================================
+
   set incsearch                                     " enable incremental search
   set ignorecase                                 " use case insensitive search,
   set smartcase                             " except when using capital letters
@@ -32,6 +36,7 @@ set fileencoding=utf-8
 
 " 4 displaying text
 " =================
+
   set scrolloff=3            " number of screen lines to show around the cursor
   set nowrap
   set linebreak                   " wrap long lines at a character in 'breakat'
@@ -47,6 +52,7 @@ set fileencoding=utf-8
 
 " 5 syntax, highlighting and spelling
 " ===================================
+
   syntax on
   set hlsearch
   set cursorline
@@ -57,6 +63,7 @@ set fileencoding=utf-8
 
 " 6 multiple windows
 " ==================
+
   set laststatus=2                                  " always show a status line
   set hidden           " don't unload a buffer when no longer shown in a window
   set winheight=5                                " set this before winminheight
@@ -68,23 +75,27 @@ set fileencoding=utf-8
 
 " 7 Multiple Tab Pages
 " ====================
+
   set showtabline=2
 
 
 " 8 terminal
 " ==========
+
   set t_Co=256                                         " 256 color console mode
   set title                                           " enable title in console
 
 
 " 9 using the mouse
 " =================
+
   set mouse=a
   set mousehide
 
 
 " 11 messages and info
 " =====================
+
   set showcmd                                " show typed commands in status line
   set ruler
   set showmode
@@ -94,6 +105,7 @@ set fileencoding=utf-8
 
 " 14 editing text
 " ===============
+
   set backspace=indent,eol,start           " Allow backspacing over autoindent,
                                        " line breaks and start of insert action
   set nrformats-=octal                        " no octal numbers with leading 0
@@ -130,29 +142,33 @@ set fileencoding=utf-8
 
 " 19 reading and writing file
 " ===========================
-  set backup                                        " backup before overwriting
+  set backup                                        " Backup before overwriting
   set backupdir=$HOME/Backup/Files/
   set autowriteall
+  set modelines=0                            " Disable modeline vulnerabilities
 
 
 " 20 the swap file
 " ================
+
   set swapfile
   set directory=$VIMBASE/swap/
 
 
 " 21 command line editing
 " =======================
+
   " see ignore.vim for wildignore settings
-  set wildmenu                                   " Better command-line completion
+  set wildmenu                                 " Better command-line completion
   set wildmode=list:longest
-  set wildignorecase                                   " ignore case in filenames
-  set undodir=vim_base/undo
+  set wildignorecase                                 " ignore case in filenames
+  set undodir=$VIMBASE/undo
   set history=100
 
 
 " 22 executing external commands
 " ==============================
+
   if has('unix')
     set shell=bash
   elseif has('win32')

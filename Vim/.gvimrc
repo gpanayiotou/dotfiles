@@ -13,7 +13,7 @@
   set guicursor=n-v-c:block-Cursor
   set guicursor+=n-v-c:blinkon0
   set guicursor+=r-cr:hor5-iCursor-blinkwait500-blinkon800-blinkoff400
-  set guicursor+=i-ci:ver20-iCursor-blinkwait500-blinkon800-blinkoff400
+  set guicursor+=i-ci-sm:ver20-iCursor-blinkwait500-blinkon800-blinkoff400
 
 
 " 10 gui
