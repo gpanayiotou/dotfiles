@@ -5,7 +5,7 @@
     set nocompatible
     set runtimepath+=$VIMBASE/bundle/neobundle.vim/
   endif
-  
+
   call neobundle#begin(expand($VIMBASE . "/bundle/"))
     NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -21,45 +21,45 @@
     NeoBundle 'tpope/vim-obsession'
     NeoBundle 'tpope/vim-repeat'
     NeoBundle 'rdolgushin/gitignore.vim'
-    NeoBundle 'tomtom/tcomment_vim'
-    NeoBundle 'bling/vim-airline'
-    NeoBundle 'scrooloose/syntastic'
     NeoBundle 'tpope/vim-dispatch'
     NeoBundle 'Lokaltog/vim-easymotion'
     NeoBundle 'mattn/emmet-vim'
     NeoBundle 'garbas/vim-snipmate'
     NeoBundle 'vim-scripts/camelcasemotion'
     NeoBundle 'vim-scripts/argtextobj.vim'
-    NeoBundle 'tpope/vim-fugitive'
     NeoBundle 'vim-scripts/matchit.zip'
     NeoBundle 'tpope/vim-surround'
     NeoBundle 'AndrewRadev/splitjoin.vim'
-    NeoBundle 'reedes/vim-pencil'
     NeoBundle 'ervandew/supertab'
     NeoBundle 'vim-scripts/gitignore'
     NeoBundle 'vim-scripts/vim-nfo'
 
-    " HTML, CSS
+    " Additional Language Support
     NeoBundle 'firegoby/SASS-Snippets'
-    NeoBundle 'gabrielelana/vim-markdown'
+    NeoBundle 'gabrielelana/vim-markdown' " MD support (use with colors-pencil)
     NeoBundle 'gorodinskiy/vim-coloresque'
-
-    " Editor Enhancements
-    NeoBundle 'junegunn/goyo.vim'
-    NeoBundle 'Shougo/unite.vim'
-    NeoBundle 'junegunn/limelight.vim'
-    NeoBundle 'bling/vim-bufferline'
-    NeoBundle 'airblade/vim-gitgutter'
-    NeoBundle 'rking/ag.vim'
-    NeoBundle 'haya14busa/incsearch.vim'
-
-    " JavaScript, CoffeeScript
     NeoBundle 'mintplant/vim-literate-coffeescript'
     NeoBundle 'pangloss/vim-javascript'
     NeoBundle 'kchmck/vim-coffee-script'
 
+    " Functionality Enhancements
+    NeoBundle 'tpope/vim-fugitive'                    " git commands inside vim
+    NeoBundle 'rking/ag.vim'                            " Ag search integration
+    NeoBundle 'scrooloose/nerdcommenter'                " toggle comment blocks
+    NeoBundle 'scrooloose/syntastic'                           " syntax checker
+
+    " UI Enhancements
+    NeoBundle 'bling/vim-airline'                      " status bar enhancement
+    NeoBundle 'airblade/vim-gitgutter'                 " git status on sideline
+    NeoBundle 'junegunn/limelight.vim'            " centered fullscreen editing
+    NeoBundle 'junegunn/goyo.vim'
+    NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'bling/vim-bufferline'
+    NeoBundle 'haya14busa/incsearch.vim'
+
     " Themes
     NeoBundle 'reedes/vim-thematic'
+    NeoBundle 'reedes/vim-pencil'
     NeoBundle 'chriskempson/base16-vim'
     NeoBundle 'reedes/vim-colors-pencil'
     NeoBundle 'DAddYE/soda.vim'
@@ -78,8 +78,8 @@
 
 
 " Unite
-" -----
-  let g:unite_enable_start_insert = 1
+" =====
+  let g:unite_enable_start_insert = 1                    " start in insert mode
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
   " buffer switching
@@ -95,8 +95,7 @@
   " -no-split if it should be in full screen mode
   nnoremap <C-p> :<c-u>Unite -default-action=vsplit -buffer-name=files -start-insert file_rec:!<cr>
 
-  " limit number of files shown in Ctrl-p mode
-  let g:unite_source_rec_unit = 50
+  let g:unite_source_rec_unit = 50 " Limit number of files shown in Ctrl-p mode
 
   " Use ag for grepping
   if executable('ag')
@@ -137,60 +136,65 @@
 " Vim-Thematic
 " ------------
   let g:thematic#defaults = {
-    \   'fullscreen-background-color-fix': 1,
-    \   'ruler': 1,
-    \   'fullscreen': 1,
-    \   'laststatus': 2,
-    \   'linespace': 4,
-    \   'font-size': 11,
-    \   'typeface': 'inconsolata-g for powerline',
-  \ }
+    \'fullscreen-background-color-fix': 1,
+    \'ruler': 1,
+    \'fullscreen': 1,
+    \'laststatus': 2,
+    \'linespace': 4,
+    \'font-size': 10,
+    \'typeface': 'inconsolata-g for powerline',
+  \}
 
   let g:thematic#themes = {
-    \   'ocean':{
-    \     'colorscheme': 'base16-ocean',
-    \     'background': 'dark',
-    \     'airline-theme': 'base16'
-    \   },
-    \   'ashes':{
-    \     'colorscheme': 'base16-ashes',
-    \     'background': 'dark',
-    \     'airline-theme': 'base16'
-    \   },
-    \   'eighties':{
-    \     'colorscheme': 'base16-eighties',
-    \     'background': 'dark',
-    \     'airline-theme': 'base16'
-    \   },
-    \   'pencil':{
-    \     'colorscheme': 'pencil',
-    \     'background': 'light',
-    \     'airline-theme': 'pencil',
-    \   },
-    \   'molokai':{
-    \     'colorscheme': 'molokai',
-    \     'background': 'dark',
-    \     'airline-theme': 'molokai',
-    \   },
-    \   'jellybeans':{
-    \     'colorscheme': 'jellybeans',
-    \     'background': 'dark',
-    \     'airline-theme': 'jellybeans',
-    \   },
-  \ }
+    \'oceanl':{
+    \  'colorscheme': 'base16-ocean',
+    \  'background': 'light',
+    \  'airline-theme': 'base16'
+    \},
+    \'oceand':{
+    \  'colorscheme': 'base16-ocean',
+    \  'background': 'dark',
+    \  'airline-theme': 'base16'
+    \},
+    \'ashes':{
+    \  'colorscheme': 'base16-ashes',
+    \  'background': 'dark',
+    \  'airline-theme': 'base16'
+    \},
+    \'eighties':{
+    \  'colorscheme': 'base16-eighties',
+    \  'background': 'dark',
+    \  'airline-theme': 'base16'
+    \},
+    \'pencil':{
+    \  'colorscheme': 'pencil',
+    \  'background': 'light',
+    \  'airline-theme': 'pencil',
+    \},
+    \'molokai':{
+    \  'colorscheme': 'molokai',
+    \  'background': 'dark',
+    \  'airline-theme': 'molokai',
+    \},
+    \'jellybeans':{
+    \  'colorscheme': 'jellybeans',
+    \  'background': 'dark',
+    \  'airline-theme': 'jellybeans',
+    \},
+  \}
 
-  let g:thematic#theme_name = 'ocean'
+  let g:thematic#theme_name = 'oceand'
 
 
 " Emmet
-" -----
+" =====
   let g:user_emmet_install_global = 0                   " only use for html/css
   autocmd FileType html,css EmmetInstall
-  " still needs a trailing comma ,
-  let g:user_emmet_leader_key='<C-y>'
+  let g:user_emmet_leader_key='<C-y>'          " still needs a trailing comma ,
+
 
 " Airline
-" -------
+" =======
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#whitespace#enabled = 1
@@ -198,16 +202,19 @@
   let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
   let g:Powerline_symbols = 'fancy'
 
+
 " Markdown
-" --------
+" ========
   let g:markdown_enable_folding = 1
 
+
 " Vim-Shell
-" ---------
+" =========
   let g:shell_fullscreen_always_on_top = 0
 
+
 " CamelCaseMotion
-" ---------------
+" ===============
   map <silent> w <Plug>CamelCaseMotion_w
   map <silent> b <Plug>CamelCaseMotion_b
   map <silent> e <Plug>CamelCaseMotion_e
@@ -221,7 +228,7 @@
   omap <silent> ie <Plug>CamelCaseMotion_ie
   xmap <silent> ie <Plug>CamelCaseMotion_ie
 
-" TComment
-" --------
-  map <leader>c <c-_><c-_>
 
+" NERDCommenter
+" =============
+  map <leader>tc NERDComToggleComment
