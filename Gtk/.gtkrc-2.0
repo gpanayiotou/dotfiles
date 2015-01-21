@@ -1,0 +1,4 @@
+style "vimfix" {
+  bg[NORMAL] = "#2b303b" # this matches base16-ocean dark's background color
+}
+widget "vim-main-window.*GtkForm" style "vimfix"

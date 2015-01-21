@@ -150,7 +150,7 @@
     \ 'laststatus': 2,
     \ 'linespace': 4,
     \ 'font-size': 10,
-    \ 'typeface': 'Inconsolata-g for Powerline',
+    \ 'typeface': 'Meslo LG M DZ for Powerline',
   \ }
 
   let g:thematic#themes = {
@@ -232,7 +232,8 @@
 
   let g:bufferline_echo = 0
 
-  let g:airline_section_b = airline#section#create(['hunks', 'branch', 'CWD: %{getcwd()}'])
+  let g:airline_section_b = airline#section#create(['hunks', 'branch', ' | ', 'CWD: %{getcwd()}'])
+
 
 " Markdown
 " ========

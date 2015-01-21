@@ -3,14 +3,17 @@ Dotfiles
 
 Overview
 --------
+
 A collection of configuration files, links and notes on settings and plugins
 for development tools.
 
-Fonts and Colors (Themes)
+
+Fonts and colors (themes)
 -------------------------
-* [Inconsolata-g](https://leonardo-m.livejournal.com/77079.html)
-* [Powerline Fonts](https://github.com/Lokaltog/powerline-fonts)
-* [Base16 syntax highlighting colors](https://chriskempson.github.io/base16/)
-* [Jetbrains IDE Themes](http://www.ideacolorthemes.org/home/)
-* [Visual Studio Themes](http://studiostyl.es/)
+
+* [inconsolata-g](https://leonardo-m.livejournal.com/77079.html)
+* [powerline fonts](https://github.com/lokaltog/powerline-fonts)
+* [base16 syntax highlighting colors](https://chriskempson.github.io/base16/)
+* [jetbrains ide themes](http://www.ideacolorthemes.org/home/)
+* [visual studio themes](http://studiostyl.es/)
 
