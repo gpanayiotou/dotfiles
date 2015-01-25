@@ -9,29 +9,14 @@
   call neobundle#begin(expand($VIMBASE . "/bundle/"))
     NeoBundleFetch 'Shougo/neobundle.vim'
 
-    " libraries
+    " Libraries, Dependencies
     NeoBundle 'MarcWeber/vim-addon-mw-utils'
     NeoBundle 'xolox/vim-misc'
     NeoBundle 'xolox/vim-shell'
     NeoBundle 'tomtom/tlib_vim'
     NeoBundle 'Shougo/vimproc.vim'
-
-    " Coding
-    NeoBundle 'Raimondi/delimitMate'
-    NeoBundle 'tpope/vim-obsession'
-    NeoBundle 'tpope/vim-repeat'
-    NeoBundle 'rdolgushin/gitignore.vim'
-    NeoBundle 'tpope/vim-dispatch'
-    NeoBundle 'Lokaltog/vim-easymotion'
-    NeoBundle 'mattn/emmet-vim'
-    NeoBundle 'garbas/vim-snipmate'
-    NeoBundle 'vim-scripts/camelcasemotion'
-    NeoBundle 'vim-scripts/argtextobj.vim'
-    NeoBundle 'vim-scripts/matchit.zip'
-    NeoBundle 'tpope/vim-surround'
-    NeoBundle 'AndrewRadev/splitjoin.vim'
-    NeoBundle 'vim-scripts/gitignore'
-    NeoBundle 'vim-scripts/vim-nfo'
+    NeoBundle 'tpope/vim-dispatch'        " Run compiler (:make) asynchronously
+    NeoBundle 'tpope/vim-repeat'         " Allow plugins to repeat command maps
 
     " Additional Language Support
     NeoBundle 'firegoby/SASS-Snippets'
@@ -40,16 +25,25 @@
     NeoBundle 'mintplant/vim-literate-coffeescript'
     NeoBundle 'pangloss/vim-javascript'
     NeoBundle 'kchmck/vim-coffee-script'
+    NeoBundle 'vim-scripts/vim-nfo'
 
     " Functionality Enhancements
+    NeoBundle 'msanders/snipmate.vim'
     NeoBundle 'tpope/vim-fugitive'                    " Git commands inside vim
+    NeoBundle 'Lokaltog/vim-easymotion'           " Easier visual moving around
     NeoBundle 'rking/ag.vim'                            " Ag search integration
     NeoBundle 'scrooloose/nerdcommenter'                " Toggle comment blocks
     NeoBundle 'scrooloose/syntastic'                           " Syntax checker
+    NeoBundle 'Raimondi/delimitMate'         " automatic closing of quotes, etc
     NeoBundle 'Shougo/unite.vim'
     NeoBundle 'Shougo/neocomplete.vim'                  " Autocompletion engine
-    NeoBundle 'reedes/vim-lexical'
+    NeoBundle 'reedes/vim-lexical'            " enhances build in spell checker
     NeoBundle 'reedes/vim-wheel'                    " Screen-anchored scrolling
+    NeoBundle 'vim-scripts/gitignore'                 " gitignore to wildignore
+    NeoBundle 'tpope/vim-surround'                   " Edit surrounding symbols
+    NeoBundle 'mattn/emmet-vim'
+    NeoBundle 'vim-scripts/matchit.zip'             " Match more symbols with %
+    NeoBundle 'vim-scripts/python_match.vim'       " Same as matchit for python
 
     " UI Enhancements
     NeoBundle 'bling/vim-airline'                      " status bar enhancement
@@ -74,6 +68,7 @@
 
 " Incsearch
 " =========
+
   map / <Plug>(incsearch-forward)
   map ? <Plug>(incsearch-backward)
   let g:incsearch#consistent_n_direction = 1
@@ -81,6 +76,7 @@
 
 " Unite
 " =====
+
   let g:unite_enable_start_insert = 1                    " start in insert mode
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
@@ -164,33 +160,24 @@
     \   'background': 'dark',
     \   'airline-theme': 'base16'
     \ },
-    \ 'ashes': {
-    \   'colorscheme': 'base16-ashes',
-    \   'background': 'dark',
-    \   'airline-theme': 'base16'
-    \ },
-    \ 'eighties': {
-    \   'colorscheme': 'base16-eighties',
-    \   'background': 'dark',
-    \   'airline-theme': 'base16'
-    \ },
     \ 'soda_light': {
     \   'colorscheme': 'base16-soda',
     \   'background': 'light',
-    \   'airline-theme': 'light',
+    \   'airline-theme': 'base16',
     \ },
-    \ 'flatcolor_light': {
-    \   'colorscheme': 'FlatColor',
-    \   'background': 'light',
-    \   'airline-theme': 'light',
-    \  },
-    \ 'flatcolor_dark': {
-    \   'colorscheme': 'FlatColor',
+    \ 'soda_dark': {
+    \   'colorscheme': 'base16-soda',
     \   'background': 'dark',
-    \   'airline-theme': 'dark',
+    \   'airline-theme': 'base16',
+    \ },
+    \ 'pencil_light': {
+    \   'colorscheme': 'pencil',
+    \   'background': 'light',
+    \   'typeface': 'Cousine',
+    \   'airline-theme': 'light',
     \  },
     \ 'iawriter': {
-    \   'colorscheme': 'pencil',
+    \   'colorscheme': 'base16-soda',
     \   'background': 'light',
     \   'columns': 80,
     \   'font-size': 18,
@@ -198,12 +185,8 @@
     \   'laststatus': 0,
     \   'linespace': 8,
     \   'typeface': 'Cousine',
+    \   'airline-theme': 'base16',
     \  },
-    \ 'jellybeans': {
-    \   'colorscheme': 'jellybeans',
-    \   'background': 'dark',
-    \   'airline-theme': 'jellybeans',
-    \ },
   \ }
 
   let g:thematic#theme_name = 'ocean_dark'
@@ -211,6 +194,7 @@
 
 " Emmet
 " =====
+
   let g:user_emmet_install_global = 0                   " only use for html/css
   autocmd FileType html,css EmmetInstall
   let g:user_emmet_leader_key='<C-y>'          " still needs a trailing comma ,
@@ -245,23 +229,6 @@
 " =========
 
   let g:shell_fullscreen_always_on_top = 0
-
-
-" CamelCaseMotion
-" ===============
-
-  map <silent> w <Plug>CamelCaseMotion_w
-  map <silent> b <Plug>CamelCaseMotion_b
-  map <silent> e <Plug>CamelCaseMotion_e
-  sunmap w
-  sunmap b
-  sunmap e
-  omap <silent> iw <Plug>CamelCaseMotion_iw
-  xmap <silent> iw <Plug>CamelCaseMotion_iw
-  omap <silent> ib <Plug>CamelCaseMotion_ib
-  xmap <silent> ib <Plug>CamelCaseMotion_ib
-  omap <silent> ie <Plug>CamelCaseMotion_ie
-  xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 
 " NERDCommenter
