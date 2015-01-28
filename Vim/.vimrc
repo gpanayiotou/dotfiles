@@ -1,7 +1,6 @@
 set encoding=utf-8         " Vim can not recognize the character code of .vimrc
                            " when scriptencoding is defined before set encoding
 scriptencoding utf-8
-set fileencoding=utf-8
 
 
 " 0 variables
@@ -13,15 +12,12 @@ set fileencoding=utf-8
     let $VIMBASE = $HOME . '/.vim'
   endif
 
-  source $VIMBASE/plugins.vim
-  source $VIMBASE/ignore.vim
-  source $VIMBASE/keymappings.vim
-  source $VIMBASE/autocommands.vim
 
 " 1 important
 " ===========
 
   set nocompatible
+  set cpoptions+=$                      " Show boundaries of to be changed text
 
 
 " 2 moving around, searching and patterns
@@ -96,36 +92,41 @@ set fileencoding=utf-8
 " 11 messages and info
 " =====================
 
-  set showcmd                                " show typed commands in status line
+  set showcmd                              " Show typed commands in status line
   set ruler
   set showmode
   set confirm
-  set visualbell                             " Use visual bell instead of beeping
+  set visualbell                           " Use visual bell instead of beeping
 
 
 " 14 editing text
 " ===============
 
-  set backspace=indent,eol,start           " Allow backspacing over autoindent,
-                                       " line breaks and start of insert action
-  set nrformats-=octal                        " no octal numbers with leading 0
-  set showmatch                                     " highlight matching braces
-  set textwidth=0                                 " don't force a max textwidth
+  set backspace=indent,eol,start       " Allow backspacing over autoindent,
+                                       " Line breaks and start of insert action
+  set nrformats-=octal                 " No octal numbers with leading 0
+  set showmatch                        " Highlight matching braces
+  set textwidth=0                      " Don't force a max textwidth
+  " Complete in insert mode from:
+  "   current, all windows, all other buffers, tags
+  set complete=.,w,b,t
 
 
 " 15 tabs and indenting
 " =====================
-  set expandtab                                           " expand tabs to spaces
-  set smartindent                                " smart indenten based on blocks
-  set autoindent                  " autointend with '='; '=G' for the entire file
-  set shiftwidth=2                       " number of spaces to replace a tab with
-  set softtabstop=2                                      " tabsize in insert mode
-  set tabstop=2                                      " width of the tab character
-  set shiftround                    " round indentation to multiple of shiftwidth
+
+  set expandtab                 " expand tabs to spaces
+  set smartindent               " smart indenten based on blocks
+  set autoindent                " autointend with '='; '=G' for the entire file
+  set shiftwidth=2              " number of spaces to replace a tab with
+  set softtabstop=2             " tabsize in insert mode
+  set tabstop=2                 " width of the tab character
+  set shiftround                " round indentation to multiple of shiftwidth
 
 
 " 16 folding
 " ==========
+
   set foldmethod=indent
   set foldmarker=>>>,<<<
   set foldcolumn=2
@@ -136,13 +137,15 @@ set fileencoding=utf-8
 
 " 18 mapping
 " ==========
-  set notimeout ttimeout ttimeoutlen=50         " Quickly time out on keycodes,
+
+  set notimeout ttimeout ttimeoutlen=50        " Quickly time out on keycodes,
                                                " but never time out on mappings
 
 
 " 19 reading and writing file
 " ===========================
-  set backup                                        " Backup before overwriting
+
+  set backup                                 " Backup before overwriting
   set backupdir=$HOME/Backup/Files/
   set autowriteall
   set modelines=0                            " Disable modeline vulnerabilities
@@ -166,25 +169,40 @@ set fileencoding=utf-8
   set history=100
 
 
-" 22 executing external commands
+" 22 Executing External Commands
 " ==============================
 
+  " Set the shell
   if has('unix')
     set shell=bash
   elseif has('win32')
     set shell=cmd.exe
   endif
-  set shellslash
+
+  set shellslash                              " WIN: use forward slash in paths
 
 
 " 26 multi-byte characters
 " ========================
-  set encoding=utf-8                              " encoding for displaying files
-  set fileencoding=utf-8                             " encoding for writing files
+
+  set encoding=utf-8                            " encoding for displaying files
+  set fileencoding=utf-8                        " encoding for writing files
 
 
 " 27 various
 " ==========
-  set gdefault                                   " substitute globally by default
-  set sessionoptions-=help                   " don't want to restore help buffers
+
+  set gdefault                             " Substitute globally by default
+  set sessionoptions-=help                 " Don't want to restore help buffers
+  set virtualedit=all                      " NOTE: testing
+
+
+" Imports
+" =======
+
+  source $VIMBASE/keymappings.vim
+  source $VIMBASE/plugins.vim
+  source $VIMBASE/autocommands.vim
+  source $VIMBASE/themes.vim
+  source $VIMBASE/ignore.vim
 

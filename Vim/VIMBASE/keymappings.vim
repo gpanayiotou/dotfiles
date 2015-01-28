@@ -1,26 +1,43 @@
+" Plugins are loaded after this file.
+" Plugin-specific keymappings go into plugins.vim
+
+noremap beenden :q<cr>
+
 " General
 " =======
 
   let g:mapleader = "\ "
   noremap q: :q
   nnoremap <Leader>qq :q<CR>
-  inoremap jj <ESC>
+  inoremap jj <ESC>:nohls<CR><ESC>
 
 
 " Buffers and Windows
 " ===================
+
   nnoremap <Leader>bd :bd<CR>
   nnoremap <Leader>s <C-w>v<C-w>l
+  nnoremap <Leader>bn :bn<CR>
+
+  nnoremap <C-h> <C-w>h
+  nnoremap <C-j> <C-w>j
+  nnoremap <C-k> <C-w>k
+  nnoremap <C-l> <C-w>l
+
+  " Change PWD for active window
+  nnoremap <Leader>cd lcd %:h<CR>
+
 
 " File operations
 " ===============
 
   nnoremap <Leader>w :w<CR>
-  nnoremap ; :
 
 
-" Movement
-" ========
+" Movement/Editing
+" ================
+
+  nnoremap , ;
   noremap Y y$
   nnoremap D d$
 
@@ -28,19 +45,11 @@
   nnoremap n nzzzv
   nnoremap N Nzzzv
 
-  " L and H to jump to b/eol
-  noremap H ^
-  noremap L g_
-
-  nnoremap <C-h> <C-w>h
-  nnoremap <C-j> <C-w>j
-  nnoremap <C-k> <C-w>k
-  nnoremap <C-l> <C-w>l
 
 " Display
 " =======
-  " Disable highlighting on ESC and Ctrl-L
-  nnoremap <silent> <C-L> :nohls<CR><C-L>
+
+  " Disable highlighting on ESC
   nnoremap <silent> <ESC> :nohls<CR><ESC>
 
   " toggle folding
@@ -70,6 +79,4 @@
   nmap <Leader>P "+P
   vmap <Leader>p "+p
   vmap <Leader>P "+P
-  nmap <C-V> "+gP
-  imap <C-V> <ESC><C-V>
 

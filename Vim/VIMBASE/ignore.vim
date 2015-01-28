@@ -1,17 +1,6 @@
-" Ignore Lists for Vim and plugins
-" ================================
-
-" NERDTree
-" --------
-  let NERDTreeIgnore=[
-    \ '\~$', '\.pyc', '\.swp$', '\.git', '\.hg', '\.svn',
-    \ '\.ropeproject', '\.o', '\.bzr', '\.ipynb_checkpoints', '__pycache__',
-    \ '\.egg$', '\.egg-info$', '\.tox$', '\.idea$', '\.sass-cache',
-    \ '\.env$', '\.env[0-9]$', '\.coverage$', '\.tmp$', '\.gitkeep$'
-  \]
-
 " Wildignore
-" ----------
+" ==========
+
   set wildignore=*.o,*.obj,*~,*.pyc,*.exe,*.dll,*.manifest
   set wildignore+=*.aux,*.out,*.toc
   set wildignore+=.env
@@ -36,7 +25,8 @@
   set wildignore+=*.DS_Store,desktop.ini
 
 " netrw
-" -----
+" =====
+
   let g:netrw_list_hide='\.o,\.obj,*~,\.pyc,'
   let g:netrw_list_hide.='\.env,'
   let g:netrw_list_hide.='\.env[0-9].,'
