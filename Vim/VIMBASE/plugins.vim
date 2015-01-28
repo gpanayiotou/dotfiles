@@ -59,7 +59,6 @@
     NeoBundle 'reedes/vim-pencil'
     NeoBundle 'chriskempson/base16-vim'         " The mother of all colorthemes
     NeoBundle 'reedes/vim-colors-pencil'                 " iawriter colorscheme
-    NeoBundle 'MaxSt/FlatColor'
   call neobundle#end()
 
   filetype plugin indent on
@@ -77,12 +76,11 @@
 " Unite
 " =====
 
-  let g:unite_enable_start_insert = 1                    " start in insert mode
+  let g:unite_enable_start_insert = 0
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
   " buffer switching
-  " <c-u> will remove any range before the command is called
-  nnoremap <Leader>bu :<c-u>Unite -buffer-name=buffers -quick-match buffer<cr>
+  nnoremap <Leader>bl :<C-u>Unite -buffer-name=Buffers -default-action=switch buffer<cr>
 
   " yank history like yankring
   let g:unite_source_history_yank_enable = 1
@@ -91,7 +89,7 @@
   " ctrlp replacement
   " <c-u> will remove any range before the command is called
   " -no-split if it should be in full screen mode
-  nnoremap <C-p> :<c-u>Unite -default-action=vsplit -buffer-name=files -start-insert file_rec:!<cr>
+  nnoremap <C-p> :<C-u>Unite -default-action=vsplit -buffer-name=Files -start-insert file_rec:!<cr>
 
   let g:unite_source_rec_unit = 50 " Limit number of files shown in Ctrl-p mode
 
@@ -102,7 +100,7 @@
     let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
     let g:unite_source_grep_recursive_opt = ''
   endif
-  nmap <Leader>g :<C-u>Unite -no-split grep:<cr>.<cr>
+  nnoremap <C-S-p> :<C-u>Unite -no-split grep:<cr>.<cr>
 
 
 " Ag.vim
@@ -129,67 +127,12 @@
     set relativenumber
   endfunction
 
-  nnoremap <c-s-F11> :Goyo<CR>
+  nnoremap <s-F11> :Goyo<CR>
   let g:goyo_width=100
   let g:goyo_margin_top=0
   let g:goyo_margin_bottom=2
   let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 
-
-" Vim-Thematic
-" ============
-
-  let g:thematic#defaults = {
-    \ 'fullscreen-background-color-fix': 1,
-    \ 'ruler': 1,
-    \ 'fullscreen': 1,
-    \ 'laststatus': 2,
-    \ 'linespace': 4,
-    \ 'font-size': 10,
-    \ 'typeface': 'Meslo LG M DZ for Powerline',
-  \ }
-
-  let g:thematic#themes = {
-    \ 'ocean_light': {
-    \   'colorscheme': 'base16-ocean',
-    \   'background': 'light',
-    \   'airline-theme': 'base16'
-    \ },
-    \ 'ocean_dark': {
-    \   'colorscheme': 'base16-ocean',
-    \   'background': 'dark',
-    \   'airline-theme': 'base16'
-    \ },
-    \ 'soda_light': {
-    \   'colorscheme': 'base16-soda',
-    \   'background': 'light',
-    \   'airline-theme': 'base16',
-    \ },
-    \ 'soda_dark': {
-    \   'colorscheme': 'base16-soda',
-    \   'background': 'dark',
-    \   'airline-theme': 'base16',
-    \ },
-    \ 'pencil_light': {
-    \   'colorscheme': 'pencil',
-    \   'background': 'light',
-    \   'typeface': 'Cousine',
-    \   'airline-theme': 'light',
-    \  },
-    \ 'iawriter': {
-    \   'colorscheme': 'base16-soda',
-    \   'background': 'light',
-    \   'columns': 80,
-    \   'font-size': 18,
-    \   'fullscreen': 1,
-    \   'laststatus': 0,
-    \   'linespace': 8,
-    \   'typeface': 'Cousine',
-    \   'airline-theme': 'base16',
-    \  },
-  \ }
-
-  let g:thematic#theme_name = 'ocean_dark'
 
 
 " Emmet
@@ -216,7 +159,7 @@
 
   let g:bufferline_echo = 0
 
-  let g:airline_section_b = airline#section#create(['hunks', 'branch', ' | ', 'CWD: %{getcwd()}'])
+  let g:airline_section_c = airline#section#create(['%{getcwd()}'])
 
 
 " Markdown
@@ -285,12 +228,6 @@
   inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
   inoremap <expr><C-y> neocomplete#close_popup()
   inoremap <expr><C-e> neocomplete#cancel_popup()
-
-
-" FlatColor
-" =========
-
-  let g:flatcolor_asphaltbg = 0
 
 
 " Rainbow Parenthesis
