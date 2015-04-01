@@ -53,12 +53,14 @@
     NeoBundle 'bling/vim-bufferline'
     NeoBundle 'haya14busa/incsearch.vim'
     NeoBundle 'kien/rainbow_parentheses.vim'
+    NeoBundle 'guiniol/vim-showspaces'
 
     " Themes
     NeoBundle 'reedes/vim-thematic'                        " Theme organisation
     NeoBundle 'reedes/vim-pencil'
     NeoBundle 'chriskempson/base16-vim'         " The mother of all colorthemes
     NeoBundle 'reedes/vim-colors-pencil'                 " iawriter colorscheme
+    NeoBundle 'nanotech/jellybeans.vim'
   call neobundle#end()
 
   filetype plugin indent on
@@ -73,6 +75,8 @@
   let g:incsearch#consistent_n_direction = 1
 
 
+
+
 " Unite
 " =====
 
@@ -84,7 +88,7 @@
 
   " yank history like yankring
   let g:unite_source_history_yank_enable = 1
-  nnoremap <Leader>y :<c-u>Unite history/yank<cr>
+  nnoremap <Leader>r :<c-u>Unite history/yank<cr>
 
   " ctrlp replacement
   " <c-u> will remove any range before the command is called
@@ -93,8 +97,14 @@
 
   let g:unite_source_rec_unit = 50 " Limit number of files shown in Ctrl-p mode
 
-  " Use ag for grepping
+  " Use ag for grepping 
+  " TODO: de-crapify this
   if executable('ag.exe')
+    let g:unite_source_rec_async_command= 'ag --follow --nocolor --nogroup --hidden -g ""'
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+  elseif executable('ag')
     let g:unite_source_rec_async_command= 'ag --follow --nocolor --nogroup --hidden -g ""'
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
@@ -111,6 +121,7 @@
   elseif has('unix')
     let g:agprg='ag --column'
   endif
+
 
 " Goyo
 " ====
@@ -132,7 +143,6 @@
   let g:goyo_margin_top=0
   let g:goyo_margin_bottom=2
   let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
-
 
 
 " Emmet
@@ -193,7 +203,7 @@
   let g:syntastic_check_on_wq = 0
 
 
-" neocomplete
+" Neocomplete
 " ===========
 
   let g:acp_enableAtStartup = 0                          " Disable AutoComplPop
@@ -243,7 +253,8 @@
 " Lexical
 " =======
 
-  let g:lexical#spelllang = ['en_us','de_DE']
+  let g:lexical#spelllang = ['en_us','de_de']
+  let g:lexical#thesaurus = [$VIMBASE . '/thesaurus/mthesaur.txt',]
 
   augroup lexical
     autocmd!
@@ -270,3 +281,9 @@
   let g:wheel#map#up   = '<c-k>'
   let g:wheel#map#down = '<c-j>'
 
+
+" Vim Showspaces
+" ==============
+
+  let b:showSpaces = 1
+  let b:showSpacesConceal = 1

@@ -8,7 +8,7 @@
     \ 'laststatus': 2,
     \ 'linespace': 4,
     \ 'font-size': 10,
-    \ 'typeface': 'Inconsolata-g for PowerLine',
+    \ 'typeface': 'inconsolata-g for powerline',
   \ }
 
   let g:thematic#themes = {
@@ -22,6 +22,16 @@
       \ 'background': 'dark',
       \ 'airline-theme': 'base16'
     \ },
+    \ 'jellybeans_light': {
+      \ 'colorscheme': 'jellybeans',
+      \ 'background': 'light',
+      \ 'airline-theme': 'jellybeans'
+    \ },
+    \ 'jellybeans_dark': {
+      \ 'colorscheme': 'jellybeans',
+      \ 'background': 'dark',
+      \ 'airline-theme': 'jellybeans'
+    \ },
     \ 'flat_light': {
       \ 'colorscheme': 'base16-flat',
       \ 'background': 'light',
@@ -29,16 +39,6 @@
     \ },
     \ 'flat_dark': {
       \ 'colorscheme': 'base16-flat',
-      \ 'background': 'dark',
-      \ 'airline-theme': 'base16',
-    \ },
-    \ 'railscast_light': {
-      \ 'colorscheme': 'base16-railscast',
-      \ 'background': 'light',
-      \ 'airline-theme': 'base16',
-    \ },
-    \ 'railscast_dark': {
-      \ 'colorscheme': 'base16-railscast',
       \ 'background': 'dark',
       \ 'airline-theme': 'base16',
     \ },

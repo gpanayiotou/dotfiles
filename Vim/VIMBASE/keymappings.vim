@@ -45,6 +45,9 @@ noremap beenden :q<cr>
   nnoremap n nzzzv
   nnoremap N Nzzzv
 
+  " Jump to end of line in insert mode
+  inoremap <C-S-Return> <C-o>A
+
 
 " Display
 " =======
@@ -69,6 +72,7 @@ noremap beenden :q<cr>
   noremap <Left> <Nop>
   noremap <Right> <Nop>
 
+
   " no jumping to next result on * search
   nnoremap * *<c-o>
 
@@ -77,6 +81,4 @@ noremap beenden :q<cr>
   vmap <Leader>d "+d
   nmap <Leader>p "+p
   nmap <Leader>P "+P
-  vmap <Leader>p "+p
-  vmap <Leader>P "+P
 

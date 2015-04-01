@@ -78,9 +78,13 @@ scriptencoding utf-8
 " 8 terminal
 " ==========
 
-  set t_Co=256                                         " 256 color console mode
-  set title                                           " enable title in console
-
+  set t_Co=256                  " 256 color console mode
+  set title                     " enable title in console
+  if !empty($CONEMUBUILD) 
+    set term=pcansi 
+    let &t_AB="\e[48;5;%dm" 
+    let &t_AF="\e[38;5;%dm" 
+  endif
 
 " 9 using the mouse
 " =================
