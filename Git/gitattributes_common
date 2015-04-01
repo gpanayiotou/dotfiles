@@ -1,0 +1,48 @@
+* text=auto eol=lf
+* whitespace=cr-at-eol
+
+# The above will handle all files NOT found below
+ 
+# Documentation
+*.md    text
+LICENSE text
+AUTHORS text
+
+# Web
+*.css   text
+*.htm   text diff=html
+*.html  text diff=html
+*.js    text
+*.json  text
+*.xml   text
+
+# Java
+*.java        text diff=java
+*.jsp         text
+*.jspf        text
+*.properties  text
+
+# Miscellaneous
+*.sh              text
+*.bat             text eol=crlf
+*.txt             text
+*.gitattributes   text
+.gitignore        text
+
+
+# These files are binary and should be left untouched
+# (binary is a macro for -text -diff)
+*.class   binary
+*.dll     binary
+*.ear     binary
+*.jar     binary
+*.so      binary
+*.war     binary
+
+# Graphics
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.ico     binary
+*.svg     text

@@ -2,9 +2,9 @@
   email = gpanayiotou@server.fake
   name = Georgios Panayiotou
 [core]
-  eol = native
+  eol = lf
   excludesfile = ~/.gitignore_global
-  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  whitespace=cr-at-eol
 [color]
   ui = auto
 [color "branch"]
