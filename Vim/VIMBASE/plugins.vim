@@ -26,6 +26,7 @@
     NeoBundle 'pangloss/vim-javascript'
     NeoBundle 'kchmck/vim-coffee-script'
     NeoBundle 'vim-scripts/vim-nfo'
+    NeoBundle 'othree/yajs.vim'
 
     " Functionality Enhancements
     NeoBundle 'msanders/snipmate.vim'
