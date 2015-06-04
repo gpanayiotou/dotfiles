@@ -21,16 +21,8 @@ autocmd FocusLost * :wa
 " Resize splits on window resize
 autocmd VimResized * exe "normal! \<c-w>="
 
-" Set custom hightlights for all colorschemes
-" NOTE: No direct settings in Thematic for this yet
-augroup Highlights
+" Switch to fold by marker in vim config files
+augroup Vimfolding
   autocmd!
-  " Add custom highlights every time a theme is loaded
-  autocmd colorscheme *
-  \ highlight icursor guifg=#eff1f5 guibg=#a3be8c
-  " Since the above doesn't work on VimEnter, hook the same thing into
-  " something else
-  autocmd VimResized *
-  \ highlight icursor guifg=#eff1f5 guibg=#a3be8c
+  autocmd Filetype vim setlocal foldmethod=marker
 augroup END
-
