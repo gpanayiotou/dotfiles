@@ -51,34 +51,28 @@ noremap beenden :q<cr>
 
 " Display
 " =======
+" {{{
 
-  " Disable highlighting on ESC
-  nnoremap <silent> <ESC> :nohls<CR><ESC>
+" Disable highlighting on ESC
+nnoremap <silent> <ESC> :nohls<CR><ESC>
 
-  " toggle folding
-  inoremap <F9> <C-O>za
-  nnoremap <F9> za
-  onoremap <F9> <C-C>za
-  vnoremap <F9> zf
+" toggle folding
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
 
-  " focus on current fold
-  nnoremap <Leader>z zMzvzz
-
-
-  " Miscellaneous
-  " =============
-  noremap <Up> <Nop>
-  noremap <Down> <Nop>
-  noremap <Left> <Nop>
-  noremap <Right> <Nop>
+" focus on current fold
+nnoremap <Leader>z zMzvzz
+" }}}
 
 
-  " no jumping to next result on * search
-  nnoremap * *<c-o>
+" no jumping to next result on * search
+nnoremap * *<c-o>
 
-  " Copy & paste to system clipboard
-  vmap <Leader>y "+y
-  vmap <Leader>d "+d
-  nmap <Leader>p "+p
-  nmap <Leader>P "+P
+" Copy & paste to system clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
 

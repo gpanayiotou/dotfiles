@@ -10,8 +10,8 @@ let g:thematic#defaults = {
   \'fullscreen': 1,
   \'laststatus': 2,
   \'linespace': 4,
-  \'font-size': 10,
-  \'typeface': 'inconsolata-dz for powerline',
+  \'font-size': 12,
+  \'typeface': 'hack',
 \}
 " }}}
 
