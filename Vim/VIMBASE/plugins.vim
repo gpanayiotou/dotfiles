@@ -33,7 +33,7 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
 
   " Miscellaneous
   NeoBundle 'firegoby/SASS-Snippets'
-  NeoBundle 'gabrielelana/vim-markdown' " MD support (use with colors-pencil)
+  NeoBundle 'gabrielelana/vim-markdown'
   NeoBundle 'gorodinskiy/vim-coloresque'
   NeoBundle 'vim-scripts/vim-nfo'
   NeoBundle 'othree/yajs.vim'
@@ -46,7 +46,7 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
   NeoBundle 'Shougo/vimshell.vim'
   NeoBundle 'tpope/vim-fugitive'           " Git commands inside vim
   NeoBundle 'easymotion/vim-easymotion'      " Easier visual moving around
-  NeoBundle 'rking/ag.vim'                 " Ag search integration
+  NeoBundle 'rking/ag.vim'                " Ag search integration
   NeoBundle 'scrooloose/nerdcommenter'     " Toggle comment blocks
   NeoBundle 'scrooloose/syntastic'         " Syntax checker
   NeoBundle 'Raimondi/delimitMate'         " automatic closing of quotes, etc
@@ -147,6 +147,33 @@ function! s:unite_mappings()
   nmap <buffer> <ESC> <plug>(unite_exit)
   imap <buffer> <ESC> <plug>(unite_exit)
 endfunction
+
+call unite#custom#source('buffer,file,file_rec/async,file_rec,file_mru,file,grep',
+\ 'ignore_pattern', join([
+  \ '\.tmp/',
+  \ '\.git/',
+  \ '\.gitkeep',
+  \ '\.hg/',
+  \ '\.tox',
+  \ '\.idea',
+  \ '\.pyc',
+  \ '\.o',
+  \ '__pycache__',
+  \ '.env',
+  \ '.env*',
+  \ '_build',
+  \ 'dist',
+  \ '*.tar.gz',
+  \ '*.zip',
+  \ 'node_modules',
+  \ 'bower_components',
+  \ '.*\.egg',
+  \ '*.egg-info',
+  \ '.*egg-info.*',
+  \ 'git5/.*/review/',
+  \ 'google/obj/',
+  \ '\.sass-cache/',
+\ ], '\|'))
 " }}}
 
 
@@ -400,6 +427,7 @@ map <Leader>k <Plug>(easymotion-k)
 
 " Vim-Thematic
 " ============
+" {{{
 
 " Defaults
 " --------
@@ -455,7 +483,6 @@ let g:thematic#themes = {
 let g:thematic#theme_name = 'ocean'
 " }}}
 
-
 " Autocommands
 " ------------
 " {{{
@@ -474,4 +501,4 @@ augroup CursorColors
   autocmd VimResized * highlight icursor guifg=#eff1f5 guibg=#a3be8c
 augroup END
 " }}}
-
+" }}}
