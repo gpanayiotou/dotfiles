@@ -2,6 +2,7 @@ set encoding=utf-8         " Vim can not recognize the character code of .vimrc
                            " when scriptencoding is defined before set encoding
 scriptencoding utf-8
 
+" Titles according to :options
 
 " 0 variables
 " ===========
@@ -87,10 +88,10 @@ set showtabline=2
 " {{{
 set t_Co=256                  " 256 color console mode
 set title                     " enable title in console
-if !empty($CONEMUBUILD) 
-  set term=pcansi 
-  let &t_AB="\e[48;5;%dm" 
-  let &t_AF="\e[38;5;%dm" 
+if !empty($CONEMUBUILD)
+  set term=pcansi
+  let &t_AB="\e[48;5;%dm"
+  let &t_AF="\e[38;5;%dm"
 endif
 " }}}
 
@@ -182,12 +183,34 @@ set directory=$VIMBASE/swap/
 " 21 command line editing
 " =======================
 " {{{
-" see ignore.vim for wildignore settings
 set wildmenu                                 " Better command-line completion
 set wildmode=list:longest
 set wildignorecase                                 " ignore case in filenames
 set undodir=$VIMBASE/undo
 set history=100
+set wildignore=*.o,*.obj,*~,*.pyc,*.exe,*.dll,*.manifest
+set wildignore+=*.aux,*.out,*.toc
+set wildignore+=.env
+set wildignore+=.env[0-9]+
+set wildignore+=.git,.gitkeep,.hg,.svn
+set wildignore+=.tmp
+set wildignore+=.coverage
+set wildignore+=*DS_Store*
+set wildignore+=.sass-cache/
+set wildignore+=__pycache__/
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=.tox/**
+set wildignore+=.idea/**
+set wildignore+=*.egg,*.egg-info
+set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/**
+set wildignore+=*/.nx/**,*.app
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+set wildignore+=*.DS_Store,desktop.ini
+
 " }}}
 
 
@@ -220,14 +243,43 @@ set sessionoptions-=help                 " Don't want to restore help buffers
 set virtualedit=all                      " NOTE: testing
 " }}}
 
+" Autocommands
+" ============
+" {{{
+" ts = number of spaces that <Tab> in file uses
+" sts = number of spaces that <Tab> uses while editing
+" sw = number of spaces to use for (auto)indent step
+autocmd FileType litcoffee runtime ftplugin/coffee.vim
+autocmd Filetype coffee setlocal ts=2 sts=2 sw=2
+autocmd Filetype html setlocal ts=4 sts=4 sw=4
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
+" Reload .vimrc on changes in any config file
+augroup reload_vim_config
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+  autocmd BufWritePost $MYGVIMRC source $MYVIMRC
+  autocmd BufWritePost $VIMBASE/*.vim source $MYVIMRC
+augroup END
+
+" Auto save on focus lost
+autocmd FocusLost * :wa
+
+" Resize splits on window resize
+autocmd VimResized * exe "normal! \<c-w>="
+
+" Switch to fold by marker in vim config files
+augroup Vimfolding
+  autocmd!
+  autocmd Filetype vim setlocal foldmethod=marker
+augroup END
+
 
 " Imports
 " =======
 " {{{
 source $VIMBASE/keymappings.vim
 source $VIMBASE/plugins.vim
-source $VIMBASE/autocommands.vim
-source $VIMBASE/themes.vim
-source $VIMBASE/ignore.vim
 " }}}
 

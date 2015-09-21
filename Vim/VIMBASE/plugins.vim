@@ -41,8 +41,6 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
 
   " Functionality Enhancements
   " {{{
-  NeoBundle 'Shougo/neosnippet'
-  NeoBundle 'Shougo/neosnippet-snippets'
   NeoBundle 'Shougo/vimshell.vim'
   NeoBundle 'tpope/vim-fugitive'           " Git commands inside vim
   NeoBundle 'easymotion/vim-easymotion'      " Easier visual moving around
@@ -51,7 +49,6 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
   NeoBundle 'scrooloose/syntastic'         " Syntax checker
   NeoBundle 'Raimondi/delimitMate'         " automatic closing of quotes, etc
   NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'Shougo/neocomplete.vim'       " Autocompletion engine
   NeoBundle 'reedes/vim-lexical'           " enhances build in spell checker
   NeoBundle 'reedes/vim-wheel'             " Screen-anchored scrolling
   NeoBundle 'vim-scripts/gitignore'        " gitignore to wildignore
@@ -285,46 +282,6 @@ let g:syntastic_check_on_wq = 0
 " }}}
 
 
-" Neocomplete
-" ===========
-" {{{
-let g:acp_enableAtStartup = 0            " Disable AutoComplPop
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_ignore_case = 1
-let g:neocomplete#enable_fuzzy_completion = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary
-let g:neocomplete#sources#dictionary#dictionaries = {
-\ 'default' : '',
-\ 'vimshell' : $HOME.'/.vimshell_hist',
-\ 'scheme' : $HOME.'/.gosh_completions'
-\ }
-
-" Define keyword
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-endfunction
-
-" <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplete#close_popup()
-inoremap <expr><C-e> neocomplete#cancel_popup()
-" }}}
-
-
 " Rainbow Parenthesis
 " ===================
 " {{{
@@ -376,29 +333,6 @@ let g:wheel#map#down = '<c-j>'
 " {{{
 let b:showSpaces = 1
 let b:showSpacesConceal = 1
-" }}}
-
-
-" neosnippet
-" ==========
-" {{{
-" Plugin key-mappings.
-imap <C-j>     <Plug>(neosnippet_expand_or_jump)
-smap <C-j>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-j>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
 " }}}
 
 
@@ -471,7 +405,7 @@ let g:thematic#themes = {
     \ 'colorscheme': 'pencil',
     \ 'background': 'light',
     \ 'columns': 85,
-    \ 'font-size': 18,
+    \ 'font-size': 16,
     \ 'fullscreen': 1,
     \ 'laststatus': 0,
     \ 'linespace': 8,
@@ -482,6 +416,7 @@ let g:thematic#themes = {
 
 let g:thematic#theme_name = 'ocean'
 " }}}
+
 
 " Autocommands
 " ------------
@@ -496,9 +431,10 @@ augroup CursorColors
   autocmd!
   " Add custom highlights every time a theme is loaded
   autocmd colorscheme * highlight icursor guifg=#eff1f5 guibg=#a3be8c
-  " WORKAROUND: Since the above doesn't work on VimEnter, 
+  " WORKAROUND: Since the above doesn't work on VimEnter,
   "   hook the same thing into something else
   autocmd VimResized * highlight icursor guifg=#eff1f5 guibg=#a3be8c
 augroup END
 " }}}
 " }}}
+
