@@ -41,14 +41,14 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
 
   " Functionality Enhancements
   " {{{
+  NeoBundle 'kien/ctrlp.vim'               " Fuzzy file finder
   NeoBundle 'Shougo/vimshell.vim'
   NeoBundle 'tpope/vim-fugitive'           " Git commands inside vim
-  NeoBundle 'easymotion/vim-easymotion'      " Easier visual moving around
-  NeoBundle 'rking/ag.vim'                " Ag search integration
+  NeoBundle 'easymotion/vim-easymotion'    " Easier visual moving around
+  NeoBundle 'rking/ag.vim'                 " Ag search integration
   NeoBundle 'scrooloose/nerdcommenter'     " Toggle comment blocks
   NeoBundle 'scrooloose/syntastic'         " Syntax checker
   NeoBundle 'Raimondi/delimitMate'         " automatic closing of quotes, etc
-  NeoBundle 'Shougo/unite.vim'
   NeoBundle 'reedes/vim-lexical'           " enhances build in spell checker
   NeoBundle 'reedes/vim-wheel'             " Screen-anchored scrolling
   NeoBundle 'vim-scripts/gitignore'        " gitignore to wildignore
@@ -57,6 +57,7 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
   NeoBundle 'vim-scripts/matchit.zip'      " Match more symbols with %
   NeoBundle 'vim-scripts/python_match.vim' " Same as matchit for python
   NeoBundle 'wikitopian/hardmode'          " Disable misleading keybindings
+  NeoBundle 'tmhedberg/SimplyFol'          " Better folding for Python
   " }}}
 
   " UI Enhancements
@@ -77,7 +78,6 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
   NeoBundle 'reedes/vim-pencil'
   NeoBundle 'chriskempson/base16-vim'         " The mother of all colorthemes
   NeoBundle 'reedes/vim-colors-pencil'                 " iawriter colorscheme
-  NeoBundle 'nanotech/jellybeans.vim'
   NeoBundle 'NLKNguyen/papercolor-theme'
   " }}}
 call neobundle#end()
@@ -99,78 +99,6 @@ NeoBundleCheck
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 let g:incsearch#consistent_n_direction = 1
-" }}}
-
-
-" Unite
-" =====
-" {{{
-call unite#custom#profile('default', 'context', {
-\   'start_insert': 1,
-\   'winheight': 10,
-\   'direction': 'botright',
-\ })
-call unite#custom#profile('default', 'unite-options-prompt', '➤ ')
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-" Buffer List
-nnoremap <Leader>bl :<C-u>Unite -buffer-name=Buffers -default-action=switch buffer<cr>
-
-" Yankring
-let g:unite_source_history_yank_enable = 1
-nnoremap <Leader>r :<c-u>Unite history/yank<cr>
-
-" ctrlp
-" <c-u> will remove any range before the command is called
-" -no-split if it should be in full screen mode
-nnoremap <C-p> :Unite -default-action=vsplit -buffer-name=Files -start-insert file_rec/async<cr>
-let g:unite_source_rec_unit = 50         " Limit number of files shown in Ctrl-p mode
-let g:unite_source_rec_max_cache_files = 5000
-
-" Use ag for grepping
-if executable('ag')
-  let g:unite_source_rec_async_command= 'ag --follow --nocolor --nogroup --hidden -g ""'
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --line-numbers --column -S -C4'
-  let g:unite_source_grep_recursive_opt = ''
-endif
-nnoremap <C-S-p> :<C-u>Unite -no-split grep:<cr>.<cr>
-
-" Custom mappings inside the unite buffer
-autocmd FileType unite call s:unite_mappings()
-function! s:unite_mappings()
-  imap <buffer> <C-j> <Plug>(unite_select_next_line)
-  imap <buffer> <C-k> <Plug>(unite_select_previous_line)
-  nmap <buffer> <ESC> <plug>(unite_exit)
-  imap <buffer> <ESC> <plug>(unite_exit)
-endfunction
-
-call unite#custom#source('buffer,file,file_rec/async,file_rec,file_mru,file,grep',
-\ 'ignore_pattern', join([
-  \ '\.tmp/',
-  \ '\.git/',
-  \ '\.gitkeep',
-  \ '\.hg/',
-  \ '\.tox',
-  \ '\.idea',
-  \ '\.pyc',
-  \ '\.o',
-  \ '__pycache__',
-  \ '.env',
-  \ '.env*',
-  \ '_build',
-  \ 'dist',
-  \ '*.tar.gz',
-  \ '*.zip',
-  \ 'node_modules',
-  \ 'bower_components',
-  \ '.*\.egg',
-  \ '*.egg-info',
-  \ '.*egg-info.*',
-  \ 'git5/.*/review/',
-  \ 'google/obj/',
-  \ '\.sass-cache/',
-\ ], '\|'))
 " }}}
 
 
@@ -339,8 +267,7 @@ let b:showSpacesConceal = 1
 " easymotion
 " ==========
 " {{{
-
- let g:EasyMotion_do_mapping = 0 " Disable default mappings
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
@@ -372,7 +299,7 @@ let g:thematic#defaults = {
   \'fullscreen': 1,
   \'laststatus': 2,
   \'linespace': 4,
-  \'font-size': 12,
+  \'font-size': 10,
   \'typeface': 'hack',
 \}
 " }}}
@@ -437,4 +364,14 @@ augroup CursorColors
 augroup END
 " }}}
 " }}}
+
+
+" CTRLP
+" =====
+" {{{
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|tmp|temp)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
