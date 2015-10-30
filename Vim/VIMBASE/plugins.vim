@@ -57,7 +57,7 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
   NeoBundle 'vim-scripts/matchit.zip'      " Match more symbols with %
   NeoBundle 'vim-scripts/python_match.vim' " Same as matchit for python
   NeoBundle 'wikitopian/hardmode'          " Disable misleading keybindings
-  NeoBundle 'tmhedberg/SimplyFol'          " Better folding for Python
+  NeoBundle 'tmhedberg/SimpylFold'          " Better folding for Python
   " }}}
 
   " UI Enhancements
@@ -374,4 +374,10 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+
+" SimpylFold
+" ==========
+" {{{
+let g:SimpylFold_docstring_preview=1
+" }}}
 
