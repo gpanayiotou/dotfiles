@@ -57,7 +57,8 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
   NeoBundle 'vim-scripts/matchit.zip'      " Match more symbols with %
   NeoBundle 'vim-scripts/python_match.vim' " Same as matchit for python
   NeoBundle 'wikitopian/hardmode'          " Disable misleading keybindings
-  NeoBundle 'tmhedberg/SimpylFold'          " Better folding for Python
+  NeoBundle 'tmhedberg/SimpylFold'         " Better folding for Python
+  NeoBundle 'vim-scripts/indentpython.vim' " Better indenting for Python
   " }}}
 
   " UI Enhancements
