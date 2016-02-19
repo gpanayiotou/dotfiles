@@ -16,7 +16,7 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
   NeoBundle 'xolox/vim-shell'
   NeoBundle 'tomtom/tlib_vim'
   NeoBundle 'Shougo/vimproc.vim'
-  NeoBundle 'tpope/vim-dispatch'        " Run compiler (:make) asynchronously
+  NeoBundle 'tpope/vim-dispatch'       " Run compiler (:make) asynchronously
   NeoBundle 'tpope/vim-repeat'         " Allow plugins to repeat command maps
   " }}}
 
@@ -24,47 +24,51 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
   " {{{
 
   " JavaScript
-  NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy 'walm/jshint.vim', {'autoload':{'filetypes':['javascript']}}
-  NeoBundle 'jamescarr/snipmate-nodejs'
-  NeoBundle 'mintplant/vim-literate-coffeescript'
-  NeoBundle 'kchmck/vim-coffee-script'
+  NeoBundleLazy 'othree/yajs.vim',
+        \ {'autoload': {'filetypes': ['javascript']}}      " ES6-syntax
+
+  " Python
+  NeoBundleLazy 'nvie/vim-flake8',
+        \ {'autoload': {'filetypes': ['python']}} " PEP8 checking
+  NeoBundleLazy 'tmhedberg/SimpylFold',
+        \ {'autoload': {'filetypes': ['python']}} " Better folding for Python
+  NeoBundleLazy 'vim-scripts/indentpython.vim',
+        \ {'autoload': {'filetypes': ['python']}} " Better indenting for Python
+  NeoBundleLazy 'vim-scripts/python_match.vim',
+        \ {'autoload': {'filetypes': ['python']}} " Same as matchit for python
 
   " Miscellaneous
   NeoBundle 'firegoby/SASS-Snippets'
-  NeoBundle 'gabrielelana/vim-markdown'
   NeoBundle 'gorodinskiy/vim-coloresque'
   NeoBundle 'vim-scripts/vim-nfo'
-  NeoBundle 'othree/yajs.vim'
   " }}}
 
   " Functionality Enhancements
   " {{{
   NeoBundle 'kien/ctrlp.vim'               " Fuzzy file finder
   NeoBundle 'Shougo/vimshell.vim'
+  NeoBundle 'Shougo/neocomplete.vim'       " Auto completion engine
+  NeoBundle 'Shougo/neosnippet.vim'        " Snippet support
+  NeoBundle 'Shougo/neosnippet-snippets'   " Preconfigure Snippets
+  NeoBundle 'honza/vim-snippets'           " Additional snippets
   NeoBundle 'tpope/vim-fugitive'           " Git commands inside vim
   NeoBundle 'easymotion/vim-easymotion'    " Easier visual moving around
   NeoBundle 'rking/ag.vim'                 " Ag search integration
   NeoBundle 'scrooloose/nerdcommenter'     " Toggle comment blocks
   NeoBundle 'scrooloose/syntastic'         " Syntax checker
   NeoBundle 'Raimondi/delimitMate'         " automatic closing of quotes, etc
-  NeoBundle 'reedes/vim-lexical'           " enhances build in spell checker
   NeoBundle 'reedes/vim-wheel'             " Screen-anchored scrolling
   NeoBundle 'vim-scripts/gitignore'        " gitignore to wildignore
   NeoBundle 'tpope/vim-surround'           " Edit surrounding symbols
-  NeoBundle 'mattn/emmet-vim'
   NeoBundle 'vim-scripts/matchit.zip'      " Match more symbols with %
-  NeoBundle 'vim-scripts/python_match.vim' " Same as matchit for python
-  NeoBundle 'wikitopian/hardmode'          " Disable misleading keybindings
-  NeoBundle 'tmhedberg/SimpylFold'         " Better folding for Python
-  NeoBundle 'vim-scripts/indentpython.vim' " Better indenting for Python
+  NeoBundle 'reedes/vim-pencil'            " Enhancements for writing (md, txt)
   " }}}
 
   " UI Enhancements
   " {{{
-  NeoBundle 'bling/vim-airline'                      " status bar enhancement
-  NeoBundle 'airblade/vim-gitgutter'                 " git status on sideline
+  NeoBundle 'vim-airline/vim-airline'           " status bar enhancement
+  NeoBundle 'vim-airline/vim-airline-themes'    " status bar themes
+  NeoBundle 'airblade/vim-gitgutter'            " git status on sideline
   NeoBundle 'junegunn/limelight.vim'            " centered fullscreen editing
   NeoBundle 'junegunn/goyo.vim'
   NeoBundle 'bling/vim-bufferline'
@@ -75,10 +79,9 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
 
   " Themes
   " {{{
-  NeoBundle 'reedes/vim-thematic'                        " Theme organisation
-  NeoBundle 'reedes/vim-pencil'
+  NeoBundle 'reedes/vim-thematic'             " Theme organisation
+  NeoBundle 'reedes/vim-colors-pencil'        " iawriter colorscheme
   NeoBundle 'chriskempson/base16-vim'         " The mother of all colorthemes
-  NeoBundle 'reedes/vim-colors-pencil'                 " iawriter colorscheme
   NeoBundle 'NLKNguyen/papercolor-theme'
   " }}}
 call neobundle#end()
@@ -87,12 +90,6 @@ filetype plugin indent on
 NeoBundleCheck
 " }}}
 
-
-" Enhanced JavaScript Syntax
-" ==========================
-" {{{
-" autocmd FileType javascript call JavaScriptFold()
-" }}}
 
 " Incsearch
 " =========
@@ -137,15 +134,6 @@ let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 " }}}
 
 
-" Emmet
-" =====
-" {{{
-let g:user_emmet_install_global = 0                   " only use for html/css
-autocmd FileType html,css EmmetInstall
-let g:user_emmet_leader_key='<C-y>'          " still needs a trailing comma ,
-" }}}
-
-
 " Airline
 " =======
 " {{{
@@ -154,22 +142,27 @@ let g:Powerline_symbols = 'fancy'
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = ' '
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
 
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#whitespace#symbol = '·'
-let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
+let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
 
-let g:bufferline_echo = 0
+let g:airline_left_sep=' '
+let g:airline_right_sep=' '
 
 let g:airline_section_c = airline#section#create(['%{getcwd()}'])
 " }}}
 
 
-" Markdown
-" ========
+" Bufferline
+" ==========
 " {{{
-let g:markdown_enable_folding = 1
+let g:bufferline_echo = 0
 " }}}
 
 
@@ -222,29 +215,20 @@ au Syntax * RainbowParenthesesLoadBraces
 " }}}
 
 
-" Lexical
-" =======
-" {{{
-let g:lexical#spelllang = ['en_us','de_de']
-let g:lexical#thesaurus = [$VIMBASE . '/thesaurus/mthesaur.txt',]
-
-augroup lexical
-  autocmd!
-  autocmd FileType markdown,mkd call lexical#init()
-  autocmd FileType textile call lexical#init()
-  autocmd FileType text call lexical#init({ 'spell': 0 })
-augroup END
-" }}}
-
-
 " Pencil
 " ======
 " {{{
+let g:airline_theme = 'pencil'
+let g:airline_section_x = '%{PencilMode()}'
+
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
-  autocmd FileType latex        call pencil#init({'wrap': 'soft'})
-  autocmd FileType text         call pencil#init({'wrap': 'soft'})
+  autocmd FileType markdown,mkd call pencil#init()
+                            \ | Thematic pencil-light
+  autocmd FileType latex        call pencil#init()
+                            \ | Thematic pencil-light
+  autocmd FileType text,nfo     call pencil#init()
+                            \ | Thematic pencil-light
 augroup END
 " }}}
 
@@ -252,8 +236,8 @@ augroup END
 " Vim Wheel
 " =========
 " {{{
-let g:wheel#map#up   = '<c-k>'
-let g:wheel#map#down = '<c-j>'
+let g:wheel#map#up   = '<C-k>'
+let g:wheel#map#down = '<C-j>'
 " }}}
 
 
@@ -285,6 +269,7 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+" }}}
 
 
 " Vim-Thematic
@@ -309,49 +294,77 @@ let g:thematic#defaults = {
 " ------
 " {{{
 let g:thematic#themes = {
-  \'ocean': {
-    \ 'colorscheme': 'base16-ocean',
-    \ 'background': 'dark',
-    \ 'airline-theme': 'base16'
+  \'ocean-dark': {
+    \'colorscheme': 'base16-ocean',
+    \'background': 'dark',
+    \'airline-theme': 'base16'
+  \},
+  \'ocean-light': {
+    \'colorscheme': 'base16-ocean',
+    \'background': 'light',
+    \'airline-theme': 'base16'
+  \},
+  \'railscast-light': {
+    \'colorscheme': 'base16-railscast',
+    \'background': 'light',
+    \'airline-theme': 'base16'
+  \},
+  \'railscast-dark': {
+    \'colorscheme': 'base16-railscast',
+    \'background': 'dark',
+    \'airline-theme': 'base16'
   \},
   \'papercolor': {
-    \ 'colorscheme': 'PaperColor',
-    \ 'background': 'light',
+    \'colorscheme': 'PaperColor',
+    \'background': 'light',
   \},
-  \'flat': {
-    \ 'colorscheme': 'base16-flat',
-    \ 'background': 'dark',
-    \ 'airline-theme': 'base16',
+  \'flat-dark': {
+    \'colorscheme': 'base16-flat',
+    \'background': 'dark',
+    \'airline-theme': 'base16',
   \},
-  \'pencil': {
-    \ 'colorscheme': 'pencil',
-    \ 'background': 'light',
-    \ 'typeface': 'Cousine',
-    \ 'airline-theme': 'light',
+  \'flat-light': {
+    \'colorscheme': 'base16-flat',
+    \'background': 'light',
+    \'airline-theme': 'base16',
+  \},
+  \'pencil-dark': {
+    \'colorscheme': 'pencil',
+    \'background': 'dark',
+    \'typeface': 'Cousine',
+    \'airline-theme': 'pencil',
+  \ },
+  \'pencil-light': {
+    \'colorscheme': 'pencil',
+    \'background': 'light',
+    \'typeface': 'Cousine',
+    \'airline-theme': 'pencil',
   \ },
   \'iawriter': {
-    \ 'colorscheme': 'pencil',
-    \ 'background': 'light',
-    \ 'columns': 85,
-    \ 'font-size': 16,
-    \ 'fullscreen': 1,
-    \ 'laststatus': 0,
-    \ 'linespace': 8,
-    \ 'typeface': 'Cousine',
-    \ 'airline-theme': 'light',
+    \'colorscheme': 'pencil',
+    \'background': 'light',
+    \'columns': 85,
+    \'font-size': 16,
+    \'fullscreen': 1,
+    \'laststatus': 0,
+    \'linespace': 8,
+    \'typeface': 'Cousine',
+    \'airline-theme': 'pencil',
   \},
 \}
 
-let g:thematic#theme_name = 'ocean'
-" }}}
+let g:thematic#theme_name = 'ocean-dark'
 
+" }}}
 
 " Autocommands
 " ------------
 " {{{
-autocmd BufEnter *.js Thematic flat
-autocmd BufEnter *.vim Thematic ocean
-autocmd BufEnter *.md Thematic iawriter
+autocmd BufEnter *.md,*.nfo Thematic iawriter
+
+" Custom background color for text on column 80
+highlight ColorColumn ctermbg=gray
+autocmd BufRead * call matchadd('ColorColumn', '\%80v', 100)
 
 " Set custom hightlights for all colorschemes
 " NOTE: No setting in Thematic for this
@@ -363,6 +376,18 @@ augroup CursorColors
   "   hook the same thing into something else
   autocmd VimResized * highlight icursor guifg=#eff1f5 guibg=#a3be8c
 augroup END
+
+" switch between light and dark versions based on time of day
+function! SwitchColorVariant()
+  let hour = strftime("%H")
+  if 7 <= hour && hour <= 18
+    set background=light
+  else
+    set background=dark
+  endif
+endfunction
+
+autocmd BufEnter * :call SwitchColorVariant()
 " }}}
 " }}}
 
@@ -374,11 +399,74 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|tmp|temp)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
-  \ }
+\ }
+" }}}
+
 
 " SimpylFold
 " ==========
 " {{{
 let g:SimpylFold_docstring_preview=1
+" }}}
+
+
+" Neocomplete
+" ===========
+" {{{
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " don't insert <CR> key
+  return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" }}}
+
+
+" Neosnippet
+" ==========
+" {{{
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+ " Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory=$VIMBASE.'/bundle/vim-snippets/snippets'
 " }}}
 
