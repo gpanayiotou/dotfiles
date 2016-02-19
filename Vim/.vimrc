@@ -1,8 +1,8 @@
-set encoding=utf-8         " Vim can not recognize the character code of .vimrc
-                           " when scriptencoding is defined before set encoding
+set encoding=utf-8      " Vim can not recognize the character code of .vimrc
+                        " when scriptencoding is defined before set encoding
 scriptencoding utf-8
 
-" Titles according to :options
+" Sections according to :options
 
 " 0 variables
 " ===========
@@ -19,35 +19,35 @@ endif
 " ===========
 " {{{
 set nocompatible
-set cpoptions+=$                      " Show boundaries of to be changed text
+set cpoptions+=$               " Show boundaries of to be changed text
 " }}}
 
 
 " 2 moving around, searching and patterns
 " =======================================
 " {{{
-set incsearch         " enable incremental search
-set ignorecase        " use case insensitive search,
-set smartcase         " except when using capital letters
-set startofline       " jump commands go to first char in line
-set noautochdir       " some plugins don't like this enabled (vimshell)
+set incsearch             " enable incremental search
+set ignorecase            " use case insensitive search,
+set smartcase             " except when using capital letters
+set startofline           " jump commands go to first char in line
+set noautochdir           " some plugins don't like this enabled (vimshell)
 " }}}
 
 
 " 4 displaying text
 " =================
 " {{{
-  set scrolloff=3            " number of screen lines to show around the cursor
+  set scrolloff=3        " number of screen lines to show around the cursor
   set nowrap
-  set linebreak                   " wrap long lines at a character in 'breakat'
+  set linebreak          " wrap long lines at a character in 'breakat'
   set cmdheight=2
-  set list                                         " show whitespace characters
+  set list               " show whitespace characters
   set listchars=tab:↹\ ,trail:·,eol:¬
   set number
   set numberwidth=3
   set lines=120
   set columns=999
-  set relativenumber                    " line numbers relative to current line
+  set relativenumber         " line numbers relative to current line
 " }}}
 
 
@@ -57,21 +57,22 @@ set noautochdir       " some plugins don't like this enabled (vimshell)
 syntax on
 set hlsearch
 set cursorline
-"let &colorcolumn="80,".join(range(120,999),",") " line 80 and beyond warning
+"let &colorcolumn="80"                                 " line 80
+"                 \ . "," . join(range(120,999) ",")  " and beyond 120 warning
 set nospell
-filetype plugin indent on                       " identify syntax by filetype
+filetype plugin indent on                      " identify syntax by filetype
 " }}}
 
 
 " 6 multiple windows
 " ==================
 " {{{
-set laststatus=2                                  " always show a status line
-set hidden           " don't unload a buffer when no longer shown in a window
-set winheight=5                                " set this before winminheight
-set winwidth=90                                    " width for active window
+set laststatus=2       " always show a status line
+set hidden             " don't unload a buffer when no longer shown in a window
+set winheight=5        " set this before winminheight
+set winwidth=90        " width for active window
 set winminheight=5
-set winheight=999                                   " height of active window
+set winheight=999      " height of active window
 set splitright
 " }}}
 
@@ -168,7 +169,8 @@ set notimeout ttimeout ttimeoutlen=50        " Quickly time out on keycodes,
 set backup                                 " Backup before overwriting
 set backupdir=$HOME/Backup/Files/
 set autowriteall
-set modelines=0                            " Disable modeline vulnerabilities
+set nomodeline                             " Disable modeline nonsense
+set modelines=0
 " }}}
 
 
@@ -185,7 +187,8 @@ set directory=$VIMBASE/swap/
 " {{{
 set wildmenu                                 " Better command-line completion
 set wildmode=list:longest
-set wildignorecase                                 " ignore case in filenames
+set wildignorecase                           " ignore case in filenames
+set undofile
 set undodir=$VIMBASE/undo
 set history=100
 set wildignore=*.o,*.obj,*~,*.pyc,*.exe,*.dll,*.manifest
@@ -198,15 +201,14 @@ set wildignore+=.coverage
 set wildignore+=*DS_Store*
 set wildignore+=.sass-cache/
 set wildignore+=__pycache__/
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
+set wildignore+=vendor/**
 set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
-set wildignore+=.tox/**
 set wildignore+=.idea/**
-set wildignore+=*.egg,*.egg-info
-set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/**
+set wildignore+=node_modules/**
+set wildignore+=*.so,*.swp,*.zip,*/.Trash/**
+set wildignore+=*.pdf,*.dmg,*/Library/**,*/.rbenv/**
 set wildignore+=*/.nx/**,*.app
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
 set wildignore+=*.DS_Store,desktop.ini
@@ -232,6 +234,8 @@ set shellslash              " WIN: use forward slash in paths
 " {{{
 set encoding=utf-8                            " encoding for displaying files
 set fileencoding=utf-8                        " encoding for writing files
+set fileformat=unix                           " set default fileformat
+set fileformats=unix                          " set possible fileformats
 " }}}
 
 
@@ -240,20 +244,21 @@ set fileencoding=utf-8                        " encoding for writing files
 " {{{
 set gdefault                             " Substitute globally by default
 set sessionoptions-=help                 " Don't want to restore help buffers
-set virtualedit=all                      " NOTE: testing
+set virtualedit=block,onemore
 " }}}
+
 
 " Autocommands
 " ============
 " {{{
-" ts = number of spaces that <Tab> in file uses
+" ts = number of spaces that <Tab> uses
 " sts = number of spaces that <Tab> uses while editing
 " sw = number of spaces to use for (auto)indent step
-autocmd FileType litcoffee runtime ftplugin/coffee.vim
-autocmd Filetype coffee setlocal ts=2 sts=2 sw=2
 autocmd Filetype html setlocal ts=4 sts=4 sw=4
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype java setlocal ts=4 sts=4 sw=4
+autocmd Filetype vim setlocal ts=2 sts=2 sw=2
 
 " Reload .vimrc on changes in any config file
 augroup reload_vim_config
@@ -264,7 +269,7 @@ augroup reload_vim_config
 augroup END
 
 " Auto save on focus lost
-autocmd FocusLost * :wa
+"autocmd FocusLost * :wa
 
 " Resize splits on window resize
 autocmd VimResized * exe "normal! \<c-w>="
@@ -272,21 +277,12 @@ autocmd VimResized * exe "normal! \<c-w>="
 " Switch to fold by marker in vim config files
 augroup Vimfolding
   autocmd!
-  autocmd Filetype vim setlocal foldmethod=marker
+  autocmd Filetype *.vim,.vimrc,.gvimrc setlocal foldmethod=marker
 augroup END
-
-" Python indent styles according to PEP8
-au BufNewFile,BufRead *.py
-      \ set tabstop=4
-      \ set softtabstop=4
-      \ set shiftwidth=4
-      \ set textwidth=79
-      \ set expandtab
-      \ set autoindent
-      \ set fileformat=unix
 
 " Mark extra whitespace as 'bad'
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" }}}
 
 
 " Imports
