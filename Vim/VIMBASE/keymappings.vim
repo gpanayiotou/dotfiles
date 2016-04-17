@@ -55,6 +55,9 @@ inoremap <C-S-Return> <C-o>A
 
 " no jumping to next result on * search
 nnoremap * *<c-o>
+
+" reindent entire file
+nnoremap == gg=G
 " }}}
 
 

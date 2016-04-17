@@ -52,7 +52,6 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
   NeoBundle 'Shougo/neosnippet-snippets'   " Preconfigure Snippets
   NeoBundle 'honza/vim-snippets'           " Additional snippets
   NeoBundle 'tpope/vim-fugitive'           " Git commands inside vim
-  NeoBundle 'easymotion/vim-easymotion'    " Easier visual moving around
   NeoBundle 'rking/ag.vim'                 " Ag search integration
   NeoBundle 'scrooloose/nerdcommenter'     " Toggle comment blocks
   NeoBundle 'scrooloose/syntastic'         " Syntax checker
@@ -61,7 +60,7 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
   NeoBundle 'vim-scripts/gitignore'        " gitignore to wildignore
   NeoBundle 'tpope/vim-surround'           " Edit surrounding symbols
   NeoBundle 'vim-scripts/matchit.zip'      " Match more symbols with %
-  NeoBundle 'reedes/vim-pencil'            " Enhancements for writing (md, txt)
+  NeoBundle 'Konfekt/FastFold'
   " }}}
 
   " UI Enhancements
@@ -75,19 +74,22 @@ call neobundle#begin(expand($VIMBASE . "/bundle/"))
   NeoBundle 'haya14busa/incsearch.vim'
   NeoBundle 'kien/rainbow_parentheses.vim'
   NeoBundle 'guiniol/vim-showspaces'
+  NeoBundle 'mhinz/vim-startify'
   " }}}
 
   " Themes
   " {{{
   NeoBundle 'reedes/vim-thematic'             " Theme organisation
   NeoBundle 'reedes/vim-colors-pencil'        " iawriter colorscheme
-  NeoBundle 'chriskempson/base16-vim'         " The mother of all colorthemes
+  NeoBundle 'chriskempson/base16-vim'
   NeoBundle 'NLKNguyen/papercolor-theme'
+  NeoBundle 'ajh17/Spacegray.vim'
   " }}}
 call neobundle#end()
 
 filetype plugin indent on
 NeoBundleCheck
+command! NBU NeoBundleUpdate
 " }}}
 
 
@@ -186,7 +188,6 @@ let g:vimshell_right_prompt = 'system("date")'
 " NERDCommenter
 " =============
 " {{{
-map <leader>tc NERDComToggleComment
 " }}}
 
 
@@ -198,9 +199,23 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+
+" Hide the error list (location-list) by default. Show it with :Error
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
+let g:synstastic_javascript_checkers = ['eslint']
+
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 " }}}
 
 
@@ -212,24 +227,6 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-" }}}
-
-
-" Pencil
-" ======
-" {{{
-let g:airline_theme = 'pencil'
-let g:airline_section_x = '%{PencilMode()}'
-
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
-                            \ | Thematic pencil-light
-  autocmd FileType latex        call pencil#init()
-                            \ | Thematic pencil-light
-  autocmd FileType text,nfo     call pencil#init()
-                            \ | Thematic pencil-light
-augroup END
 " }}}
 
 
@@ -249,29 +246,6 @@ let b:showSpacesConceal = 1
 " }}}
 
 
-" easymotion
-" ==========
-" {{{
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" Bi-directional find motion
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-nmap s <Plug>(easymotion-s)
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-s2)
-
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
-
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-" }}}
-
-
 " Vim-Thematic
 " ============
 " {{{
@@ -286,7 +260,7 @@ let g:thematic#defaults = {
   \'laststatus': 2,
   \'linespace': 4,
   \'font-size': 10,
-  \'typeface': 'hack',
+  \'typeface': 'Hack',
 \}
 " }}}
 
@@ -387,7 +361,7 @@ function! SwitchColorVariant()
   endif
 endfunction
 
-autocmd BufEnter * :call SwitchColorVariant()
+"autocmd BufEnter * :call SwitchColorVariant()
 " }}}
 " }}}
 
@@ -400,6 +374,8 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
 \ }
+
+let g:ctrlp_reuse_window = 'startify'
 " }}}
 
 
@@ -469,4 +445,6 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory=$VIMBASE.'/bundle/vim-snippets/snippets'
 " }}}
+
+
 
