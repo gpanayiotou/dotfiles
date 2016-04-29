@@ -1,0 +1,8 @@
+[include]
+  path = .gitconfig-common 
+[core]
+  editor = gvim
+  autocrlf = false
+  safecrlf = true
+[credential]
+  helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
