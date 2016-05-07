@@ -3,7 +3,10 @@
 " 1 important
 " ===========
 " {{{
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/develop
 " }}}
 
 
@@ -32,12 +35,53 @@ set nowrap
 " ===================================
 " {{{
 set hlsearch
+<<<<<<< HEAD
+=======
+syntax enable
+>>>>>>> origin/develop
 " }}}
 
 
 " 6 multiple windows
 " ==================
 " {{{
+<<<<<<< HEAD
+=======
+
+" }}}
+
+
+" 7 Multiple Tab Pages
+" ====================
+" {{{
+set showtabline=2
+" }}}
+
+
+" 8 terminal
+" ==========
+" {{{
+set t_Co=256
+set title
+" }}}
+
+" 14 tabs and indenting
+" =====================
+" {{{
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+set expandtab
+set autoindent
+set smartindent
+" }}}
+
+
+" 15 folding
+" ==========
+" {{{
+>>>>>>> origin/develop
 " }}}
 
 
@@ -46,7 +90,11 @@ set hlsearch
 " {{{
 set fileformats=unix
 set backup
+<<<<<<< HEAD
 set backupdir=~/Backup/nvim
+=======
+set backupdir=~/Backup/nvim/
+>>>>>>> origin/develop
 set autowriteall
 set autoread
 " }}}
@@ -62,6 +110,7 @@ set autoread
 " =======
 " {{{
 
+<<<<<<< HEAD
 " dein.vim
 " --------
 " {{{
@@ -95,6 +144,41 @@ call dein#add('chriskempson/base16-vim')
 call dein#end()
 " }}}
 
+=======
+" vim-plug
+" ========
+" {{{
+call plug#begin('~/.config/nvim/plugged')
+
+" enhancements
+Plug 'Shougo/neocomplete.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+
+" Language support
+Plug 'tmux-plugins/vim-tmux'
+Plug 'elzr/vim-json'
+
+" UI
+Plug 'bling/vim-bufferline'
+Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-startify'
+
+" Themes
+Plug 'reedes/vim-thematic'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'reedes/vim-colors-pencil'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'chriskempson/base16-vim'
+Plug 'ajh17/Spacegray.vim'
+
+" Add plugins to &runtimepath
+call plug#end()
+" }}}
+
+
+>>>>>>> origin/develop
 " vim-thematic
 " ------------
 " {{{
@@ -104,9 +188,15 @@ let g:thematic#defaults = {
 
 let g:thematic#themes = {
 \ 'ocean-dark': { 'colorscheme': 'base16-ocean',
+<<<<<<< HEAD
 \		  'background': 'dark',
 \		  'airline-theme': 'base16',
 \               }
+=======
+    \		  'background': 'dark',
+    \		  'airline-theme': 'base16',
+    \               }
+>>>>>>> origin/develop
 \ }
 
 let g:thematic#theme_name = 'ocean-dark'
@@ -117,6 +207,7 @@ let g:thematic#theme_name = 'ocean-dark'
 " -----------
 " {{{
 let g:airline_powerline_fonts = 1
+<<<<<<< HEAD
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -132,3 +223,38 @@ let g:airline#extensions#whitespace#enabled = 1
 " {{{
 au FileType vim setlocal foldmethod=marker
 " }}}
+=======
+let g:Powerline_symbols = 'fancy'
+
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#symbol = '·'
+let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = ' '
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+let g:airline_left_sep=' '
+let g:airline_right_sep=' '
+
+let g:airline_section_c = airline#section#create(['%{getcwd()}'])
+" }}}
+
+" }}}
+
+
+" Keybindings
+" ===========
+" {{{
+let mapleader = " "
+nmap <Leader>bn :bn<Cr>
+nmap <Leader>bd :bd<Cr>
+nmap == gg=G
+" }}}
+
+command! Update :PlugUpdate
+
+>>>>>>> origin/develop
