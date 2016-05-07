@@ -79,7 +79,7 @@ set smartindent
 " {{{
 set fileformats=unix
 set backup
-set backupdir=~/Backup/nvim
+set backupdir=~/Backup/nvim/
 set autowriteall
 set autoread
 " }}}
@@ -97,7 +97,7 @@ set autoread
 
 " vim-plug
 " ========
-" {{{
+
 call plug#begin('~/.config/nvim/plugged')
 
 " enhancements
@@ -126,7 +126,6 @@ Plug 'ajh17/Spacegray.vim'
 " Add plugins to &runtimepath
 call plug#end()
 " }}}
-
 
 " vim-thematic
 " ------------
