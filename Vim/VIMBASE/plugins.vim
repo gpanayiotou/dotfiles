@@ -1,95 +1,76 @@
-" Neobundle
-" =========
+" vim-plug
+" ========
 " {{{
-if has('vim_starting')
-  set nocompatible
-  set runtimepath+=$VIMBASE/bundle/neobundle.vim/
-endif
+call plug#begin('~/.vim/plugged')
 
-call neobundle#begin(expand($VIMBASE . "/bundle/"))
-  NeoBundleFetch 'Shougo/neobundle.vim'
+" Libraries, Dependencies
+" {{{
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-shell'
+Plug 'tomtom/tlib_vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'tpope/vim-dispatch'       " Run compiler (:make) asynchronously
+Plug 'tpope/vim-repeat'         " Allow plugins to repeat command maps
+" }}}
 
-  " Libraries, Dependencies
-  " {{{
-  NeoBundle 'MarcWeber/vim-addon-mw-utils'
-  NeoBundle 'xolox/vim-misc'
-  NeoBundle 'xolox/vim-shell'
-  NeoBundle 'tomtom/tlib_vim'
-  NeoBundle 'Shougo/vimproc.vim'
-  NeoBundle 'tpope/vim-dispatch'       " Run compiler (:make) asynchronously
-  NeoBundle 'tpope/vim-repeat'         " Allow plugins to repeat command maps
-  " }}}
+" Additional Language Support
+" {{{
 
-  " Additional Language Support
-  " {{{
+" JavaScript
+Plug 'othree/yajs.vim'
 
-  " JavaScript
-  NeoBundleLazy 'othree/yajs.vim',
-        \ {'autoload': {'filetypes': ['javascript']}}      " ES6-syntax
+" Miscellaneous
+Plug 'firegoby/SASS-Snippets'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'vim-scripts/vim-nfo'
+" }}}
 
-  " Python
-  NeoBundleLazy 'nvie/vim-flake8',
-        \ {'autoload': {'filetypes': ['python']}} " PEP8 checking
-  NeoBundleLazy 'tmhedberg/SimpylFold',
-        \ {'autoload': {'filetypes': ['python']}} " Better folding for Python
-  NeoBundleLazy 'vim-scripts/indentpython.vim',
-        \ {'autoload': {'filetypes': ['python']}} " Better indenting for Python
-  NeoBundleLazy 'vim-scripts/python_match.vim',
-        \ {'autoload': {'filetypes': ['python']}} " Same as matchit for python
+" Functionality Enhancements
+" {{{
+Plug 'kien/ctrlp.vim'               " Fuzzy file finder
+Plug 'Shougo/vimshell.vim'
+Plug 'Shougo/neocomplete.vim'       " Auto completion engine
+Plug 'Shougo/neosnippet.vim'        " Snippet support
+Plug 'Shougo/neosnippet-snippets'   " Preconfigure Snippets
+Plug 'honza/vim-snippets'           " Additional snippets
+Plug 'tpope/vim-fugitive'           " Git commands inside vim
+Plug 'rking/ag.vim'                 " Ag search integration
+Plug 'scrooloose/nerdcommenter'     " Toggle comment blocks
+Plug 'scrooloose/syntastic'         " Syntax checker
+Plug 'Raimondi/delimitMate'         " automatic closing of quotes, etc
+Plug 'reedes/vim-wheel'             " Screen-anchored scrolling
+Plug 'vim-scripts/gitignore'        " gitignore to wildignore
+Plug 'tpope/vim-surround'           " Edit surrounding symbols
+Plug 'vim-scripts/matchit.zip'      " Match more symbols with %
+Plug 'Konfekt/FastFold'
+" }}}
 
-  " Miscellaneous
-  NeoBundle 'firegoby/SASS-Snippets'
-  NeoBundle 'gorodinskiy/vim-coloresque'
-  NeoBundle 'vim-scripts/vim-nfo'
-  " }}}
+" UI Enhancements
+" {{{
+Plug 'vim-airline/vim-airline'           " status bar enhancement
+Plug 'vim-airline/vim-airline-themes'    " status bar themes
+Plug 'junegunn/limelight.vim'            " centered fullscreen editing
+Plug 'junegunn/goyo.vim'
+Plug 'bling/vim-bufferline'
+Plug 'haya14busa/incsearch.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'guiniol/vim-showspaces'
+Plug 'mhinz/vim-startify'
+" }}}
 
-  " Functionality Enhancements
-  " {{{
-  NeoBundle 'kien/ctrlp.vim'               " Fuzzy file finder
-  NeoBundle 'Shougo/vimshell.vim'
-  NeoBundle 'Shougo/neocomplete.vim'       " Auto completion engine
-  NeoBundle 'Shougo/neosnippet.vim'        " Snippet support
-  NeoBundle 'Shougo/neosnippet-snippets'   " Preconfigure Snippets
-  NeoBundle 'honza/vim-snippets'           " Additional snippets
-  NeoBundle 'tpope/vim-fugitive'           " Git commands inside vim
-  NeoBundle 'rking/ag.vim'                 " Ag search integration
-  NeoBundle 'scrooloose/nerdcommenter'     " Toggle comment blocks
-  NeoBundle 'scrooloose/syntastic'         " Syntax checker
-  NeoBundle 'Raimondi/delimitMate'         " automatic closing of quotes, etc
-  NeoBundle 'reedes/vim-wheel'             " Screen-anchored scrolling
-  NeoBundle 'vim-scripts/gitignore'        " gitignore to wildignore
-  NeoBundle 'tpope/vim-surround'           " Edit surrounding symbols
-  NeoBundle 'vim-scripts/matchit.zip'      " Match more symbols with %
-  NeoBundle 'Konfekt/FastFold'
-  " }}}
+" Themes
+" {{{
+Plug 'reedes/vim-thematic'             " Theme organisation
+Plug 'reedes/vim-colors-pencil'        " iawriter colorscheme
+Plug 'chriskempson/base16-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'ajh17/Spacegray.vim'
+" }}}
 
-  " UI Enhancements
-  " {{{
-  NeoBundle 'vim-airline/vim-airline'           " status bar enhancement
-  NeoBundle 'vim-airline/vim-airline-themes'    " status bar themes
-  NeoBundle 'airblade/vim-gitgutter'            " git status on sideline
-  NeoBundle 'junegunn/limelight.vim'            " centered fullscreen editing
-  NeoBundle 'junegunn/goyo.vim'
-  NeoBundle 'bling/vim-bufferline'
-  NeoBundle 'haya14busa/incsearch.vim'
-  NeoBundle 'kien/rainbow_parentheses.vim'
-  NeoBundle 'guiniol/vim-showspaces'
-  NeoBundle 'mhinz/vim-startify'
-  " }}}
 
-  " Themes
-  " {{{
-  NeoBundle 'reedes/vim-thematic'             " Theme organisation
-  NeoBundle 'reedes/vim-colors-pencil'        " iawriter colorscheme
-  NeoBundle 'chriskempson/base16-vim'
-  NeoBundle 'NLKNguyen/papercolor-theme'
-  NeoBundle 'ajh17/Spacegray.vim'
-  " }}}
-call neobundle#end()
-
-filetype plugin indent on
-NeoBundleCheck
-command! NBU NeoBundleUpdate
+" Add plugins to &runtimepath
+call plug#end()
 " }}}
 
 
@@ -328,8 +309,8 @@ let g:thematic#themes = {
 \}
 
 let g:thematic#theme_name = 'ocean-dark'
-
 " }}}
+
 
 " Autocommands
 " ------------
@@ -365,6 +346,13 @@ endfunction
 " }}}
 " }}}
 
+
+" base16-vim
+" ----------
+" {{{
+let base16colorspace=256  " Access colors present in 256 colorspace
+" }}}
+"
 
 " CTRLP
 " =====
