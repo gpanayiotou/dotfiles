@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " Sections according to :options
 
 " 1 important
@@ -32,6 +34,8 @@ set nowrap
 " {{{
 set hlsearch
 syntax enable
+set cursorline
+let &colorcolumn=join(range(80,999), ",")
 " }}}
 
 
@@ -52,6 +56,7 @@ set showtabline=2
 " ==========
 " {{{
 set t_Co=256
+"set termguicolors " TODO: enable after option is available
 set title
 " }}}
 
@@ -88,6 +93,8 @@ set autoread
 " 19 the swap file
 " ================
 " {{{
+set directory=~/.cache/swap/
+set swapfile
 " }}}
 
 
@@ -97,13 +104,20 @@ set autoread
 
 " vim-plug
 " ========
-
+" {{{
 call plug#begin('~/.config/nvim/plugged')
 
-" enhancements
+" Enhancements
 Plug 'Shougo/neocomplete.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
+
+" File Editing
+Plug 'tpope/vim-surround'
+
+" File Navigation
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-vinegar'
 
 " Language support
 Plug 'tmux-plugins/vim-tmux'
@@ -112,7 +126,6 @@ Plug 'elzr/vim-json'
 " UI
 Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
 
 " Themes
@@ -127,6 +140,12 @@ Plug 'ajh17/Spacegray.vim'
 call plug#end()
 " }}}
 
+" base16-vim
+" ----------
+" {{{
+let base16colorspace=256
+" }}}
+
 " vim-thematic
 " ------------
 " {{{
@@ -137,19 +156,20 @@ let g:thematic#defaults = {
 \ }
 
 let g:thematic#themes = {
-\ 'ocean-dark': { 'colorscheme': 'base16-ocean',
-\		          'background': 'dark',
-\		          'airline-theme': 'base16',
-\               },
-\ 'iawriter': { 'colorscheme': 'pencil',
-\               'background': 'light',
-\               'columns': 75,
-\               'font-size': 20,
-\               'fullscreen': 1,
-\               'laststatus': 0,
-\               'linespace': 8,
-\               'typeface': 'Cousine',
-\             },
+\ 'ocean-dark':  { 'colorscheme': 'base16-ocean',
+\                },
+\ 'ocean-light': { 'colorscheme': 'base16-ocean',
+\                  'background': 'light',
+\                },
+\ 'iawriter':    { 'colorscheme': 'pencil',
+\                  'background': 'light',
+\                  'columns': 75,
+\                  'font-size': 20,
+\                  'fullscreen': 1,
+\                  'laststatus': 0,
+\                  'linespace': 8,
+\                  'typeface': 'Cousine',
+\                },
 \ }
 
 let g:thematic#theme_name = 'ocean-dark'
@@ -198,10 +218,26 @@ au FileType vim setlocal foldmethod=marker
 " ===========
 " {{{
 let mapleader = " "
+noremap <Esc> <Esc>:nohl<CR><Esc>
+
+" Buffer Navigation
 nmap <Leader>bn :bn<Cr>
 nmap <Leader>bd :bd<Cr>
+
+" Editing
 nmap == gg=G
+
+" Window Navigation
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+nmap <Leader>o :only<CR>
 " }}}
 
-command! Update :PlugUpdate
 
+" Commands
+" ========
+" {{{
+command! Update :PlugUpdate
+" }}}
