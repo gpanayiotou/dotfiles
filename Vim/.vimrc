@@ -37,7 +37,7 @@ set noautochdir           " some plugins don't like this enabled (vimshell)
 " 4 displaying text
 " =================
 " {{{
-  set scrolloff=3        " number of screen lines to show around the cursor
+  set scrolloff=3        " number of screen lines to show around the cursorline
   set nowrap
   set linebreak          " wrap long lines at a character in 'breakat'
   set cmdheight=2
@@ -57,8 +57,7 @@ set noautochdir           " some plugins don't like this enabled (vimshell)
 syntax on
 set hlsearch
 set cursorline
-"let &colorcolumn="80"                                 " line 80
-"                 \ . "," . join(range(120,999) ",")  " and beyond 120 warning
+let &colorcolumn="80" . "," . join(range(100,999), ",")
 set nospell
 filetype plugin indent on                      " identify syntax by filetype
 " }}}
@@ -88,6 +87,7 @@ set showtabline=2
 " ==========
 " {{{
 set t_Co=256                  " 256 color console mode
+"set termguicolors " TODO: enable after vim v8 is available
 set title                     " enable title in console
 if !empty($CONEMUBUILD)
   set term=pcansi
