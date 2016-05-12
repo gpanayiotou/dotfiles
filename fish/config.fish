@@ -13,6 +13,9 @@ set -g theme_date_format "+%A %HH:%MM"
 
 export TERM=xterm-256color
 
+# Base16 Shell
+eval sh $HOME/.config/base16-shell/base16-ocean.dark.sh
+
 set fish_function_path $fish_function_path "/usr/share/powerline/fish/"
 powerline-setup
 
