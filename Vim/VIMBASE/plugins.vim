@@ -1,7 +1,11 @@
 " vim-plug
 " ========
 " {{{
-call plug#begin('~/vimfiles/plugged')
+if has('unix')
+    call plug#begin('~/.vim/plugged')
+elseif has('win32')
+    call plug#begin('~/vimfiles/plugged')
+endif
 
 " Libraries, Dependencies
 " {{{
