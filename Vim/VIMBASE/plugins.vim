@@ -1,7 +1,7 @@
 " vim-plug
 " ========
 " {{{
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/vimfiles/plugged')
 
 " Libraries, Dependencies
 " {{{
@@ -9,7 +9,6 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-shell'
 Plug 'tomtom/tlib_vim'
-Plug 'Shougo/vimproc.vim'
 Plug 'tpope/vim-dispatch'       " Run compiler (:make) asynchronously
 Plug 'tpope/vim-repeat'         " Allow plugins to repeat command maps
 " }}}
@@ -240,8 +239,8 @@ let g:thematic#defaults = {
   \'fullscreen': 1,
   \'laststatus': 2,
   \'linespace': 4,
-  \'font-size': 10,
-  \'typeface': 'Hack',
+  \'font-size': 11,
+  \'typeface': 'PragmataPro',
 \}
 " }}}
 
