@@ -67,19 +67,56 @@ nnoremap == gg=G
 " Disable highlighting on ESC
 nnoremap <silent> <ESC> :nohls<CR><ESC>
 
-" toggle folding
+" Toggle folding
 inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
-" focus on current fold
+" Focus on current fold
 nnoremap <Leader>z zMzvzz
 
-" Copy & paste to system clipboard
+" Copy & paste to/from system clipboard
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
 nmap <Leader>P "+P
+
+" Increase/Decrease font size in GVim
+" http://vi.stackexchange.com/a/3104
+if has("gui_gtk2")
+  function! FontSizePlus ()
+    let l:gf_size_whole = matchstr(&guifont, '\( \)\@<=\d\+$')
+    let l:gf_size_whole = l:gf_size_whole + 1
+    let l:new_font_size = ' '.l:gf_size_whole
+    let &guifont = substitute(&guifont, ' \d\+$', l:new_font_size, '')
+  endfunction
+
+  function! FontSizeMinus ()
+    let l:gf_size_whole = matchstr(&guifont, '\( \)\@<=\d\+$')
+    let l:gf_size_whole = l:gf_size_whole - 1
+    let l:new_font_size = ' '.l:gf_size_whole
+    let &guifont = substitute(&guifont, ' \d\+$', l:new_font_size, '')
+  endfunction
+else
+  function! FontSizePlus ()
+    let l:gf_size_whole = matchstr(&guifont, '\(:h\)\@<=\d\+$')
+    let l:gf_size_whole = l:gf_size_whole + 1
+    let l:new_font_size = ':h'.l:gf_size_whole
+    let &guifont = substitute(&guifont, ':h\d\+$', l:new_font_size, '')
+  endfunction
+
+  function! FontSizeMinus ()
+    let l:gf_size_whole = matchstr(&guifont, '\(:h\)\@<=\d\+$')
+    let l:gf_size_whole = l:gf_size_whole - 1
+    let l:new_font_size = ':h'.l:gf_size_whole
+    let &guifont = substitute(&guifont, ':h\d\+$', l:new_font_size, '')
+  endfunction
+endif
+
+if has("gui_running")
+  nmap <C-kMinus> :call FontSizeMinus()<CR>
+  nmap <C-kPlus> :call FontSizePlus()<CR>
+endif
 " }}}
 
