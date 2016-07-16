@@ -112,7 +112,7 @@ function! GoyoAfter()
   set relativenumber
 endfunction
 
-nnoremap <s-F11> :Goyo<CR>
+nnoremap <S-F11> :Goyo<CR>
 let g:goyo_width=100
 let g:goyo_margin_top=0
 let g:goyo_margin_bottom=2
@@ -166,12 +166,6 @@ let g:vimshell_enable_smart_case = 1
 let g:vimshell_prompt = '➤  '
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_right_prompt = 'system("date")'
-" }}}
-
-
-" NERDCommenter
-" =============
-" {{{
 " }}}
 
 
@@ -238,15 +232,14 @@ let b:showSpacesConceal = 1
 " --------
 " {{{
 let g:thematic#defaults = {
-  \'fullscreen-background-color-fix': 1,
-  \'ruler': 1,
-  \'fullscreen': 1,
-  \'laststatus': 2,
-  \'linespace': 4,
-  \'font-size': 11,
-  \'typeface': 'PragmataPro',
+  \"fullscreen-background-color-fix": 1,
+  \"ruler": 1,
+  \"fullscreen": 1,
+  \"laststatus": 2,
+  \"linespace": 4,
+  \"font-size": 11,
 \}
-" }}}
+
 
 " Themes
 " ------

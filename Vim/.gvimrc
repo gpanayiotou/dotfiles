@@ -25,7 +25,8 @@ set guioptions-=l              " Remove left-hand scroll bar
 set guioptions-=L              " Remove left-hand scroll bar multiple buffers
 set guiheadroom=0              " Remove extra space for gui elements
 if has("gui_gtk2")
-  set guifont=PragmataPro\ 12
+  " BUG: vim-gtk can't render glyphs correctly with PragmataPro
+  set guifont=Hack\ 10
 elseif has("x11")
   set guifont=*-pragmatapro-medium-r-normal-*-*-180-*-*-m-*-*
 elseif has("gui_win32")
