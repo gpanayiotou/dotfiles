@@ -24,6 +24,16 @@ set guioptions-=r              " Remove right-hand scroll bar
 set guioptions-=l              " Remove left-hand scroll bar
 set guioptions-=L              " Remove left-hand scroll bar multiple buffers
 set guiheadroom=0              " Remove extra space for gui elements
-set renderoptions=type:directx
+if has("gui_gtk2")
+  set guifont=PragmataPro\ 12
+elseif has("x11")
+  set guifont=*-pragmatapro-medium-r-normal-*-*-180-*-*-m-*-*
+elseif has("gui_win32")
+  set guifont=PragmataPro:h12:cANSI
+endif
+if has('win32')
+  " RGB pixel structure, natural symmetric rendermode, Cleartype AA mode
+  set renderoptions=type:directx,geom:1,renmode:5,taamode:1
+endif
 " }}}
 
