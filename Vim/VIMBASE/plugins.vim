@@ -31,22 +31,23 @@ Plug 'vim-scripts/vim-nfo'
 
 " Functionality Enhancements
 " {{{
-Plug 'kien/ctrlp.vim'               " Fuzzy file finder
+Plug 'kien/ctrlp.vim'                        " Fuzzy file finder
 Plug 'Shougo/vimshell.vim'
-Plug 'Shougo/neocomplete.vim'       " Auto completion engine
-Plug 'Shougo/neosnippet.vim'        " Snippet support
-Plug 'Shougo/neosnippet-snippets'   " Preconfigure Snippets
-Plug 'honza/vim-snippets'           " Additional snippets
-Plug 'tpope/vim-fugitive'           " Git commands inside vim
-Plug 'rking/ag.vim'                 " Ag search integration
-Plug 'scrooloose/nerdcommenter'     " Toggle comment blocks
-Plug 'scrooloose/syntastic'         " Syntax checker
-Plug 'Raimondi/delimitMate'         " automatic closing of quotes, etc
-Plug 'reedes/vim-wheel'             " Screen-anchored scrolling
-Plug 'vim-scripts/gitignore'        " gitignore to wildignore
-Plug 'tpope/vim-surround'           " Edit surrounding symbols
-Plug 'vim-scripts/matchit.zip'      " Match more symbols with %
+Plug 'Shougo/neocomplete.vim'                " Auto completion engine
+Plug 'Shougo/neosnippet.vim'                 " Snippet support
+Plug 'Shougo/neosnippet-snippets'            " Preconfigure Snippets
+Plug 'honza/vim-snippets'                    " Additional snippets
+Plug 'tpope/vim-fugitive'                    " Git commands inside vim
+Plug 'rking/ag.vim'                          " Ag search integration
+Plug 'scrooloose/nerdcommenter'              " Toggle comment blocks
+Plug 'scrooloose/syntastic'                  " Syntax checker
+Plug 'Raimondi/delimitMate'                  " Automatic closing of quotes, etc
+Plug 'reedes/vim-wheel'                      " Screen-anchored scrolling
+Plug 'vim-scripts/gitignore'                 " Gitignore to wildignore
+Plug 'tpope/vim-surround'                    " Edit surrounding symbols
+Plug 'vim-scripts/matchit.zip'               " Match more symbols with %
 Plug 'Konfekt/FastFold'
+Plug 'airblade/vim-gitgutter'                " Git diff in left gutter
 " }}}
 
 " UI Enhancements
