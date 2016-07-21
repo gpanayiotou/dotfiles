@@ -8,26 +8,13 @@ elseif has('win32')
 endif
 
 " Libraries, Dependencies
-" {{{
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-shell'
-Plug 'tomtom/tlib_vim'
-Plug 'tpope/vim-dispatch'       " Run compiler (:make) asynchronously
-Plug 'tpope/vim-repeat'         " Allow plugins to repeat command maps
-" }}}
-
-" Additional Language Support
-" {{{
-
-" JavaScript
-Plug 'othree/yajs.vim'
+Plug 'xolox/vim-misc'      " Prerequisite for vim-shell
+Plug 'xolox/vim-shell'     " fullscreen, open URL, background command execution
+Plug 'tpope/vim-repeat'    " Allow plugins to repeat command maps
 
 " Miscellaneous
-Plug 'firegoby/SASS-Snippets'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'vim-scripts/vim-nfo'
-" }}}
 
 " Functionality Enhancements
 " {{{
