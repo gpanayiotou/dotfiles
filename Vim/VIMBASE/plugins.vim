@@ -8,18 +8,28 @@ elseif has('win32')
 endif
 
 " Libraries, Dependencies
+" {{{
 Plug 'xolox/vim-misc'      " Prerequisite for vim-shell
-Plug 'xolox/vim-shell'     " fullscreen, open URL, background command execution
+Plug 'xolox/vim-shell'     " Fullscreen, open URL, background command execution
 Plug 'tpope/vim-repeat'    " Allow plugins to repeat command maps
+Plug 'Shougo/vimproc.vim', {'do' : 'make'} " Asynchronous execution library
+" }}}
 
 " Miscellaneous
-Plug 'gorodinskiy/vim-coloresque'
-Plug 'vim-scripts/vim-nfo'
+" {{{
+Plug 'wikitopian/hardmode'           " Disable arrow- and hjkl-keys
+" }}}
+
+" Syntax and file formats
+" {{{
+Plug 'gko/vim-coloresque'            " CSS/less/sass/html color preview for vim
+Plug 'summivox/vim-nfo'              " Highlights non-ASCII characters
+" }}}
 
 " Functionality Enhancements
 " {{{
 Plug 'kien/ctrlp.vim'                        " Fuzzy file finder
-Plug 'Shougo/vimshell.vim'
+Plug 'Shougo/vimshell.vim'                   " Shell implemented in Vim
 Plug 'Shougo/neocomplete.vim'                " Auto completion engine
 Plug 'Shougo/neosnippet.vim'                 " Snippet support
 Plug 'Shougo/neosnippet-snippets'            " Preconfigure Snippets
