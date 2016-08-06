@@ -45,6 +45,7 @@ Plug 'tpope/vim-surround'                    " Edit surrounding symbols
 Plug 'vim-scripts/matchit.zip'               " Match more symbols with %
 Plug 'Konfekt/FastFold'
 Plug 'airblade/vim-gitgutter'                " Git diff in left gutter
+Plug 'wellle/targets.vim'                    " Provide additional text objects
 " }}}
 
 " UI Enhancements
