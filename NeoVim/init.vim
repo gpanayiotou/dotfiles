@@ -118,12 +118,13 @@ Plug 'xolox/vim-shell'     " fullscreen, open URL, background command execution
 Plug 'tpope/vim-repeat'    " Allow plugins to repeat command maps
 
 " Miscellaneous
-Plug 'tpope/vim-fugitive'      " Git commands inside NVim
+Plug 'tpope/vim-fugitive'          " Git commands inside NVim
 
 " File Editing
-Plug 'tpope/vim-surround'      " Edit surrounding symbols like word objects
-Plug 'scrooloose/syntastic'    " Syntax checker
-Plug 'Shougo/neocomplete.vim'  " Autocomplete
+Plug 'tpope/vim-surround'          " Edit surrounding symbols like word objects
+Plug 'scrooloose/syntastic'        " Syntax checker
+Plug 'Shougo/neocomplete.vim'      " Autocomplete
+Plug 'wellle/targets.vim'          " Provides additional text objects
 
 " File Navigation
 Plug 'ctrlpvim/ctrlp.vim'        " Fuzzy file finder
