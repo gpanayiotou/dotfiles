@@ -119,11 +119,12 @@ Plug 'tpope/vim-repeat'    " Allow plugins to repeat command maps
 
 " Miscellaneous
 Plug 'tpope/vim-fugitive'          " Git commands inside NVim
+Plug 'neomake/neomake'             " Asynchronous :make
 
 " File Editing
 Plug 'tpope/vim-surround'          " Edit surrounding symbols like word objects
 Plug 'scrooloose/syntastic'        " Syntax checker
-Plug 'Shougo/neocomplete.vim'      " Autocomplete
+Plug 'Shougo/deoplete.vim', { 'do': ':UpdateRemotePlugins' }
 Plug 'wellle/targets.vim'          " Provides additional text objects
 
 " File Navigation
@@ -219,6 +220,12 @@ let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
 " Custom sections
 let g:airline_section_c = airline#section#create(['%{getcwd()}'])
 " }}}
+" }}}
+
+" deoplete
+" --------
+" {{{
+let g:deoplete#enable_at_startup = 1
 " }}}
 
 
