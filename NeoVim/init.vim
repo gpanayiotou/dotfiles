@@ -3,6 +3,33 @@ scriptencoding utf-8
 " Sections according to :options
 
 " 1 important
+" 2 moving around, searching and patterns
+" 3 tags
+" 4 displaying text
+" 5 syntax, highlighting and spelling
+" 6 multiple windows
+" 7 multiple tab pages
+" 8 terminal
+" 9 using the mouse
+"10 printing
+"11 messages and info
+"12 selecting text
+"13 editing text
+"14 tabs and indenting
+"15 folding
+"16 diff mode
+"17 mapping
+"18 reading and writing files
+"19 the swap file
+"20 command line editing
+"21 executing external commands
+"22 running make and jumping to errors
+"23 language specific
+"24 multi-byte characters
+"25 various
+
+
+" 1 important
 " ===========
 " {{{
 " }}}
