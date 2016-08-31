@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 " Sections according to :options
-
+" {{{
 " 1 important
 " 2 moving around, searching and patterns
 " 3 tags
@@ -27,7 +27,7 @@ scriptencoding utf-8
 "23 language specific
 "24 multi-byte characters
 "25 various
-
+" }}}
 
 " 1 important
 " ===========
@@ -174,6 +174,12 @@ Plug 'chriskempson/base16-vim'           " Base16 <3
 
 " Add plugins to &runtimepath
 call plug#end()
+" }}}
+
+" NeoMake
+" -------
+" {{{
+autocmd! BufReadPost,BufWritePost * Neomake
 " }}}
 
 " base16-vim
