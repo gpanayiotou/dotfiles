@@ -112,7 +112,12 @@ set smartindent
 " {{{
 set fileformats=unix
 set backup
-set backupdir=~/Backup/nvim/
+if has('unix')
+    set backupdir=~/Backup/nvim/
+elseif has('win32')
+    set backupdir=~/Backup/Files/
+elseif has('win32')
+endif
 set autowriteall
 set autoread
 " }}}
@@ -136,13 +141,14 @@ set swapfile
 if has('unix')
     call plug#begin('~/.config/nvim/plugged')
 elseif has('win32')
-    " Future: windows version!
+    call plug#begin('~/AppData/Local/nvim/plugged')
 endif
 
 " Dependencies
 Plug 'xolox/vim-misc'      " Prerequisite for vim-shell
 Plug 'xolox/vim-shell'     " fullscreen, open URL, background command execution
 Plug 'tpope/vim-repeat'    " Allow plugins to repeat command maps
+Plug 'equalsraf/neovim-gui-shim' " NeoVim-Qt gui shim
 
 " Miscellaneous
 Plug 'tpope/vim-fugitive'          " Git commands inside NVim
