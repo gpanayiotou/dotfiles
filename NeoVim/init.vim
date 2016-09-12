@@ -157,15 +157,16 @@ Plug 'neomake/neomake'             " Asynchronous :make
 " File Editing
 Plug 'tpope/vim-surround'          " Edit surrounding symbols like word objects
 Plug 'scrooloose/syntastic'        " Syntax checker
-Plug 'Shougo/deoplete.vim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'wellle/targets.vim'          " Provides additional text objects
 
 " File Navigation
 Plug 'ctrlpvim/ctrlp.vim'        " Fuzzy file finder
 
-" Language support
+" File type support
 Plug 'tmux-plugins/vim-tmux'    " .tmux.conf syntax highlighting
 Plug 'elzr/vim-json'            " Better JSON highlighting
+Plug 'summivox/vim-nfo'         " Non-ASCII-character highlighting
 
 " UI
 Plug 'vim-airline/vim-airline'      " Status/Tabline
