@@ -83,7 +83,7 @@ set showtabline=2
 " ==========
 " {{{
 set t_Co=256
-"set termguicolors " TODO: enable after option is available
+set termguicolors
 set title
 " }}}
 
@@ -178,6 +178,7 @@ Plug 'vim-airline/vim-airline-themes'    " Themes for vim-airline
 Plug 'reedes/vim-colors-pencil'          " iA Writer-like theme
 Plug 'NLKNguyen/papercolor-theme'        " Google Material-like theme
 Plug 'chriskempson/base16-vim'           " Base16 <3
+Plug 'jacoborus/tender.vim'              " Tender theme
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -226,6 +227,10 @@ let g:thematic#themes = {
 \ 'paper-dark': { 'colorscheme': 'pencil',
 \                 'background': 'dark',
 \               },
+\ 'tender': { 'colorscheme': 'tender',
+\             'background': 'dark',
+\             'airline-theme': 'tender'
+\           },
 \ }
 
 let g:thematic#theme_name = 'ocean-dark'
@@ -260,6 +265,13 @@ let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
 " Custom sections
 let g:airline_section_c = airline#section#create(['%{getcwd()}'])
 " }}}
+" }}}
+
+" tender
+" ------
+" {{{
+" Enable theme
+let g:tender_airline = 1
 " }}}
 
 " deoplete
