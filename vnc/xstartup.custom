@@ -1,6 +1,6 @@
 #!/bin/sh
-
-DESKTOP_SESSION=kde-plasma
+DESKTOP_SESSION=xfce
 export DESKTOP_SESSION
-startkde
+startxfce4
 vncserver-virtual -kill $DISPLAY
+
