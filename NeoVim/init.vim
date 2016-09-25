@@ -171,6 +171,7 @@ Plug 'summivox/vim-nfo'         " Non-ASCII-character highlighting
 " UI
 Plug 'vim-airline/vim-airline'      " Status/Tabline
 Plug 'mhinz/vim-startify'           " Startpage with MRUs
+Plug 'airblade/vim-gitgutter'       " Git diff in the gutter
 
 " Themes
 Plug 'reedes/vim-thematic'               " Theme manager
@@ -212,6 +213,11 @@ let g:thematic#themes = {
 \ 'ocean-light': { 'colorscheme': 'base16-ocean',
 \                  'background': 'light',
 \                },
+\                },
+\ 'ocean-light': { 'colorscheme': 'base16-ocean',
+\                  'background': 'light',
+\                },
+
 \ 'iawriter':    { 'colorscheme': 'pencil',
 \                  'background': 'light',
 \                  'columns': 75,
