@@ -213,11 +213,6 @@ let g:thematic#themes = {
 \ 'ocean-light': { 'colorscheme': 'base16-ocean',
 \                  'background': 'light',
 \                },
-\                },
-\ 'ocean-light': { 'colorscheme': 'base16-ocean',
-\                  'background': 'light',
-\                },
-
 \ 'iawriter':    { 'colorscheme': 'pencil',
 \                  'background': 'light',
 \                  'columns': 75,
