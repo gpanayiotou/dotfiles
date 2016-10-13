@@ -1,33 +1,6 @@
 scriptencoding utf-8
 
 " Sections according to :options
-" {{{
-" 1 important
-" 2 moving around, searching and patterns
-" 3 tags
-" 4 displaying text
-" 5 syntax, highlighting and spelling
-" 6 multiple windows
-" 7 multiple tab pages
-" 8 terminal
-" 9 using the mouse
-"10 printing
-"11 messages and info
-"12 selecting text
-"13 editing text
-"14 tabs and indenting
-"15 folding
-"16 diff mode
-"17 mapping
-"18 reading and writing files
-"19 the swap file
-"20 command line editing
-"21 executing external commands
-"22 running make and jumping to errors
-"23 language specific
-"24 multi-byte characters
-"25 various
-" }}}
 
 " 1 important
 " ===========
@@ -62,20 +35,22 @@ set nowrap
 set hlsearch
 syntax enable
 set cursorline
-let &colorcolumn=join(range(80,999), ",")
+let &colorcolumn = '81,' . join(range(101, 999), ',')
 " }}}
 
 
 " 6 multiple windows
 " ==================
 " {{{
+set splitbelow
+set splitright
 " }}}
 
 
 " 7 Multiple Tab Pages
 " ====================
 " {{{
-set showtabline=2
+set showtabline=1                              " Show tabline with tabs => 2
 " }}}
 
 
@@ -104,6 +79,7 @@ set smartindent
 " 15 folding
 " ==========
 " {{{
+set foldlevelstart=1                      " Start buffer with some folds closed
 " }}}
 
 
@@ -145,20 +121,20 @@ elseif has('win32')
 endif
 
 " Dependencies
-Plug 'xolox/vim-misc'      " Prerequisite for vim-shell
-Plug 'xolox/vim-shell'     " fullscreen, open URL, background command execution
-Plug 'tpope/vim-repeat'    " Allow plugins to repeat command maps
-Plug 'equalsraf/neovim-gui-shim' " NeoVim-Qt gui shim
+Plug 'xolox/vim-misc'                     " Prerequisite for vim-shell
+Plug 'tpope/vim-repeat'                   " Allow plugins to repeat command maps
+Plug 'equalsraf/neovim-gui-shim'          " NeoVim-Qt gui shim
 
 " Miscellaneous
-Plug 'tpope/vim-fugitive'          " Git commands inside NVim
-Plug 'neomake/neomake'             " Asynchronous :make
+Plug 'tpope/vim-fugitive'                 " Git commands inside NVim
+Plug 'neomake/neomake'                    " Asynchronous :make
+Plug 'xolox/vim-shell'                    " Improved integration with shells
 
 " File Editing
 Plug 'tpope/vim-surround'          " Edit surrounding symbols like word objects
 Plug 'scrooloose/syntastic'        " Syntax checker
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'wellle/targets.vim'          " Provides additional text objects
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " File Navigation
 Plug 'ctrlpvim/ctrlp.vim'        " Fuzzy file finder
@@ -172,6 +148,8 @@ Plug 'summivox/vim-nfo'         " Non-ASCII-character highlighting
 Plug 'vim-airline/vim-airline'      " Status/Tabline
 Plug 'mhinz/vim-startify'           " Startpage with MRUs
 Plug 'airblade/vim-gitgutter'       " Git diff in the gutter
+Plug 'wincent/loupe'                " Enhanced in-file search
+Plug 'wincent/terminus'             " GUI features in terminal (cursor, mouse)
 
 " Themes
 Plug 'reedes/vim-thematic'               " Theme manager
@@ -201,38 +179,44 @@ let base16colorspace=256
 " ------------
 " {{{
 let g:thematic#defaults = {
-\ 'airline-theme': 'base16',
-\ 'background': 'dark',
-\ 'laststatus': 2,
-\ }
+            \ 'airline-theme': 'base16',
+            \ 'background': 'dark',
+            \ 'laststatus': 2,
+            \ }
 
 let g:thematic#themes = {
-\ 'ocean-dark':  { 'colorscheme': 'base16-ocean',
-\                  'background': 'dark',
-\                },
-\ 'ocean-light': { 'colorscheme': 'base16-ocean',
-\                  'background': 'light',
-\                },
-\ 'iawriter':    { 'colorscheme': 'pencil',
-\                  'background': 'light',
-\                  'columns': 75,
-\                  'font-size': 20,
-\                  'fullscreen': 1,
-\                  'laststatus': 0,
-\                  'linespace': 8,
-\                  'typeface': 'Cousine',
-\                },
-\ 'paper-light': { 'colorscheme': 'pencil',
-\                  'background': 'light',
-\                },
-\ 'paper-dark': { 'colorscheme': 'pencil',
-\                 'background': 'dark',
-\               },
-\ 'tender': { 'colorscheme': 'tender',
-\             'background': 'dark',
-\             'airline-theme': 'tender'
-\           },
-\ }
+            \ 'ocean-dark': { 'colorscheme': 'base16-ocean',
+            \                 'background': 'dark',
+            \               },
+            \ 'grayscale-light': { 'colorscheme': 'base16-grayscale-light',
+            \                     'background': 'light',
+            \                   },
+            \ 'grayscale-dark': { 'colorscheme': 'base16-grayscale-light',
+            \                     'background': 'dark',
+            \                   },
+            \ 'ocean-light': { 'colorscheme': 'base16-ocean',
+            \                  'background': 'light',
+            \                },
+            \ 'iawriter': { 'colorscheme': 'pencil',
+            \               'background': 'light',
+            \               'columns': 75,
+            \               'font-size': 20,
+            \               'fullscreen': 1,
+            \               'laststatus': 0,
+            \               'linespace': 8,
+            \               'typeface': 'Cousine',
+            \             },
+            \ 'paper-light': { 'colorscheme': 'pencil',
+            \                  'background': 'light',
+            \                },
+            \ 'paper-dark': { 'colorscheme': 'pencil',
+            \                 'background': 'dark',
+            \               },
+            \ 'tender': { 'colorscheme': 'tender',
+            \             'background': 'dark',
+            \             'airline-theme': 'tender'
+            \           },
+            \ }
 
 let g:thematic#theme_name = 'ocean-dark'
 " }}}
@@ -244,7 +228,7 @@ let g:thematic#theme_name = 'ocean-dark'
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -266,7 +250,6 @@ let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
 " Custom sections
 let g:airline_section_c = airline#section#create(['%{getcwd()}'])
 " }}}
-" }}}
 
 " tender
 " ------
@@ -281,23 +264,32 @@ let g:tender_airline = 1
 let g:deoplete#enable_at_startup = 1
 " }}}
 
+" }}}
+
 
 " II Autocommands
 " ==============
 " {{{
-au FileType vim setlocal foldmethod=marker
+autocmd FileType vim setlocal foldmethod=marker
+
+" Turn off some features in non-current windows
+if exists('+colorcolumn')
+    autocmd BufEnter,FocusGained,VimEnter,WinEnter * let &l:colorcolumn = '81,' . join(range(101, 999), ',')
+    autocmd FocusLost,WinLeave * let &l:colorcolumn = join(range(1, 999), ',')
+endif
 " }}}
 
 
-" III Keybindings
-" ==============
+" III Keymappings
+" ===============
 " {{{
 let mapleader = " "
 noremap <Esc> <Esc>:nohl<CR><Esc>
 
-" Buffer Navigation
+" Buffer/Split Navigation
 nmap <Leader>bn :bn<Cr>
 nmap <Leader>bd :bd<Cr>
+nmap <Leader>o :only<Cr>
 
 " Editing
 nmap == gg=G
@@ -307,7 +299,15 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
-nmap <Leader>o :only<CR>
+
+" Permanent "very magic" mode
+" Note: replaced with Loupe plugin
+"nnoremap / /\v
+"vnoremap / /\v
+"cnoremap %s/ %smagic/
+"cnoremap \>s/ \>smagic/
+"nnoremap :g/ :g/\v
+"noremap :g// :g//
 " }}}
 
 
@@ -315,5 +315,19 @@ nmap <Leader>o :only<CR>
 " ============
 " {{{
 command! Update :PlugUpdate
+" }}}
+
+
+" V Global Settings
+" =================
+" {{{
+if has ('win32')
+    let g:python3_host_prog = 'c:\opt\Python3\python.exe'
+endif
+
+" Symbol for wrapped lines
+if has('linebreak')
+  let &showbreak='⤷ '                 " ARROW POINTING DOWNWARDS THEN CURVING RIGHTWARDS (U+2937, UTF-8: E2 A4 B7)
+endif
 " }}}
 
