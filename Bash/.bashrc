@@ -16,7 +16,7 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . /usr/share/powerline/bash/powerline.sh
 
-# Base16-shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
+# base16-shell
+BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-ocean.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
