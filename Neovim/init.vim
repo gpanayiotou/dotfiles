@@ -114,7 +114,7 @@ set directory=$NVIMHOME/tmp/swap
 " 20 Command line editing
 " =======================
 " {{{
-set wildcharm=<C-z>
+set wildcharm=<C-z>     " Needed for tabbing through incremental searches
 " }}}
 
 " I Plugins
