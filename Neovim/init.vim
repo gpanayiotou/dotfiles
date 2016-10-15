@@ -2,6 +2,17 @@ scriptencoding utf-8
 
 " Sections according to :options
 
+" 0 Variables
+" ===========
+" {{{
+if has('win32') || has ('win64')
+    let $NVIMHOME = $HOME . "\\AppData\\Local\\nvim"
+else
+    let $NVIMHOME = $HOME . "/.config/nvim"
+endif
+" }}}
+
+
 " 1 important
 " ===========
 " {{{
@@ -39,7 +50,7 @@ let &colorcolumn = '81,' . join(range(101, 999), ',')
 " }}}
 
 
-" 6 multiple windows
+" 6 Multiple Windows
 " ==================
 " {{{
 set splitbelow
@@ -54,7 +65,7 @@ set showtabline=1                              " Show tabline with tabs => 2
 " }}}
 
 
-" 8 terminal
+" 8 Terminal
 " ==========
 " {{{
 set t_Co=256
@@ -63,7 +74,7 @@ set title
 " }}}
 
 
-" 14 tabs and indenting
+" 14 Tabs and Indenting
 " =====================
 " {{{
 set tabstop=4
@@ -76,36 +87,35 @@ set smartindent
 " }}}
 
 
-" 15 folding
+" 15 Folding
 " ==========
 " {{{
 set foldlevelstart=1                      " Start buffer with some folds closed
 " }}}
 
 
-" 18 reading and writing files
+" 18 Reading and writing files
 " ============================
 " {{{
 set fileformats=unix
-set backup
-if has('unix')
-    set backupdir=~/Backup/nvim/
-elseif has('win32')
-    set backupdir=~/Backup/Files/
-elseif has('win32')
-endif
+set nobackup              " Use Git!
 set autowriteall
 set autoread
 " }}}
 
 
-" 19 the swap file
+" 19 The swap file
 " ================
 " {{{
-set directory=~/.cache/swap/
 set swapfile
+set directory=$NVIMHOME/tmp/swap
 " }}}
 
+" 20 Command line editing
+" =======================
+" {{{
+set wildcharm = <C-z>
+" }}}
 
 " I Plugins
 " =========
@@ -280,41 +290,9 @@ endif
 " }}}
 
 
-" III Keymappings
-" ===============
-" {{{
-let mapleader = " "
-noremap <Esc> <Esc>:nohl<CR><Esc>
-
-" Buffer/Split Navigation
-nmap <Leader>bn :bn<Cr>
-nmap <Leader>bd :bd<Cr>
-nmap <Leader>o :only<Cr>
-
-" Editing
-nmap == gg=G
-
-" Window Navigation
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
-
-" Permanent "very magic" mode
-" Note: replaced with Loupe plugin
-"nnoremap / /\v
-"vnoremap / /\v
-"cnoremap %s/ %smagic/
-"cnoremap \>s/ \>smagic/
-"nnoremap :g/ :g/\v
-"noremap :g// :g//
-" }}}
-
-
 " IV Commands
 " ============
 " {{{
-command! Update :PlugUpdate
 " }}}
 
 
@@ -327,7 +305,7 @@ endif
 
 " Symbol for wrapped lines
 if has('linebreak')
-  let &showbreak='⤷ '                 " ARROW POINTING DOWNWARDS THEN CURVING RIGHTWARDS (U+2937, UTF-8: E2 A4 B7)
+    let &showbreak='⤷ '                 " ARROW POINTING DOWNWARDS THEN CURVING RIGHTWARDS (U+2937, UTF-8: E2 A4 B7)
 endif
 " }}}
 
