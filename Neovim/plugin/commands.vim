@@ -1,0 +1,2 @@
+command! Update :PlugUpdate
+
