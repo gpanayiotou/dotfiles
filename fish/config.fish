@@ -23,3 +23,5 @@ end
 set fish_function_path $fish_function_path "/usr/share/powerline/fish/"
 powerline-setup
 
+set LANG en_US.UTF-8
+
