@@ -35,8 +35,20 @@ set smartcase
 " {{{
 set number
 set relativenumber
-set scrolloff=2
+set scrolloff=3
+set sidescrolloff=3
 set nowrap
+set breakindent
+set breakindentopt=shift:2
+set fillchars=vert:┃ 
+set lazyredraw
+set list
+set listchars=nbsp:⦸              " U+29B8, UTF-8: E2 A6 B8
+set listchars+=tab:↹↹             " U+21B9, UTF-8: E2 86 B9
+set listchars+=extends:»          " U+00BB, UTF-8: C2 BB
+set listchars+=precedes:«         " U+00AB, UTF-8: C2 AB
+set listchars+=trail:•            " U+2022, UTF-8: E2 80 A2
+let &showbreak='⤷ '                " U+2937, UTF-8: E2 A4 B7
 " }}}
 
 
@@ -46,7 +58,10 @@ set nowrap
 set hlsearch
 syntax enable
 set cursorline
-let &colorcolumn = '81,' . join(range(101, 999), ',')
+let &colorcolumn = '80,' . join(range(100, 999), ',')
+set highlight+=N:DiffText         " Make current line number stand out
+set highlight+=c:LineNr           " Blend vertical separators with line numbers
+set spellcapcheck=                " Disable capital letter check
 " }}}
 
 
@@ -55,6 +70,7 @@ let &colorcolumn = '81,' . join(range(101, 999), ',')
 " {{{
 set splitbelow
 set splitright
+set switchbuf=usetab
 " }}}
 
 
@@ -74,11 +90,36 @@ set title
 " }}}
 
 
+" 11 Messages and Info
+" ====================
+" {{{
+set showcmd
+set shortmess+=A                    " Ignore annoying swapfile messages
+set shortmess+=I                    " No splash screen
+set shortmess+=O                    " File-read message overwrites previous
+set shortmess+=T                    " Truncate non-file messages in middle
+set shortmess+=W                    " Don't echo "[w]"/"[written]" when writing
+set shortmess+=a                    " Use abbreviations in messages
+set shortmess+=o                    " Overwrite file-written messages
+set shortmess+=t                    " Truncate file messages at start
+" }}}
+
+
+" 13 Editing Text
+" ===============
+" {{{
+set backspace=indent,start,eol
+set nojoinspaces                        " Don't use two spaces when joining
+set textwidth=80
+" }}}
+
+
 " 14 Tabs and Indenting
 " =====================
 " {{{
 set tabstop=4
 set shiftwidth=4
+set shiftround
 set smarttab
 set softtabstop=4
 set expandtab
@@ -90,6 +131,7 @@ set smartindent
 " 15 Folding
 " ==========
 " {{{
+set foldmethod=syntax
 set foldlevelstart=1                      " Start buffer with some folds closed
 " }}}
 
@@ -98,7 +140,12 @@ set foldlevelstart=1                      " Start buffer with some folds closed
 " ============================
 " {{{
 set fileformats=unix
-set nobackup              " Use Git!
+if exists('$SUDO_USER')
+    set nobackup
+    set nowritebackup
+else
+    set backupdir=$NVIMHOME/tmp/backup
+endif
 set autowriteall
 set autoread
 " }}}
@@ -107,18 +154,41 @@ set autoread
 " 19 The swap file
 " ================
 " {{{
-set swapfile
-set directory=$NVIMHOME/tmp/swap
+if exists('$SUDO_USER')
+    set noswapfile
+else
+    set swapfile
+    set directory=$NVIMHOME/tmp/swap
+endif
 " }}}
 
 " 20 Command line editing
 " =======================
 " {{{
-set wildcharm=<C-z>     " Needed for tabbing through incremental searches
+set wildmenu
+set wildmode=longest:full,full
+set wildcharm=<C-z>              " Tab through incremental searches
+if exists('$SUDO_USER')
+    set noundofile
+else
+    set undofile
+    set undodir=$NVIMHOME/tmp/undo
+endif
 " }}}
 
-" I Plugins
-" =========
+
+" 26 Various
+" ==========
+" {{{
+set virtualedit=block
+if has ('win32')
+    let g:python3_host_prog = 'c:\opt\Python3\python.exe'
+endif
+" }}}
+
+
+" Plugins
+" =======
 " {{{
 
 " vim-plug
@@ -277,35 +347,8 @@ let g:deoplete#enable_at_startup = 1
 " }}}
 
 
-" II Autocommands
-" ==============
+" Settings
+" ========
 " {{{
-autocmd FileType vim setlocal foldmethod=marker
-
-" Turn off some features in non-current windows
-if exists('+colorcolumn')
-    autocmd BufEnter,FocusGained,VimEnter,WinEnter * let &l:colorcolumn = '81,' . join(range(101, 999), ',')
-    autocmd FocusLost,WinLeave * let &l:colorcolumn = join(range(1, 999), ',')
-endif
-" }}}
-
-
-" IV Commands
-" ============
-" {{{
-" }}}
-
-
-" V Global Settings
-" =================
-" {{{
-if has ('win32')
-    let g:python3_host_prog = 'c:\opt\Python3\python.exe'
-endif
-
-" Symbol for wrapped lines
-if has('linebreak')
-    let &showbreak='⤷ '                 " ARROW POINTING DOWNWARDS THEN CURVING RIGHTWARDS (U+2937, UTF-8: E2 A4 B7)
-endif
 " }}}
 
