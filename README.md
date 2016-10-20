@@ -1,19 +1,24 @@
 Dotfiles
 ========
 
-Overview
---------
+A collection of configuration files for Windows and Red Hat Linuxes.
 
-A collection of configuration files, links and notes on settings and plugins
-for development tools.
 
-Fonts and colors (themes)
--------------------------
+Fonts and Themes
+----------------
 
 * [Inconsolata-g font](https://leonardo-m.livejournal.com/77079.html)
 * [Hack font](http://sourcefoundry.org/hack/)
 * [Powerline fonts](https://github.com/lokaltog/powerline-fonts)
-* [base16 syntax highlighting colors](https://chriskempson.github.io/base16/)
-* [jetbrains ide themes](http://www.ideacolorthemes.org/home/)
-* [visual studio themes](http://studiostyl.es/)
+* [Base16 syntax highlighting colors](https://chriskempson.github.io/base16/)
+* [Base16-builder](https://github.com/base16-builder/base16-builder)
+* [Base16-shell](https://github.com/chriskempson/base16-shell)
+* [JetBrains IDE themes](http://color-themes.com/)
+* [Visual Studio themes](http://studiostyl.es/)
+
+
+License
+-------
+
+MIT
 
