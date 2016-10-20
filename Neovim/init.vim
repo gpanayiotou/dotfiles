@@ -13,13 +13,7 @@ endif
 " }}}
 
 
-" 1 important
-" ===========
-" {{{
-" }}}
-
-
-" 2 moving around, searching and patterns
+" 2 Moving around, Searching and Patterns
 " =======================================
 " {{{
 set incsearch
@@ -30,7 +24,7 @@ set smartcase
 " }}}
 
 
-" 4 displaying text
+" 4 Displaying Text
 " =================
 " {{{
 set number
@@ -40,7 +34,7 @@ set sidescrolloff=3
 set nowrap
 set breakindent
 set breakindentopt=shift:2
-set fillchars=vert:┃ 
+set fillchars=vert:┃
 set lazyredraw
 set list
 set listchars=nbsp:⦸              " U+29B8, UTF-8: E2 A6 B8
@@ -52,15 +46,18 @@ let &showbreak='⤷ '                " U+2937, UTF-8: E2 A4 B7
 " }}}
 
 
-" 5 syntax, highlighting and spelling
+" 5 Syntax, Highlighting and Spelling
 " ===================================
 " {{{
+set nospell
+set spelllang=en_us,de_de
 set hlsearch
 syntax enable
 set cursorline
-let &colorcolumn = '80,' . join(range(100, 999), ',')
+let &colorcolumn = join(range(80, 999), ',')
 set highlight+=N:DiffText         " Make current line number stand out
 set highlight+=c:LineNr           " Blend vertical separators with line numbers
+set highlight+=~:ColorColumn      " Color space below the buffer
 set spellcapcheck=                " Disable capital letter check
 " }}}
 
@@ -136,7 +133,7 @@ set foldlevelstart=1                      " Start buffer with some folds closed
 " }}}
 
 
-" 18 Reading and writing files
+" 18 Reading and Writing Files
 " ============================
 " {{{
 set fileformats=unix
@@ -151,7 +148,7 @@ set autoread
 " }}}
 
 
-" 19 The swap file
+" 19 The Swap File
 " ================
 " {{{
 if exists('$SUDO_USER')
@@ -162,7 +159,8 @@ else
 endif
 " }}}
 
-" 20 Command line editing
+
+" 20 Command Line Editing
 " =======================
 " {{{
 set wildmenu
@@ -265,38 +263,38 @@ let g:thematic#defaults = {
             \ }
 
 let g:thematic#themes = {
-            \ 'ocean-dark': { 'colorscheme': 'base16-ocean',
-            \                 'background': 'dark',
-            \               },
-            \ 'grayscale-light': { 'colorscheme': 'base16-grayscale-light',
-            \                     'background': 'light',
-            \                   },
-            \ 'grayscale-dark': { 'colorscheme': 'base16-grayscale-light',
-            \                     'background': 'dark',
-            \                   },
-            \ 'ocean-light': { 'colorscheme': 'base16-ocean',
-            \                  'background': 'light',
-            \                },
-            \ 'iawriter': { 'colorscheme': 'pencil',
-            \               'background': 'light',
-            \               'columns': 75,
-            \               'font-size': 20,
-            \               'fullscreen': 1,
-            \               'laststatus': 0,
-            \               'linespace': 8,
-            \               'typeface': 'Cousine',
-            \             },
-            \ 'paper-light': { 'colorscheme': 'pencil',
-            \                  'background': 'light',
-            \                },
-            \ 'paper-dark': { 'colorscheme': 'pencil',
-            \                 'background': 'dark',
-            \               },
-            \ 'tender': { 'colorscheme': 'tender',
-            \             'background': 'dark',
-            \             'airline-theme': 'tender'
-            \           },
-            \ }
+  \ 'ocean-dark':      { 'colorscheme': 'base16-ocean',
+  \                      'background': 'dark',
+  \                    },
+  \ 'grayscale-light': { 'colorscheme': 'base16-grayscale-light',
+  \                      'background': 'light',
+  \                    },
+  \ 'grayscale-dark':  { 'colorscheme': 'base16-grayscale-light',
+  \                      'background': 'dark',
+  \                    },
+  \ 'ocean-light':     { 'colorscheme': 'base16-ocean',
+  \                      'background': 'light',
+  \                    },
+  \ 'iawriter':        { 'colorscheme': 'pencil',
+  \                      'background': 'light',
+  \                      'columns': 75,
+  \                      'font-size': 20,
+  \                      'fullscreen': 1,
+  \                      'laststatus': 0,
+  \                      'linespace': 8,
+  \                      'typeface': 'Cousine',
+  \                    },
+  \ 'paper-light':     { 'colorscheme': 'pencil',
+  \                      'background': 'light',
+  \                    },
+  \ 'paper-dark':      { 'colorscheme': 'pencil',
+  \                      'background': 'dark',
+  \                    },
+  \ 'tender':          { 'colorscheme': 'tender',
+  \                      'background': 'dark',
+  \                      'airline-theme': 'tender'
+  \                    },
+\ }
 
 let g:thematic#theme_name = 'ocean-dark'
 " }}}
@@ -344,11 +342,5 @@ let g:tender_airline = 1
 let g:deoplete#enable_at_startup = 1
 " }}}
 
-" }}}
-
-
-" Settings
-" ========
-" {{{
 " }}}
 
