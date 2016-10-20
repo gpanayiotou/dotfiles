@@ -3,7 +3,6 @@
   name = Georgios Panayiotou
 [core]
   eol = lf
-  excludesfile = ~/.gitignore_global
   whitespace=cr-at-eol
 [color]
   ui = auto
