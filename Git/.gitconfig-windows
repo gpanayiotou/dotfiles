@@ -1,8 +1,9 @@
 [include]
   path = .gitconfig-common
 [core]
-  editor = "'C:/Program Files/Vim/vim74/gvim.exe'"
+  editor = "'nvim-qt.exe'"
   autocrlf = input
   safecrlf = true
 [credential]
   helper = wincred
+
