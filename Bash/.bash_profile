@@ -1,7 +1,7 @@
 # .bash_profile
 
 # Get the aliases and functions
-if [ -f ~/.bashrc ]; then
+if [ -e "$HOME/.bashrc" ]; then
     . ~/.bashrc
 fi
 
@@ -17,6 +17,6 @@ export LANG
 TERM="xterm-256color"
 export TERM
 
-PS1="\u@\h \w \$ "
+PS1="\u@\h \[\033[0;44m\] \w \[\033[0m\] \[\033[1;33m\]\$\[\033[0m\] "
 export PS1
 
