@@ -1,14 +1,16 @@
 #!/bin/bash
 
-if [ ! -d $HOME/.vnc ]; then
+VNC_HOME=$HOME/.vnc
+
+if [ ! -d $VNC_HOME ]; then
     mkdir ~/.vnc
 fi
 
-if [ ! -f $HOME/.vnc/xconfig.custom ]; then
+if [ ! -e $VNC_HOME/xconfig.custom ]; then
     ln -s $PWD/xstartup.custom ~/.vnc/xstartup.custom
 fi
 
-if [ ! -f $HOME/.vnc/config ]; then
+if [ ! -e $VNC_HOME/config ]; then
     ln -s $PWD/config ~/.vnc/config
 fi
 
