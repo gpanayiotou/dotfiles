@@ -166,6 +166,11 @@ endif
 set wildmenu
 set wildmode=longest:full,full
 set wildcharm=<C-z>              " Tab through incremental searches
+if has('win32') || has('win64')
+    set wildignore+=+=*\\tmp\\*,*.swp,*.zip,*.exe
+else
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+endif
 if exists('$SUDO_USER')
     set noundofile
 else
@@ -239,6 +244,25 @@ Plug 'jacoborus/tender.vim'              " Tender theme
 
 " Add plugins to &runtimepath
 call plug#end()
+" }}}
+
+" Ctrlp
+" -----
+" {{{
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+" Ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" Use .git folder as root dir identifier
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_root_markers = ['package.json']
+" Open already opened files in new pane
+let g:ctrlp_switch_buffer = 'et'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$'
+\ }
 " }}}
 
 " NeoMake
