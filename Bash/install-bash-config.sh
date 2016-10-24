@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [ ! -f $HOME/.bashrc ]; then
+if [ ! -e "$HOME/.bashrc" ]; then
     ln -s $PWD/.bashrc ~/.bashrc
 fi
 
-if [ ! -f $HOME/.bash_profile ]; then
+if [ ! -e "$HOME/.bash_profile" ]; then
     ln -s $PWD/.bash_profile ~/.bash_profile
 fi
 
