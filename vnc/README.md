@@ -1,15 +1,24 @@
-VNC Configuration Files
-=======================
+# VNC Configuration Files
 
-xstartup.custom
----------------
+## xstartup.custom
 
 Custom X startup script for a virtual VNC session.
 
-Should be saved to 
-    ~/.vnc/xstartup
-or
-    /etc/vnc/xstartup.custom
-for all users on the system, and made executable using 
-    chmod +x.
+User settings:
+
+```bash
+~/.vnc/xstartup
+```
+
+System settings:
+
+```bash
+/etc/vnc/xstartup.custom
+```
+
+Both need to made executable:
+
+```bash
+chmod +x
+```
 
