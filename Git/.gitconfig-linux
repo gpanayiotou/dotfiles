@@ -1,7 +1,7 @@
 [include]
   path = .gitconfig-common 
 [core]
-  editor = gvim
+  editor = nvim
   autocrlf = false
   safecrlf = true
 [credential]
