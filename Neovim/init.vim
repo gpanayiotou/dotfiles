@@ -251,6 +251,7 @@ call plug#end()
 " {{{
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_show_hidden = 1
 " Ignore files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 " Use .git folder as root dir identifier
