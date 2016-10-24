@@ -1,6 +1,10 @@
-#!/bin/sh
+#!/bin/bash
+
+-randr 1680x1050
+
 DESKTOP_SESSION=xfce
 export DESKTOP_SESSION
+
 startxfce4
 vncserver-virtual -kill $DISPLAY
 
