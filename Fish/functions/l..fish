@@ -1,3 +1,3 @@
 function l.
-	ls -d .* $argv;
+    ls -ld .* $argv;
 end
