@@ -2,21 +2,23 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
+umask 0006
+# Ignore duplicates in command history
+export HISTCONTROL=ignoredups
 
-# Powerline
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-. /usr/share/powerline/bash/powerline.sh
+# Aliases
+alias l.='ls -ld .* --color=auto'
+alias ll='ls -l --color=auto'
+alias rimraf='rm -rf'
 
-# base16-shell
+# Base16-shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
