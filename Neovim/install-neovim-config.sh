@@ -4,7 +4,7 @@ NVIM_HOME=$HOME/.config/nvim
 
 # Soft link the config directory
 if [ ! -e "$NVIM_HOME" ]; then
-    ln -s $PWD/Neovim ~/.config/nvim
+    ln -s $PWD ~/.config/nvim
 fi
 
 # Install vim-plug
