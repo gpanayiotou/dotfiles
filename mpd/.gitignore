@@ -1,0 +1,6 @@
+*
+!.gitignore
+!mpd.conf
+!install-mpd-config.sh
+!playlists
+
