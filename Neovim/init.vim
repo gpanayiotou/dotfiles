@@ -242,7 +242,6 @@ Plug 'vim-airline/vim-airline-themes'    " Themes for vim-airline
 Plug 'reedes/vim-colors-pencil'          " iA Writer-like theme
 Plug 'NLKNguyen/papercolor-theme'        " Google Material-like theme
 Plug 'chriskempson/base16-vim'           " Base16 <3
-Plug 'jacoborus/tender.vim'              " Tender theme
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -293,13 +292,13 @@ let g:thematic#themes = {
   \ 'ocean-dark':      { 'colorscheme': 'base16-ocean',
   \                      'background': 'dark',
   \                    },
-  \ 'grayscale-light': { 'colorscheme': 'base16-grayscale-light',
+  \ 'ocean-light':     { 'colorscheme': 'base16-ocean',
   \                      'background': 'light',
   \                    },
-  \ 'grayscale-dark':  { 'colorscheme': 'base16-grayscale-light',
+  \ 'oceanic-dark':    { 'colorscheme': 'base16-oceanic',
   \                      'background': 'dark',
   \                    },
-  \ 'ocean-light':     { 'colorscheme': 'base16-ocean',
+  \ 'oceanic-light':   { 'colorscheme': 'base16-oceanic',
   \                      'background': 'light',
   \                    },
   \ 'iawriter':        { 'colorscheme': 'pencil',
@@ -311,15 +310,11 @@ let g:thematic#themes = {
   \                      'linespace': 8,
   \                      'typeface': 'Cousine',
   \                    },
-  \ 'paper-light':     { 'colorscheme': 'pencil',
+  \ 'pencil-light':    { 'colorscheme': 'pencil',
   \                      'background': 'light',
   \                    },
-  \ 'paper-dark':      { 'colorscheme': 'pencil',
+  \ 'pencil-dark':     { 'colorscheme': 'pencil',
   \                      'background': 'dark',
-  \                    },
-  \ 'tender':          { 'colorscheme': 'tender',
-  \                      'background': 'dark',
-  \                      'airline-theme': 'tender'
   \                    },
 \ }
 
@@ -357,12 +352,6 @@ let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
 let g:airline_section_b = airline#section#create(['%{getcwd()}'])
 " }}}
 
-" tender
-" ------
-" {{{
-" Enable theme
-let g:tender_airline = 1
-" }}}
 
 " deoplete
 " --------
