@@ -1,3 +1,3 @@
 function music
-	ncmpcpp  $argv;
+	ncmpcpp -s playlist -S visualizer $argv;
 end
