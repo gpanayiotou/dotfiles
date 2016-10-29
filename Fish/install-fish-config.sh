@@ -23,5 +23,10 @@ if [ ! -e "$FISH_HOME/functions" ]; then
 fi
 
 # Install Oh-My-Fish
-curl -L http://get.oh-my.fish | fish
+read -p "Install Oh-my-fish? (y/n)" choice
+case $choice in
+    y|Y ) curl -L http://get.oh-my.fish | fish;;
+    n|N ) echo "Aborting";;
+    * ) echo "Please answer yes or no.";;
+esac
 
