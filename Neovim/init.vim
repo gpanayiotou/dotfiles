@@ -42,7 +42,7 @@ set listchars+=tab:↹↹             " U+21B9, UTF-8: E2 86 B9
 set listchars+=extends:»          " U+00BB, UTF-8: C2 BB
 set listchars+=precedes:«         " U+00AB, UTF-8: C2 AB
 set listchars+=trail:•            " U+2022, UTF-8: E2 80 A2
-let &showbreak='⤷ '                " U+2937, UTF-8: E2 A4 B7
+let &showbreak='⤷ '               " U+2937, UTF-8: E2 A4 B7
 " }}}
 
 
@@ -106,8 +106,10 @@ set shortmess+=t                    " Truncate file messages at start
 " ===============
 " {{{
 set backspace=indent,start,eol
-set nojoinspaces                        " Don't use two spaces when joining
-set textwidth=80
+set nojoinspaces               " Don't use two spaces when joining
+set textwidth=80               " Wrap width for text autowrapping
+set formatoptions-=t           " Remove automatic text wrapping flags
+set wrapmargin=0               " Automatic text wrapping based on terminal size
 " }}}
 
 
@@ -324,14 +326,14 @@ let g:thematic#themes = {
 let g:thematic#theme_name = 'ocean-dark'
 " }}}
 
-" airline-vim
+" vim-airline
 " -----------
 " {{{
 " UI symbols
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -351,7 +353,8 @@ let g:airline#extensions#whitespace#symbol = '·'
 let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
 
 " Custom sections
-let g:airline_section_c = airline#section#create(['%{getcwd()}'])
+" Replace git status with CWD and formatoptions
+let g:airline_section_b = airline#section#create(['%{getcwd()}'])
 " }}}
 
 " tender
