@@ -2,9 +2,12 @@
 
 -randr 1680x1050
 
-DESKTOP_SESSION=xfce
+
+#DESKTOP_SESSION=xfce
+DESKTOP_SESSION=mate
 export DESKTOP_SESSION
 
-startxfce4
+#startxfce4
+mate-session
 vncserver-virtual -kill $DISPLAY
 
