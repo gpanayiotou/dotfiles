@@ -247,6 +247,15 @@ Plug 'chriskempson/base16-vim'           " Base16 <3
 call plug#end()
 " }}}
 
+" netrw
+" -----
+" {{{
+let g:netrw_dirhistmax = 0
+if has('unix')
+  let g:netrw_home=$XDG_CACHE_HOME . '/ nvim'
+endif
+" }}}
+
 " Ctrlp
 " -----
 " {{{
