@@ -182,6 +182,15 @@ endif
 " }}}
 
 
+" 21 Executing External Commands
+" ==============================
+" {{{
+if has('unix')
+  set shell=/bin/bash
+endif
+" }}}
+
+
 " 26 Various
 " ==========
 " {{{
@@ -220,6 +229,8 @@ Plug 'tpope/vim-surround'          " Edit surrounding symbols like word objects
 Plug 'scrooloose/syntastic'        " Syntax checker
 Plug 'wellle/targets.vim'          " Provides additional text objects
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'sirver/ultisnips'            " TextMate snippet features in Vim
+Plug 'honza/vim-snippets'          " Snippets!
 
 " File Navigation
 Plug 'ctrlpvim/ctrlp.vim'        " Fuzzy file finder
@@ -228,6 +239,7 @@ Plug 'ctrlpvim/ctrlp.vim'        " Fuzzy file finder
 Plug 'tmux-plugins/vim-tmux'    " .tmux.conf syntax highlighting
 Plug 'elzr/vim-json'            " Better JSON highlighting
 Plug 'summivox/vim-nfo'         " Non-ASCII-character highlighting
+Plug 'tpope/vim-haml'           " latest SASS support
 
 " UI
 Plug 'vim-airline/vim-airline'      " Status/Tabline
