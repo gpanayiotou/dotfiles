@@ -30,3 +30,13 @@ case $choice in
     * ) echo "Please answer yes or no.";;
 esac
 
+# Install Fisherman
+read -p "Install Fisherman (Plugin manager)? (y/n)" choice
+case $choice in
+    y|Y ) curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+    n|N ) echo "Aborting";;
+    * ) echo "Please answer yes or no.";;
+esac
+
+echo "Install BASS with 'fisher edc/bass' in Fish prompt"
+
