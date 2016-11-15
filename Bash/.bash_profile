@@ -6,8 +6,10 @@ if [ -e "$HOME/.bashrc" ]; then
 fi
 
 # User specific environment and startup programs
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
+GOPATH=$HOME/.local/share/go
+PATH=$PATH:$HOME/.local/bin:$HOME/bin:$GOPATH/bin
 export PATH
+
 
 # Locale
 LANG="en_US.UTF-8"
