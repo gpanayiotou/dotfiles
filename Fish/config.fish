@@ -1,6 +1,7 @@
 # General settings
 set LANG en_US.UTF-8
 export TERM=xterm-256color
+export GOPATH=$HOME/.local/share/go
 
 
 # Oh-My-Fish
@@ -23,9 +24,4 @@ end
 # Fedora package version of the path
 set fish_function_path $fish_function_path "/usr/share/powerline/fish/"
 powerline-setup
-
-
-# NodeJS Version Manager
-export NVM_DIR="/home/geo/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] and . "$NVM_DIR/nvm.sh"
 
