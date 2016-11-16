@@ -231,6 +231,7 @@ Plug 'wellle/targets.vim'          " Provides additional text objects
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sirver/ultisnips'            " TextMate snippet features in Vim
 Plug 'honza/vim-snippets'          " Snippets!
+Plug 'qwertologe/nextval.vim'      " In-/Decrease additional number types
 
 " File Navigation
 Plug 'ctrlpvim/ctrlp.vim'        " Fuzzy file finder
