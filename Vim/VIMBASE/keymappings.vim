@@ -58,6 +58,10 @@ nnoremap * *<c-o>
 
 " reindent entire file
 nnoremap == gg=G
+
+" <C-a> taken by tmux
+:nnoremap <A-a> <C-a>
+:nnoremap <A-x> <C-x>
 " }}}
 
 
