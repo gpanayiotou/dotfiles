@@ -11,6 +11,9 @@ nnoremap <silent> <Up> :cprevious<CR>
 nnoremap <silent> <Down> :cnext<CR>
 nnoremap <silent> <Left> :cpfile<CR>
 nnoremap <silent> <Right> :cnfile<CR>
+" Remap in-/decrease number (conflict with tmux)
+nnoremap <A-a> <C-a>
+nnoremap <A-x> <C-x>
 
 " Navigation
 nmap <Leader>bn :bn<Cr>
