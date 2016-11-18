@@ -169,15 +169,15 @@ set wildmenu
 set wildmode=longest:full,full
 set wildcharm=<C-z>              " Tab through incremental searches
 if has('win32') || has('win64')
-    set wildignore+=+=*\\tmp\\*,*.swp,*.zip,*.exe
+  set wildignore+=+=*\\tmp\\*,*.swp,*.zip,*.exe
 else
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+  set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 endif
 if exists('$SUDO_USER')
     set noundofile
 else
-    set undofile
-    set undodir=$NVIMHOME/tmp/undo
+  set undofile
+  set undodir=$NVIMHOME/tmp/undo
 endif
 " }}}
 
@@ -209,9 +209,9 @@ endif
 " ========
 " {{{
 if has('unix')
-    call plug#begin('~/.config/nvim/plugged')
+  call plug#begin('~/.config/nvim/plugged')
 elseif has('win32')
-    call plug#begin('~/AppData/Local/nvim/plugged')
+  call plug#begin('~/AppData/Local/nvim/plugged')
 endif
 
 " Dependencies
@@ -248,6 +248,7 @@ Plug 'mhinz/vim-startify'           " Startpage with MRUs
 Plug 'airblade/vim-gitgutter'       " Git diff in the gutter
 Plug 'wincent/loupe'                " Enhanced in-file search
 Plug 'wincent/terminus'             " GUI features in terminal (cursor, mouse)
+Plug 'junegunn/goyo.vim'            " Distration-free writing (centered text)
 
 " Themes
 Plug 'reedes/vim-thematic'               " Theme manager
@@ -258,6 +259,46 @@ Plug 'chriskempson/base16-vim'           " Base16 <3
 
 " Add plugins to &runtimepath
 call plug#end()
+" }}}
+
+" vim-shell
+" ---------
+" {{{
+let g:shell_fullscreen_items = 'mTe'       " menu, toolbar, tabline
+let g:shell_fullscreen_always_on_top = 0
+let g:shell_mappings_enabled = 0
+" }}}
+
+" Goyo
+" ----
+" {{{
+let g:goyo_width = 100       " In characters
+let g:goyo_height = 90       " In percent
+let g:goyo_linenr = 0
+
+function! s:goyo_enter()
+    silent Fullscreen
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
+endfunction
+
+function! s:goyo_leave()
+    silent Fullscreen
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+    set showmode
+    set showcmd
+    set scrolloff=5
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+inoremap <F11> <C-o>:Goyo<CR>
+nnoremap <F11> :Goyo<CR>
 " }}}
 
 " netrw
