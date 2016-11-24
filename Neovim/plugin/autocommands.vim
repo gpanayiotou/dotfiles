@@ -2,3 +2,6 @@
 autocmd BufWinEnter,FocusGained,VimEnter,WinEnter * :call functions#fade_window_in()
 autocmd BufWinLeave,FocusLost,WinLeave * :call functions#fade_window_out()
 
+" Trim trailing spaces on save
+autocmd BufWritePre * :%s/\s\+$//e
+
