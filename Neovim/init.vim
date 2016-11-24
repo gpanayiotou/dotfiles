@@ -168,11 +168,14 @@ endif
 set wildmenu
 set wildmode=longest:full,full
 set wildcharm=<C-z>              " Tab through incremental searches
+
 if has('win32') || has('win64')
-  set wildignore+=+=*\\tmp\\*,*.swp,*.zip,*.exe
+  set wildignore+=+=*\\tmp\\*
 else
-  set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+  set wildignore+=*/tmp/*
 endif
+set wildignore+=*.so,*.swp,*.zip,*.exe,*.jpg,*.jpeg,*.png,*.bmp
+
 if exists('$SUDO_USER')
     set noundofile
 else
@@ -250,6 +253,7 @@ Plug 'wincent/loupe'                " Enhanced in-file search
 Plug 'wincent/terminus'             " GUI features in terminal (cursor, mouse)
 Plug 'junegunn/goyo.vim'            " Centered text
 Plug 'junegunn/limelight.vim'       " Highlight current scope
+Plug 'chrisbra/Colorizer'           " Color hex codes and color ames
 
 " Themes
 Plug 'reedes/vim-thematic'               " Theme manager
@@ -329,7 +333,7 @@ let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$'
+  \ 'file': '\v\.(exe|so|dll|jpg|jpeg|png|bmp)$'
 \ }
 " }}}
 
