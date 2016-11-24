@@ -3,6 +3,7 @@
 
 # Core
 ncmpcpp_directory = ~/.config/ncmpcpp
+#allow_for_physical_item_deletion = "yes"
 system_encoding = "UTF-8"
 use_console_editor = "yes"
 external_editor = "nvim"
