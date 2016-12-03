@@ -19,6 +19,8 @@ export LANG
 TERM="xterm-256color"
 export TERM
 
-PS1="\u@\h \[\033[0;44m\] \w \[\033[0m\] \[\033[1;33m\]\$\[\033[0m\] "
+# \e    Escape character
+# \e[0m Remove all attributes
+PS1="\u@\e[1m\h\e[0m \e[7m \w \e[0m\n\e[93mλ \e[0m"
 export PS1
 
