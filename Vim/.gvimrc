@@ -1,3 +1,12 @@
+scriptencoding utf-8
+
+" 4 Displaying Text
+" =================
+" {{{
+set lines=999                   " create windows with maximum height by default
+" }}}
+
+
 " 5 syntax, highlighting and spelling
 " ===================================
 " {{{
@@ -24,14 +33,16 @@ set guioptions-=r              " Remove right-hand scroll bar
 set guioptions-=l              " Remove left-hand scroll bar
 set guioptions-=L              " Remove left-hand scroll bar multiple buffers
 set guiheadroom=0              " Remove extra space for gui elements
+
 if has("gui_gtk2")
-  " BUG: vim-gtk can't render glyphs correctly with PragmataPro
+  " WORKAROUND: vim-gtk can't render glyphs correctly with PragmataPro
   set guifont=Hack\ 10
 elseif has("x11")
   set guifont=*-pragmatapro-medium-r-normal-*-*-180-*-*-m-*-*
 elseif has("gui_win32")
   set guifont=PragmataPro:h12:cANSI
 endif
+
 if has('win32')
   " RGB pixel structure, natural symmetric rendermode, Cleartype AA mode
   set renderoptions=type:directx,geom:1,renmode:5,taamode:1
