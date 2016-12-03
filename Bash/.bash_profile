@@ -10,6 +10,9 @@ GOPATH=$HOME/.local/share/go
 PATH=$PATH:$HOME/.local/bin:$HOME/bin:$GOPATH/bin
 export PATH
 
+# Define XDG folders for Vim
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
 
 # Locale
 LANG="en_US.UTF-8"
