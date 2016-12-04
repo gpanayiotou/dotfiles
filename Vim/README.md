@@ -6,8 +6,9 @@ Folder Structure
 
 ### /plugin
 
-The folder is not used for actual plugins because of vim-plug (or similar)
-autocommands and keymappings.
+The folder is not used for actual plugins because of vim-plug and Vim 8 package
+managing plugins automatically. Instead, core configuration, autocommands
+and keymappings are put here for autoloading.
 
 ### /ftdetect
 
