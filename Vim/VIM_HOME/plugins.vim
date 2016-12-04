@@ -2,7 +2,7 @@
 " ========
 " {{{
 if has('unix')
-    call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
+    call plug#begin('$XDG_CONFIG_HOME/vim/pack/plugged/start')
 elseif has('win32')
     call plug#begin('~/vimfiles/plugged')
 endif
