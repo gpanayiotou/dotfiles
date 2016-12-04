@@ -254,12 +254,3 @@ set sessionoptions-=help                   " Don't want to restore help buffers
 set virtualedit=block,onemore
 " }}}
 
-
-" Imports
-" =======
-" {{{
-source $VIM_CONFIG_HOME/autocommands.vim
-source $VIM_CONFIG_HOME/keymappings.vim
-source $VIM_CONFIG_HOME/plugins.vim
-" }}}
-
