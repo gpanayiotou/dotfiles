@@ -26,8 +26,8 @@ Example:
 " /ftplugin/c.vim or
 " /ftplugin/c_extras.vim or
 " /ftplugin/c/settings.vim
-set expandtab
-set shiftwidth=4
+setlocal expandtab
+setlocal shiftwidth=4
 ```
 
 ### /autoload
