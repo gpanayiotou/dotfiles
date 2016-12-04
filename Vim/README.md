@@ -41,11 +41,11 @@ Example: /after/plugin/NERDTree.vim
 
 Plugin directory used by Vim 8 "package"-feature.
 
-#### /pack/bundle/start
+#### /pack/$ANY_NAME/start
 
 Plugins that are loaded on vim start.
 
-#### /pack/bundle/opt
+#### /pack/$ANY_NAME/opt
 
 Plugins that are loaded when called on with "packadd".
 
