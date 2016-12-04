@@ -18,17 +18,31 @@ Example: Detect keyword "React" in a JavaScript file.
 
 ### /ftplugin
 
-Settings for individual filetypes, like indentation.
+Settings/scripts for individual filetypes.
 
-Example: javascript.vim
+Example:
 ```viml
+# /ftplugin/c.vim or
+# /ftplugin/c_extras.vim or
+# /ftplugin/c/settings.vim
 set expandtab
 set shiftwidth=4
 ```
 
 ### /autoload
 
-Autoloaded functions that are not loaded until called.
+Lazy-loaded functions.
+
+Example:
+```viml
+# /autoload/filename.vim
+function filename#funcname()
+    echo "Done!"
+endfunction
+
+# Later that day...
+:call filename#funcname()
+```
 
 ### /after
 
