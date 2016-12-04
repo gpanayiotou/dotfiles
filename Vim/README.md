@@ -6,12 +6,12 @@ Folder Structure
 
 ### /plugin
 
-The folder is not used for actual plugins because of vim-plug (or similar) 
+The folder is not used for actual plugins because of vim-plug (or similar)
 autocommands and keymappings.
 
 ### /ftdetect
 
-Detect certain types of files, like the use of a framework and 
+Detect certain types of files, like the use of a framework and
 use corresponding settings.
 
 Example: Detect keyword "React" in a JavaScript file.
@@ -22,9 +22,9 @@ Settings/scripts for individual filetypes.
 
 Example:
 ```viml
-# /ftplugin/c.vim or
-# /ftplugin/c_extras.vim or
-# /ftplugin/c/settings.vim
+" /ftplugin/c.vim or
+" /ftplugin/c_extras.vim or
+" /ftplugin/c/settings.vim
 set expandtab
 set shiftwidth=4
 ```
@@ -35,18 +35,18 @@ Lazy-loaded functions.
 
 Example:
 ```viml
-# /autoload/filename.vim
+" /autoload/filename.vim
 function filename#funcname()
     echo "Done!"
 endfunction
 
-# Later that day...
+" Later that day...
 :call filename#funcname()
 ```
 
 ### /after
 
-Settings saved here are loaded after the file with a corresponding name has been 
+Settings saved here are loaded after the file with a corresponding name has been
 loaded.
 
 Example: /after/plugin/NERDTree.vim
