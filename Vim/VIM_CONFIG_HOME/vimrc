@@ -3,13 +3,8 @@
 " 0 variables
 " ===========
 " {{{
-if has('win32')
-  let $VIM_CONFIG_HOME = $HOME . '/vimfiles'
-  let $VIM_CACHE_HOME = 'd:/tmp/vim'
-elseif has('unix')
-  let $VIM_CONFIG_HOME = $XDG_CONFIG_HOME . '/vim'
-  let $VIM_CACHE_HOME = $XDG_CACHE_HOME . '/vim'
-endif
+let $VIM_CONFIG_HOME=$XDG_CONFIG_HOME . '/vim'
+let $VIM_CACHE_HOME=$XDG_CACHE_HOME . '/vim'
 " }}}
 
 
@@ -234,7 +229,7 @@ set wildignore+=*.DS_Store,desktop.ini
 if has('unix')
   set shell=bash
 elseif has('win32')
-  set shell=powershell.exe
+  set shell=cmd.exe
 endif
 
 if exists('+shellslash')
