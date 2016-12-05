@@ -9,6 +9,8 @@ let g:thematic#defaults = {
 \}
 
 " Themes
+" ------
+" {{{
 let g:thematic#themes = {
   \'ocean-dark': {
     \'colorscheme': 'base16-ocean',
@@ -48,8 +50,10 @@ let g:thematic#themes = {
     \'airline-theme': 'pencil',
   \},
 \}
+" }}}
 
 let g:thematic#theme_name = 'ocean-dark'
+Thematic ocean-dark
 
 " Autocommands
 augroup ThematicAutocommands
