@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+HASH="%C(yellow)%h%C(reset)"
+RELATIVE_TIME="%C(green)%ar%C(reset)"
+AUTHOR="%C(bold blue)%an%C(reset)"
+REFS="%C(red)%d%C(reset)"
+SUBJECT="%s"
+
+# Curly braces are used as markers for column insertion
+FORMAT="$HASH{$RELATIVE_TIME{$AUTHOR{$REFS $SUBJECT"
+
+# Prints out a colored, columned Git log
+function pretty_git_log() {
+    # $* splat to pass any additional arguments to
+    git log --graph --pretty="tformat:$FORMAT" $*|
+    column -t -s '{' |
+    # F Exit if all fits on one screen
+    # X Don't clear screen on exit
+    # R Pass through color control codes
+    # S Truncate instead of wrap lines
+    less -FXRS
+}
+

@@ -1,5 +1,5 @@
 [include]
-  path = .gitconfig-common 
+  path = .gitconfig-common
 [core]
   editor = nvim
   autocrlf = false
