@@ -1,0 +1,2 @@
+autocmd! BufReadPost,BufWritePost * Neomake
+

@@ -201,12 +201,13 @@ set virtualedit=block
 if has ('win32')
     let g:python3_host_prog = 'c:\opt\Python3\python.exe'
 endif
+
+let g:netrw_dirhistmax = 0
+if has('unix')
+  let g:netrw_home=$XDG_CACHE_HOME . '/ nvim'
+endif
 " }}}
 
-
-" Plugins
-" =======
-" {{{
 
 " vim-plug
 " ========
@@ -264,170 +265,5 @@ Plug 'chriskempson/base16-vim'           " Base16 <3
 
 " Add plugins to &runtimepath
 call plug#end()
-" }}}
-
-" vim-shell
-" ---------
-" {{{
-let g:shell_fullscreen_items = 'mTe'       " menu, toolbar, tabline
-let g:shell_fullscreen_always_on_top = 0
-let g:shell_mappings_enabled = 0
-" }}}
-
-" Goyo
-" ----
-" {{{
-let g:goyo_width = 100       " In characters
-let g:goyo_height = 90       " In percent
-let g:goyo_linenr = 0
-
-function! s:goyo_enter()
-    silent Fullscreen
-    silent !tmux set status off
-    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-    set noshowmode
-    set noshowcmd
-    set scrolloff=999
-    Limelight
-endfunction
-
-function! s:goyo_leave()
-    silent Fullscreen
-    silent !tmux set status on
-    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-    set showmode
-    set showcmd
-    set scrolloff=5
-    Limelight!
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-inoremap <F11> <C-o>:Goyo<CR>
-nnoremap <F11> :Goyo<CR>
-" }}}
-
-" netrw
-" -----
-" {{{
-let g:netrw_dirhistmax = 0
-if has('unix')
-  let g:netrw_home=$XDG_CACHE_HOME . '/ nvim'
-endif
-" }}}
-
-" Ctrlp
-" -----
-" {{{
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_show_hidden = 1
-" Ignore files in .gitignore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-" Use .git folder as root dir identifier
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['package.json']
-" Open already opened files in new pane
-let g:ctrlp_switch_buffer = 'et'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|jpg|jpeg|png|bmp)$'
-\ }
-" }}}
-
-" NeoMake
-" -------
-" {{{
-autocmd! BufReadPost,BufWritePost * Neomake
-" }}}
-
-" base16-vim
-" ----------
-" {{{
-let base16colorspace=256
-" }}}
-
-" vim-thematic
-" ------------
-" {{{
-let g:thematic#defaults = {
-            \ 'airline-theme': 'base16',
-            \ 'background': 'dark',
-            \ 'laststatus': 2,
-            \ }
-
-let g:thematic#themes = {
-  \ 'ocean-dark':      { 'colorscheme': 'base16-ocean',
-  \                      'background': 'dark',
-  \                    },
-  \ 'ocean-light':     { 'colorscheme': 'base16-ocean',
-  \                      'background': 'light',
-  \                    },
-  \ 'oceanic-dark':    { 'colorscheme': 'base16-oceanic',
-  \                      'background': 'dark',
-  \                    },
-  \ 'oceanic-light':   { 'colorscheme': 'base16-oceanic',
-  \                      'background': 'light',
-  \                    },
-  \ 'iawriter':        { 'colorscheme': 'pencil',
-  \                      'background': 'light',
-  \                      'columns': 75,
-  \                      'font-size': 20,
-  \                      'fullscreen': 1,
-  \                      'laststatus': 0,
-  \                      'linespace': 8,
-  \                      'typeface': 'Cousine',
-  \                    },
-  \ 'pencil-light':    { 'colorscheme': 'pencil',
-  \                      'background': 'light',
-  \                    },
-  \ 'pencil-dark':     { 'colorscheme': 'pencil',
-  \                      'background': 'dark',
-  \                    },
-\ }
-
-let g:thematic#theme_name = 'ocean-dark'
-" }}}
-
-" vim-airline
-" -----------
-" {{{
-" UI symbols
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols = 'fancy'
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
-" Tabline extension
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-
-" Whitespace extension
-let g:airline#extensions#whitespace#enabled = 1
-let g:airline#extensions#whitespace#symbol = '·'
-let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
-
-" Custom sections
-" Replace git status with CWD and formatoptions
-let g:airline_section_b = airline#section#create(['%{getcwd()}'])
-" }}}
-
-
-" deoplete
-" --------
-" {{{
-let g:deoplete#enable_at_startup = 1
-" }}}
-
 " }}}
 
