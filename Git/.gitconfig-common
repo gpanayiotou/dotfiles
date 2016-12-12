@@ -37,6 +37,7 @@
   default = simple
 
 [alias]
+  cm = commit
   co = checkout
   st = status
   di = diff
