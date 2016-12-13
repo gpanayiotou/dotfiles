@@ -37,7 +37,7 @@ untracked = cyan
 default = simple
 
 [alias]
-cm = commit
+ci = commit
 co = checkout
 # Make index look like working copy of the supplied folder
 # i.e. sync all changes (removes, adds) in a given folder
@@ -53,6 +53,8 @@ b = branch
 l = "!source ~/.githelpers && pretty_git_log"
 recent = !git l -20
 r = !git recent
+# Pull and merge only if no merge bubble is created
+pullff = pull --ff-only
 
 [advice]
 pushNonFastForward = false
