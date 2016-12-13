@@ -1,52 +1,58 @@
 [user]
-  name = Georgios Panayiotou
-  email = gpanayiotou@server.fake
+name = Georgios Panayiotou
+email = gpanayiotou@server.fake
 
 [diff]
-  renames = copies
-  mnemonicprefix = true
+renames = copies
+mnemonicprefix = true
 
 [core]
-  eol = lf
-  whitespace=cr-at-eo,trailing-space,space-before-tab
+eol = lf
+whitespace=cr-at-eo,trailing-space,space-before-tab
 
 [color]
-  ui = auto
+ui = auto
 
 [merge]
-  stat = true
+stat = true
 
 [color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
+current = yellow reverse
+local = yellow
+remote = green
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+meta = yellow bold
+frag = magenta bold
+old = red bold
+new = green bold
+whitespace = red reverse
 
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+added = yellow
+changed = green
+untracked = cyan
 
 [push]
-  default = simple
+default = simple
 
 [alias]
-  cm = commit
-  co = checkout
-  st = status
-  di = diff
-  b = branch
-  l = "!source ~/.githelpers && pretty_git_log"
-  recent = !git l -20
-  r = !git recent
+cm = commit
+co = checkout
+# Make index look like working copy of the supplied folder
+# i.e. sync all changes (removes, adds) in a given folder
+aa = add --all
+st = status
+di = diff
+# Show diff in index
+dc = diff --cached
+b = branch
+# Show a columned version of the log
+l = "!source ~/.githelpers && pretty_git_log"
+recent = !git l -20
+r = !git recent
 
 [advice]
-  pushNonFastForward = false
-  statusHints = false
+pushNonFastForward = false
+statusHints = false
 
