@@ -177,8 +177,12 @@ if has('win32') || has('win64')
 else
   set wildignore+=*/tmp/*
 endif
-set wildignore+=*/.idea/*,*/.git/*,*/.node_modules/*,*/dist/*,*/build/*
-set wildignore+=*.so,*.swp,*.zip,*.exe,*.jpg,*.jpeg,*.png,*.bmp
+set wildignore+=*.a,*.o,*.so,*.exe
+set wildignore+=*.swp,*.tmp,*.temp,*~
+set wildignore+=.idea,.git,.hg,.svn
+set wildignore+=.node_modules
+set wildignore+=*.swp,*.zip
+set wildignore+=*.jpg,*.jpeg,*.png,*.bmp,*.gif
 
 if exists('$SUDO_USER')
     set noundofile
