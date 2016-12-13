@@ -42,6 +42,8 @@ co = checkout
 # Make index look like working copy of the supplied folder
 # i.e. sync all changes (removes, adds) in a given folder
 aa = add --all
+# Interactively stage by hunk
+addbyhunk = add --all -p
 st = status
 di = diff
 # Show diff in index
