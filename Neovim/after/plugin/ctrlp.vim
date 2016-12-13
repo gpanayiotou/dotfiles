@@ -1,13 +1,23 @@
 " <F5>          Purge cache
 " <C-v>         Open in new vertical split
 " <C-j>,<C-k>   Navigate the list
+" <C-f>,<C-b>   Cycle modes
+" <C-z>         Mark multiple files
+" <C-o>         Open marked files
 
 let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlPMRUFiles'
+"map <C-S-p> :CtrlP<CR>
+nnoremap <Leader>p :CtrlPBuffer<CR>
+nnoremap <Leader>l :CtrlPLine<CR>
+
 let g:ctrlp_show_hidden = 1
 
 " Ignore files in .gitignore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_user_command = [
+  \ '.git',
+  \ 'cd %s && git ls-files -co --exclude-standard'
+\ ]
 
 " Use .git (r) folder as root dir identifier
 " Otherwise use directory of current file (a)
