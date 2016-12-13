@@ -76,7 +76,7 @@ set switchbuf=usetab
 " 7 Multiple Tab Pages
 " ====================
 " {{{
-set showtabline=1                              " Show tabline with tabs => 2
+set showtabline=0                              " Show tabline with tabs => 2
 " }}}
 
 
