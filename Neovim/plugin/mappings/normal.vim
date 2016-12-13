@@ -1,7 +1,9 @@
 " General
 " =======
-let mapleader = " "
+" {{{
+let mapleader = "\<Space>"
 noremap <Esc> <Esc>:nohl<CR><Esc>
+" }}}
 
 
 " Folding
@@ -43,8 +45,10 @@ nmap <C-k> <C-w>k
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
 nmap <Leader>o :only<Cr>
+
 " Toggle between last open buffers
 nnoremap <Leader><Leader> <C-^>
+
 " Store relative line number jumps in jumplist
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
