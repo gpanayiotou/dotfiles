@@ -39,12 +39,12 @@ set breakindentopt=shift:2
 set fillchars=vert:┃
 set lazyredraw
 set list
-set listchars=nbsp:⦸              " U+29B8, UTF-8: E2 A6 B8
+set listchars=nbsp:⦸            " U+29B8, UTF-8: E2 A6 B8
 set listchars+=tab:↹↹           " U+21B9, UTF-8: E2 86 B9
-set listchars+=extends:»          " U+00BB, UTF-8: C2 BB
-set listchars+=precedes:«         " U+00AB, UTF-8: C2 AB
-set listchars+=trail:•            " U+2022, UTF-8: E2 80 A2
-let &showbreak='⤷ '              " U+2937, UTF-8: E2 A4 B7
+set listchars+=extends:»        " U+00BB, UTF-8: C2 BB
+set listchars+=precedes:«       " U+00AB, UTF-8: C2 AB
+set listchars+=trail:•          " U+2022, UTF-8: E2 80 A2
+let &showbreak='⤷ '             " U+2937, UTF-8: E2 A4 B7
 " }}}
 
 
@@ -146,7 +146,7 @@ if exists('$SUDO_USER')
   set nowritebackup
 else
   set backup
-  set backupdir=$XDG_CACHE_HOME/nvim/backup
+  set backupdir=$NVIM_CACHE_HOME/backup
 endif
 set autowriteall
 set autoread
@@ -160,7 +160,7 @@ if exists('$SUDO_USER')
     set noswapfile
 else
     set swapfile
-    set directory=$XDG_CACHE_HOME/nvim/swap
+    set directory=$NVIM_CACHE_HOME/swap
 endif
 " }}}
 
@@ -188,7 +188,7 @@ if exists('$SUDO_USER')
     set noundofile
 else
   set undofile
-  set undodir=$XDG_CACHE_HOME/nvim/undo
+  set undodir=$NVIM_CACHE_HOME/undo
 endif
 " }}}
 
