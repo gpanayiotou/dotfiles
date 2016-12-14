@@ -170,7 +170,7 @@ endif
 " {{{
 set wildmenu
 set wildmode=longest:full,full
-set wildcharm=<C-z>              " Tab through incremental searches
+set wildcharm=<C-z>      " Requirement for tabbing through incremental searches
 
 if has('win32') || has('win64')
   set wildignore+=+=*\\tmp\\*
