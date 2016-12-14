@@ -9,4 +9,5 @@ cnoremap <expr> <S-Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-
 
 " Insert current files directory into command line (DSA)
 cnoremap %% <C-R>=expand('%:p:h').'/'<cr>
+map <leader>e :edit %%
 
