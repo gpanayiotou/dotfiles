@@ -39,12 +39,13 @@ set breakindentopt=shift:2
 set fillchars=vert:┃
 set lazyredraw
 set list
-set listchars=nbsp:⦸            " U+29B8, UTF-8: E2 A6 B8
-set listchars+=tab:↹↹           " U+21B9, UTF-8: E2 86 B9
-set listchars+=extends:»        " U+00BB, UTF-8: C2 BB
-set listchars+=precedes:«       " U+00AB, UTF-8: C2 AB
-set listchars+=trail:•          " U+2022, UTF-8: E2 80 A2
-let &showbreak='⤷ '             " U+2937, UTF-8: E2 A4 B7
+set listchars+=nbsp:⦸
+set listchars+=tab:↹☠
+set listchars+=extends:»
+set listchars+=precedes:«
+set listchars+=trail:•
+set listchars+=eol:¬
+let &showbreak='⤷ '
 " }}}
 
 
@@ -70,6 +71,7 @@ set spellcapcheck=                " Disable capital letter check
 set splitbelow
 set splitright
 set switchbuf=usetab
+set winheight=10
 set winminheight=5
 set winwidth=79                        " Minimum width for any window
 " }}}
