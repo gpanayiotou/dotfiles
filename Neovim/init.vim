@@ -31,7 +31,7 @@ set smartcase
 " {{{
 set number
 set relativenumber
-set scrolloff=3
+set scrolloff=3                 " Visible lines when scrolling at end of buffer
 set sidescrolloff=3
 set nowrap
 set breakindent
@@ -70,22 +70,27 @@ set spellcapcheck=                " Disable capital letter check
 set splitbelow
 set splitright
 set switchbuf=usetab
+set winminheight=5
+set winwidth=79                        " Minimum width for any window
 " }}}
 
 
 " 7 Multiple Tab Pages
 " ====================
 " {{{
-set showtabline=0                              " Show tabline with tabs => 2
+set showtabline=2                              " Always show tabline
 " }}}
 
 
 " 8 Terminal
 " ==========
 " {{{
+set title
 set t_Co=256
 set termguicolors
-set title
+" Prevent Neovim from clobbering the scrollback buffer
+set t_ti=
+set t_te=
 " }}}
 
 
@@ -108,7 +113,7 @@ set shortmess+=t                    " Truncate file messages at start
 " ===============
 " {{{
 set backspace=indent,start,eol
-set nojoinspaces               " Don't use two spaces when joining
+set nojoinspaces               " Use only one space when joining lines
 set textwidth=80               " Wrap width for text autowrapping
 set formatoptions-=t           " Remove automatic text wrapping flags
 set wrapmargin=0               " Automatic text wrapping based on terminal size
@@ -149,7 +154,7 @@ else
   set backupdir=$NVIM_CACHE_HOME/backup
 endif
 set autowriteall
-set autoread
+set autoread                   " Automatically reload changed outside of Neovim
 " }}}
 
 
@@ -197,7 +202,7 @@ endif
 " ==============================
 " {{{
 if has('unix')
-  set shell=/bin/bash
+  set shell=bash
 endif
 " }}}
 
@@ -218,3 +223,4 @@ endif
 " }}}
 
 source $NVIM_CONFIG_HOME/plugin/plug-settings.vim
+
