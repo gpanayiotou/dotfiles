@@ -37,6 +37,8 @@ Plug 'tpope/vim-haml'              " latest SASS support
 
 " UI
 Plug 'vim-airline/vim-airline'       " Status/Tabline
+" NOTE: Seems to have issues with neovim-gui-shim
+"Plug 'jmcantrell/vim-virtualenv'     " Python virtualenv integration
 Plug 'mhinz/vim-startify'            " Startpage with MRUs
 Plug 'airblade/vim-gitgutter'        " Git diff in the gutter
 Plug 'wincent/loupe'                 " Enhanced in-file search
