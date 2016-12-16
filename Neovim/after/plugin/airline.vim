@@ -47,7 +47,7 @@ let g:airline_section_y = airline#section#create([
                           \ '%{&fileencoding?&fileencoding:&encoding}'
                         \ ])
 let g:airline_section_z = airline#section#create([
-                          \ '', '%l', '/', '%L', ' : ', '%c'
+                          \ '≣', '%l', '/', '%L', ' : ⦀', '%c'
                          \])
 "let g:airline_section_error   (ycm_error_count, syntastic, eclim)
 "let g:airline_section_warning (ycm_warning_count, whitespace)
