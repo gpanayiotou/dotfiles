@@ -44,7 +44,7 @@ set listchars+=tab:↹☠
 set listchars+=extends:»
 set listchars+=precedes:«
 set listchars+=trail:•
-set listchars+=eol:¬
+" set listchars+=eol:¬
 let &showbreak='⤷ '
 " }}}
 
