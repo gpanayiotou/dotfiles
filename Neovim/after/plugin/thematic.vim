@@ -1,9 +1,13 @@
+" Defaults  --- {{{
 let g:thematic#defaults = {
+
                           \ 'airline-theme': 'base16',
                           \ 'background': 'dark',
                           \ 'laststatus': 2,
                         \ }
+" }}}
 
+" Themes  --- {{{
 let g:thematic#themes = {
   \ 'ocean-dark':       { 'colorscheme': 'base16-ocean',
   \                       'background': 'dark'
@@ -37,6 +41,7 @@ let g:thematic#themes = {
   \                       'airline-theme': 'dark'
   \                     }
 \ }
+" }}}
 
 let g:thematic#theme_name = 'ocean-dark'
 :Thematic ocean-dark
