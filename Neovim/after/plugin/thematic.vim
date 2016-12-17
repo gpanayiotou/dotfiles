@@ -1,6 +1,5 @@
 " Defaults  --- {{{
 let g:thematic#defaults = {
-
                           \ 'airline-theme': 'base16',
                           \ 'background': 'dark',
                           \ 'laststatus': 2,
