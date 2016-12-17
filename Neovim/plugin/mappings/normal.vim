@@ -25,14 +25,14 @@ nnoremap <silent> <Down> :cnext<CR>
 nnoremap <silent> <Left> :cpfile<CR>
 nnoremap <silent> <Right> :cnfile<CR>
 
-" Remap in-/decrease number (conflict with tmux)
+" Remap in-/decrease number
+" NOTE: Avoids conflict with tmux
 nnoremap <A-a> <C-a>
 nnoremap <A-x> <C-x>
 
 " <Enter> repeats last macro
 nnoremap <Enter> @@
-
-" ...but only in a normal buffer
+"   ...but only in a normal buffer
 nnoremap <silent> <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 " }}}
 
@@ -51,5 +51,9 @@ nnoremap <Leader><Leader> <C-^>
 " Store relative line number jumps in jumplist
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
+" }}}
+
+" File Management {{{
+map <leader>m :call RenameFile()<cr>
 " }}}
 
