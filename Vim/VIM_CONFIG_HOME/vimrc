@@ -1,25 +1,17 @@
 " Sections according to :options
 
-" 0 variables
-" ===========
-" {{{
+" 00 Variables {{{
 let $VIM_CONFIG_HOME=$XDG_CONFIG_HOME . '/vim'
 let $VIM_CACHE_HOME=$XDG_CACHE_HOME . '/vim'
 " }}}
 
-
-" 1 important
-" ===========
-" {{{
+" 01 Important {{{
 set nocompatible
 set cpoptions+=$               " Show boundaries of to be changed text
 set packpath+=$VIM_CONFIG_HOME/pack
 " }}}
 
-
-" 2 moving around, searching and patterns
-" =======================================
-" {{{
+" 02 Moving Around, Searching and Patterns {{{
 set incsearch             " enable incremental search
 set ignorecase            " use case insensitive search,
 set smartcase             " except when using capital letters
@@ -27,10 +19,7 @@ set startofline           " jump commands go to first char in line
 set noautochdir           " some plugins don't like this enabled (vimshell)
 " }}}
 
-
-" 4 displaying text
-" =================
-" {{{
+" 04 Displaying Text {{{
 set scrolloff=3        " number of screen lines to show around the cursorline
 set nowrap
 set linebreak          " wrap long lines at a character in 'breakat'
@@ -42,10 +31,7 @@ set numberwidth=3
 set relativenumber         " line numbers relative to current line
 " }}}
 
-
-" 5 syntax, highlighting and spelling
-" ===================================
-" {{{
+" 05 Syntax, Highlighting and Spelling {{{
 syntax on
 set hlsearch
 set cursorline
@@ -54,10 +40,7 @@ set nospell
 filetype plugin indent on                      " identify syntax by filetype
 " }}}
 
-
-" 6 Multiple Windows
-" ==================
-" {{{
+" 06 Multiple Windows {{{
 set laststatus=2       " always show a status line
 set hidden             " don't unload a buffer when no longer shown in a window
 set winheight=5        " set this before winminheight
@@ -68,33 +51,21 @@ set splitright
 set switchbuf=usetab   " Reuse windows/tabs when switching buffers
 " }}}
 
-
-" 7 Multiple Tab Pages
-" ====================
-" {{{
+" 07 Multiple Tab Pages {{{
 set showtabline=2
 " }}}
 
-
-" 8 terminal
-" ==========
-" {{{
+" 08 Terminal {{{
 set termguicolors
 set title                     " enable title in console
 " }}}
 
-
-" 9 using the mouse
-" =================
-" {{{
+" 09 Using the Mouse {{{
 set mouse=a
 set mousehide
 " }}}
 
-
-" 11 messages and info
-" =====================
-" {{{
+" 11 Messages and Info {{{
 set showcmd                              " Show typed commands in status line
 set ruler
 set showmode
@@ -102,10 +73,7 @@ set confirm
 set visualbell                           " Use visual bell instead of beeping
 " }}}
 
-
-" 14 editing text
-" ===============
-" {{{
+" 14 Editing Text {{{
 set backspace=indent,eol,start       " Allow backspacing over autoindent,
                                      " Line breaks and start of insert action
 set nrformats-=octal                 " No octal numbers with leading 0
@@ -116,10 +84,7 @@ set textwidth=0                      " Don't force a max textwidth
 set complete=.,w,b,t
 " }}}
 
-
-" 15 Tabs and Indenting
-" =====================
-" {{{
+" 15 Tabs and Indenting {{{
 set expandtab                 " Expand tabs to spaces
 set smartindent               " Smart indenten based on blocks
 set autoindent                " Autointend with '='; '=G' for the entire file
@@ -129,10 +94,7 @@ set tabstop=2                 " Width of the tab character
 set shiftround                " Round indentation to multiple of shiftwidth
 " }}}
 
-
-" 16 Folding
-" ==========
-" {{{
+" 16 Folding {{{
 set foldmethod=syntax
 set foldmarker={{{,}}}
 set foldcolumn=2
@@ -141,58 +103,46 @@ set foldlevelstart=1
 set foldnestmax=3
 " }}}
 
-
-" 18 Mapping
-" ==========
-" {{{
+" 18 Mapping {{{
 set notimeout ttimeout ttimeoutlen=50        " Quickly time out on keycodes,
                                              " but never time out on mappings
 " }}}
 
-
-" 19 reading and writing file
-" ===========================
-" {{{
+" 19 Reading and Writing File {{{
 if exists('$SUDO_USER')
-    set nobackup
-    set nowritebackup
+  set nobackup
+  set nowritebackup
 else
-    set backup
-    set backupdir=$VIM_CACHE_HOME/backup
-    set backupdir+=/tmp
-    set backupdir+=.
+  set backup
+  set backupdir=$VIM_CACHE_HOME/backup
+  set backupdir+=/tmp
+  set backupdir+=.
 endif
 set autowriteall
 set nomodeline                             " Disable modeline nonsense
 set modelines=0
 " }}}
 
-
-" 20 the swap file
-" ================
-" {{{
+" 20 The Swap File {{{
 if exists('$SUDO_USER')
-    set noswapfile
+  set noswapfile
 else
-    set swapfile
-    set directory=$VIM_CACHE_HOME/swap
-    set directory+=/tmp
-    set directory+=.
+  set swapfile
+  set directory=$VIM_CACHE_HOME/swap
+  set directory+=/tmp
+  set directory+=.
 endif
 set updatecount=80     " Update swapfile every X chars
 " }}}
 
-
-" 21 Command Line Editing
-" =======================
-" {{{
+" 21 Command Line Editing {{{
 if exists('$SUDO_USER')
-    set noundofile
+  set noundofile
 else
-    set undofile
-    set undodir=$VIM_CACHE_HOME/undo
-    set undodir+=/tmp
-    set undodir+=.
+  set undofile
+  set undodir=$VIM_CACHE_HOME/undo
+  set undodir+=/tmp
+  set undodir+=.
 endif
 set history=100
 
@@ -222,10 +172,7 @@ set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
 set wildignore+=*.DS_Store,desktop.ini
 " }}}
 
-
-" 22 Executing External Commands
-" ==============================
-" {{{
+" 22 Executing External Commands {{{
 if has('unix')
   set shell=bash
 elseif has('win32')
@@ -237,38 +184,29 @@ if exists('+shellslash')
 endif
 " }}}
 
-
-" 25 Various
-" ==========
-" {{{
+" 25 Various {{{
 if exists('$SUDO_USER')
-    set viminfo=
+  set viminfo=
 else
-    set viminfo+=n$VIM_CACHE_HOME/viminfo
+  set viminfo+=n$VIM_CACHE_HOME/viminfo
 endif
 " }}}
 
-
-" 26 Multi-Byte Characters
-" ========================
-" {{{
+" 26 Multi-Byte Characters {{{
 set encoding=utf-8                              " Encoding for displaying files
 set fileencoding=utf-8                          " Encoding for writing files
 set fileformat=unix                             " Set default fileformat
 set fileformats=unix                            " Set possible fileformats
 " }}}
 
-
-" 27 Various
-" ==========
-" {{{
+" 27 Various {{{
 set gdefault                               " Substitute globally by default
 set sessionoptions-=help                   " Don't want to restore help buffers
 set virtualedit=block,onemore
 " }}}
 
-
-" Plugins
+" Plugins {{{
 packloadall
 source $VIM_CONFIG_HOME/plugin/plug-settings.vim
+" }}}
 
