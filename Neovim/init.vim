@@ -2,9 +2,7 @@ scriptencoding utf-8
 
 " Sections according to :options
 
-" 0 Variables
-" ===========
-" {{{
+" 00 Variables {{{
 if has('win32')
   let $NVIM_CONFIG_HOME = $HOME . "\\AppData\\Local\\nvim"
   let $NVIM_CACHE_HOME = $HOME . "\\.cache\\nvim"
@@ -14,10 +12,7 @@ elseif has('unix')
 endif
 " }}}
 
-
-" 2 Moving around, Searching and Patterns
-" =======================================
-" {{{
+" 02 Moving around, Searching and Patterns {{{
 set incsearch
 set autochdir
 set magic
@@ -25,10 +20,7 @@ set ignorecase
 set smartcase
 " }}}
 
-
-" 4 Displaying Text
-" ================n=
-" {{{
+" 04 Displaying Text {{{
 set number
 set relativenumber
 set scrolloff=3                 " Visible lines when scrolling at end of buffer
@@ -36,7 +28,7 @@ set sidescrolloff=3
 set nowrap
 set breakindent
 set breakindentopt=shift:2
-set fillchars=vert:┃
+set fillchars+=vert:┃
 set lazyredraw
 set list
 set listchars+=nbsp:⦸
@@ -48,10 +40,7 @@ set listchars+=trail:•
 let &showbreak='⤷ '
 " }}}
 
-
-" 5 Syntax, Highlighting and Spelling
-" ===================================
-" {{{
+" 05 Syntax, Highlighting and Spelling {{{
 set nospell
 set spelllang=en_us,de_de
 set hlsearch
@@ -64,29 +53,20 @@ set highlight+=~:ColorColumn      " Color space below the buffer
 set spellcapcheck=                " Disable capital letter check
 " }}}
 
-
-" 6 Multiple Windows
-" ==================
-" {{{
+" 06 Multiple Windows {{{
 set splitbelow
 set splitright
 set switchbuf=usetab
 set winheight=10
 set winminheight=5
-set winwidth=79                        " Minimum width for any window
+set winwidth=120                        " Minimum width for any window
 " }}}
 
-
-" 7 Multiple Tab Pages
-" ====================
-" {{{
+" 07 Multiple Tab Pages {{{
 set showtabline=2                              " Always show tabline
 " }}}
 
-
-" 8 Terminal
-" ==========
-" {{{
+" 08 Terminal {{{
 set title
 set t_Co=256
 set termguicolors
@@ -95,10 +75,7 @@ set t_ti=
 set t_te=
 " }}}
 
-
-" 11 Messages and Info
-" ====================
-" {{{
+" 11 Messages and Info {{{
 set showcmd
 set shortmess+=A                    " Ignore annoying swapfile messages
 set shortmess+=I                    " No splash screen
@@ -110,10 +87,7 @@ set shortmess+=o                    " Overwrite file-written messages
 set shortmess+=t                    " Truncate file messages at start
 " }}}
 
-
-" 13 Editing Text
-" ===============
-" {{{
+" 13 Editing Text {{{
 set backspace=indent,start,eol
 set nojoinspaces               " Use only one space when joining lines
 set textwidth=80               " Wrap width for text autowrapping
@@ -121,10 +95,7 @@ set formatoptions-=t           " Remove automatic text wrapping flags
 set wrapmargin=0               " Automatic text wrapping based on terminal size
 " }}}
 
-
-" 14 Tabs and Indenting
-" =====================
-" {{{
+" 14 Tabs and Indenting {{{
 set tabstop=4
 set shiftwidth=4
 set shiftround
@@ -135,18 +106,12 @@ set autoindent
 set smartindent
 " }}}
 
-
-" 15 Folding
-" ==========
-" {{{
+" 15 Folding {{{
 set foldmethod=syntax
 set foldlevelstart=1                      " Start buffer with some folds closed
 " }}}
 
-
-" 18 Reading and Writing Files
-" ============================
-" {{{
+" 18 Reading and Writing Files {{{
 set fileformats=unix
 if exists('$SUDO_USER')
   set nobackup
@@ -159,22 +124,16 @@ set autowriteall
 set autoread                   " Automatically reload changed outside of Neovim
 " }}}
 
-
-" 19 The Swap File
-" ================
-" {{{
+" 19 The Swap File {{{
 if exists('$SUDO_USER')
     set noswapfile
 else
-    set swapfile
-    set directory=$NVIM_CACHE_HOME/swap
+  set swapfile
+  set directory=$NVIM_CACHE_HOME/swap
 endif
 " }}}
 
-
-" 20 Command Line Editing
-" =======================
-" {{{
+" 20 Command Line Editing {{{
 set wildmenu
 set wildmode=longest:full,full
 set wildcharm=<C-z>      " Requirement for tabbing through incremental searches
@@ -199,20 +158,14 @@ else
 endif
 " }}}
 
-
-" 21 Executing External Commands
-" ==============================
-" {{{
+" 21 Executing External Commands {{{
 if has('unix')
   set shell=bash
 endif
 " }}}
 
-
-" 26 Various
-" ==========
-" {{{
-set virtualedit=block
+" 26 Various {{{
+set virtualedit=block,onemore
 if has ('win32')
   let g:python3_host_prog = 'c:\opt\Python3\python.exe'
 endif
