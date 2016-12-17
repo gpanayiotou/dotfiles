@@ -1,6 +1,4 @@
-" General
-" =======
-" {{{
+" General {{{
 let mapleader = "\<Space>"
 noremap <Esc> <Esc>:nohl<CR><Esc>
 " }}}
@@ -9,32 +7,36 @@ noremap <Esc> <Esc>:nohl<CR><Esc>
 nnoremap <Leader><Tab> za
 " }}}
 
+" Editing {{{
 
-" Editing
-" =======
-" {{{
 " Reindent ALL the things
 nmap == gg=G
+
 " Yank to the end
 noremap Y y$
+
+" Yank\Paste to system clipboard
+map <leader>y "*y
+map <leader>p "*p
+
 " Move through quickfixes
 nnoremap <silent> <Up> :cprevious<CR>
 nnoremap <silent> <Down> :cnext<CR>
 nnoremap <silent> <Left> :cpfile<CR>
 nnoremap <silent> <Right> :cnfile<CR>
+
 " Remap in-/decrease number (conflict with tmux)
 nnoremap <A-a> <C-a>
 nnoremap <A-x> <C-x>
-" <Enter> repeats last macro (Greg Hurrell)
+
+" <Enter> repeats last macro
 nnoremap <Enter> @@
+
 " ...but only in a normal buffer
 nnoremap <silent> <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 " }}}
 
-
-" Navigation
-" ==========
-" {{{
+" Navigation {{{
 nmap <Leader>bn :bn<Cr>
 nmap <Leader>bd :bd<Cr>
 nmap <C-j> <C-w>j
