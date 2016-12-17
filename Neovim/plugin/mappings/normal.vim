@@ -5,11 +5,8 @@ let mapleader = "\<Space>"
 noremap <Esc> <Esc>:nohl<CR><Esc>
 " }}}
 
-
-" Folding
-" =======
-" {{{
-nnoremap <Tab> za
+" Folding {{{
+nnoremap <Leader><Tab> za
 " }}}
 
 
