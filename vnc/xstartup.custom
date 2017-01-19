@@ -5,9 +5,11 @@
 
 #DESKTOP_SESSION=xfce
 DESKTOP_SESSION=mate
+#DESKTOP_SESSION=i3
 export DESKTOP_SESSION
 
 #startxfce4
 mate-session
+#i3
 vncserver-virtual -kill $DISPLAY
 
