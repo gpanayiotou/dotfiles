@@ -22,6 +22,10 @@ export LANG
 TERM="xterm-256color"
 export TERM
 
+# Python Virtualenvwrapper
+source /usr/bin/virtualenvwrapper.sh
+export PROJECT_HOME="$HOME/Projects"
+
 # \e    Escape character
 # \e[0m Remove all attributes
 PS1="\u@\e[1m\h\e[0m \e[7m \w \e[0m\n\e[93mλ \e[0m"
