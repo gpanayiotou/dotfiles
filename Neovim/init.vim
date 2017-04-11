@@ -93,6 +93,7 @@ set nojoinspaces               " Use only one space when joining lines
 set textwidth=80               " Wrap width for text autowrapping
 set formatoptions-=t           " Remove automatic text wrapping flags
 set wrapmargin=0               " Automatic text wrapping based on terminal size
+set complete=.,w,b,u,t,i,kspell
 " }}}
 
 " 14 Tabs and Indenting {{{
