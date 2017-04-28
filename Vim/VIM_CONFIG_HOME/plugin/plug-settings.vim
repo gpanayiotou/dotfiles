@@ -22,6 +22,7 @@ Plug 'scrooloose/syntastic'                  " Syntax checker
 Plug 'tpope/vim-surround'                    " Edit surrounding symbols
 Plug 'vim-scripts/matchit.zip'               " Match more symbols with %
 Plug 'wellle/targets.vim'                    " Provide additional text objects
+Plug 'benmills/vimux'                         " Tmux interaction
 " }}}
 
 " UI Enhancements {{{

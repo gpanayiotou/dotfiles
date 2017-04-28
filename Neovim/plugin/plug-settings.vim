@@ -12,6 +12,7 @@ Plug 'equalsraf/neovim-gui-shim'         " NeoVim-Qt gui shim
 " Miscellaneous
 Plug 'neomake/neomake'                   " Asynchronous :make
 Plug 'xolox/vim-shell'                   " Improved integration with shells
+Plug 'benmills/vimux'                     " Tmux interaction
 
 " File Editing
 Plug 'tpope/vim-surround'          " Edit surrounding symbols like word objects
