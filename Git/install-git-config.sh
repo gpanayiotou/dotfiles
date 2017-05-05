@@ -5,6 +5,10 @@ if [ ! -e "$HOME/.gitconfig-common" ]; then
     ln -s $PWD/.gitconfig-common ~/.gitconfig-common
 fi
 
+if [ ! -e "$HOME/.githelpers" ]; then
+    ln -s $PWD/.githelpers ~/.githelpers
+fi
+
 if [ ! -e "$HOME/.gitconfig-linux" ]; then
     ln -s $PWD/.gitconfig-linux ~/.gitconfig-linux
 fi
