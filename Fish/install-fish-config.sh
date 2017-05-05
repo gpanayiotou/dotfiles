@@ -33,7 +33,7 @@ esac
 # Install Fisherman
 read -p "Install Fisherman (Plugin manager)? (y/n)" choice
 case $choice in
-    y|Y ) curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+    y|Y ) curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher;;
     n|N ) echo "Aborting";;
     * ) echo "Please answer yes or no.";;
 esac
