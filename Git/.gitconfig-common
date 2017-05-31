@@ -55,6 +55,8 @@ recent = !git l -20
 r = !git recent
 # Pull and merge only if no merge bubble is created
 pullff = pull --ff-only
+# Pull all and merge only if no merge bubble is created
+pullall = pull --ff-only --all
 
 [advice]
 pushNonFastForward = false
