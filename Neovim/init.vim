@@ -3,10 +3,20 @@ scriptencoding utf-8
 " Sections according to :options
 
 " 00 Variables {{{
-if has('win32')
+if has("win32")
   let $NVIM_CONFIG_HOME = $HOME . "\\AppData\\Local\\nvim"
   let $NVIM_CACHE_HOME = $HOME . "\\.cache\\nvim"
-elseif has('unix')
+elseif has("unix")
+  " WORKAROUND: This should be defaulted to, even if not explicitly set.
+  " It doesn't for some reason
+  if !exists("$XDG_CONFIG_HOME")
+    let $XDG_CONFIG_HOME = $HOME . "/.config"
+  endif
+
+  if !exists("$XDG_CACHE_HOME")
+    let $XDG_CACHE_HOME = $HOME . "/.cache"
+  endif
+
   let $NVIM_CONFIG_HOME = $XDG_CONFIG_HOME . "/nvim"
   let $NVIM_CACHE_HOME = $XDG_CACHE_HOME . "/nvim"
 endif
