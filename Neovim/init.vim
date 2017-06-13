@@ -4,21 +4,21 @@ scriptencoding utf-8
 
 " 00 Variables {{{
 if has("win32")
-  let $NVIM_CONFIG_HOME = $HOME . "\\AppData\\Local\\nvim"
-  let $NVIM_CACHE_HOME = $HOME . "\\.cache\\nvim"
+    let $NVIM_CONFIG_HOME = $HOME . "\\AppData\\Local\\nvim"
+    let $NVIM_CACHE_HOME = $HOME . "\\.cache\\nvim"
 elseif has("unix")
-  " WORKAROUND: This should be defaulted to, even if not explicitly set.
-  " It doesn't for some reason
-  if !exists("$XDG_CONFIG_HOME")
-    let $XDG_CONFIG_HOME = $HOME . "/.config"
-  endif
+    " WORKAROUND: This should be defaulted to, even if not explicitly set.
+    " It doesn't for some reason
+    if !exists("$XDG_CONFIG_HOME")
+        let $XDG_CONFIG_HOME = $HOME . "/.config"
+    endif
 
-  if !exists("$XDG_CACHE_HOME")
-    let $XDG_CACHE_HOME = $HOME . "/.cache"
-  endif
+    if !exists("$XDG_CACHE_HOME")
+        let $XDG_CACHE_HOME = $HOME . "/.cache"
+    endif
 
-  let $NVIM_CONFIG_HOME = $XDG_CONFIG_HOME . "/nvim"
-  let $NVIM_CACHE_HOME = $XDG_CACHE_HOME . "/nvim"
+    let $NVIM_CONFIG_HOME = $XDG_CONFIG_HOME . "/nvim"
+    let $NVIM_CACHE_HOME = $XDG_CACHE_HOME . "/nvim"
 endif
 " }}}
 
@@ -126,11 +126,11 @@ set foldlevelstart=1                      " Start buffer with some folds closed
 " 18 Reading and Writing Files {{{
 set fileformats=unix
 if exists('$SUDO_USER')
-  set nobackup
-  set nowritebackup
+    set nobackup
+    set nowritebackup
 else
-  set nobackup
-  set backupdir=$NVIM_CACHE_HOME/backup
+    set nobackup
+    set backupdir=$NVIM_CACHE_HOME/backup
 endif
 set autowriteall
 set autoread                   " Automatically reload changed outside of Neovim
@@ -140,8 +140,8 @@ set autoread                   " Automatically reload changed outside of Neovim
 if exists('$SUDO_USER')
     set noswapfile
 else
-  set swapfile
-  set directory=$NVIM_CACHE_HOME/swap
+    set swapfile
+    set directory=$NVIM_CACHE_HOME/swap
 endif
 " }}}
 
@@ -151,9 +151,9 @@ set wildmode=longest:full,full
 set wildcharm=<C-z>      " Requirement for tabbing through incremental searches
 
 if has('win32') || has('win64')
-  set wildignore+=+=*\\tmp\\*
+    set wildignore+=+=*\\tmp\\*
 else
-  set wildignore+=*/tmp/*
+    set wildignore+=*/tmp/*
 endif
 set wildignore+=*.a,*.o,*.so,*.exe
 set wildignore+=*.swp,*.tmp,*.temp,*~
@@ -165,27 +165,27 @@ set wildignore+=*.jpg,*.jpeg,*.png,*.bmp,*.gif
 if exists('$SUDO_USER')
     set noundofile
 else
-  set undofile
-  set undodir=$NVIM_CACHE_HOME/undo
+    set undofile
+    set undodir=$NVIM_CACHE_HOME/undo
 endif
 " }}}
 
 " 21 Executing External Commands {{{
 if has('unix')
-  set shell=bash
+    set shell=bash
 endif
 " }}}
 
 " 26 Various {{{
 set virtualedit=block,onemore
 if has ('win32')
-  let g:python3_host_prog = 'c:\opt\Python3\python.exe'
+    let g:python3_host_prog = 'c:\opt\Python3\python.exe'
 endif
 
 " netrw crapola
 let g:netrw_dirhistmax = 0
 if has('unix')
-  let g:netrw_home=$NVIM_CACHE_HOME
+    let g:netrw_home=$NVIM_CACHE_HOME
 endif
 " }}}
 
