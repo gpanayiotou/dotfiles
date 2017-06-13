@@ -128,7 +128,7 @@ if exists('$SUDO_USER')
   set nobackup
   set nowritebackup
 else
-  set backup
+  set nobackup
   set backupdir=$NVIM_CACHE_HOME/backup
 endif
 set autowriteall
