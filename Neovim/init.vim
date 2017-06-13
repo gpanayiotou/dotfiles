@@ -64,6 +64,7 @@ set spellcapcheck=                " Disable capital letter check
 " }}}
 
 " 06 Multiple Windows {{{
+set hidden
 set splitbelow
 set splitright
 set switchbuf=usetab
