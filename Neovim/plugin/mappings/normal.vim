@@ -51,6 +51,10 @@ nnoremap <Leader><Leader> <C-^>
 " Store relative line number jumps in jumplist
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
+
+" Opening splits
+noremap <Leader><Bar> :vsplit<CR>
+noremap <Leader>- :split<CR>
 " }}}
 
 " File Management {{{
