@@ -1,4 +1,5 @@
 desktop.ini
 **/*.log
 Mopidy
+Neovim/rplugin.vim
 
