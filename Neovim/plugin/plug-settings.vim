@@ -25,6 +25,7 @@ Plug 'ctrlpvim/ctrlp.vim'            " Fuzzy file finder
 
 " File type support
 Plug 'summivox/vim-nfo'              " Non-ASCII-character highlighting
+Plug 'pangloss/vim-javascript'       " Better JavaScript syntax
 
 " UI
 Plug 'vim-airline/vim-airline'       " Statusline
