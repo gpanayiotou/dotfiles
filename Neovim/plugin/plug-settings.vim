@@ -22,6 +22,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " File Navigation
 Plug 'ctrlpvim/ctrlp.vim'            " Fuzzy file finder
+Plug 'tpope/vim-eunuch'              " File moving/renaming
 
 " File type support
 Plug 'summivox/vim-nfo'              " Non-ASCII-character highlighting
