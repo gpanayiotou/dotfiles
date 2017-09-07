@@ -1,4 +1,4 @@
-# .bashrc
+. ~/bash_colors.sh
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -10,6 +10,7 @@ fi
 
 # User specific aliases and functions
 umask 0006
+
 # Ignore duplicates in command history
 export HISTCONTROL=ignoredups
 
@@ -17,6 +18,11 @@ export HISTCONTROL=ignoredups
 alias l.='ls -ld .* --color=auto'
 alias ll='ls -l --color=auto'
 alias rimraf='rm -rf'
+alias g='git'
+alias e='exit'
+
+# Enable colors
+export TERM='xterm-256color'
 
 # Base16-shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
