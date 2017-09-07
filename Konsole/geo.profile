@@ -1,5 +1,5 @@
 [Appearance]
-BoldIntense=false
+BoldIntense=true
 ColorScheme=base16-ocean
 Font=PragmataPro,12,-1,5,50,0,0,0,0,0
 UseFontLineChararacters=true
