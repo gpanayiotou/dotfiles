@@ -34,6 +34,7 @@ Plug 'wincent/loupe'                 " Enhanced in-file search (Highlighting)
 Plug 'wincent/terminus'              " GUI features in terminal (cursor, mouse)
 Plug 'chrisbra/Colorizer'            " Color hex codes and color names
 Plug 'yggdroot/indentline'           " Display indentation levels
+Plug 'airblade/vim-gitgutter'        " Display git diff in gutter
 
 " Themes
 Plug 'reedes/vim-thematic'               " Theme manager
