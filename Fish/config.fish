@@ -22,7 +22,12 @@ if status --is-interactive
 end
 
 # Powerline
-# Fedora package version of the path
-set fish_function_path $fish_function_path "/usr/share/powerline/fish/"
+if test -e /usr/share/powerline/fish/powerline-setup.powerline-setup.fish
+    # Fedora package version of the path
+    set fish_function_path $fish_function_path "/usr/share/powerline/fish/"
+else if test -e /usr/lib/python3.6/site-packages/powerline/bindings/fish/powerline-setup.fish
+    # Python package version for Arch
+    set fish_function_path $fish_function_path "/usr/lib/python3.6/site-packages/powerline/bindings/fish/"
+end
 powerline-setup
 
