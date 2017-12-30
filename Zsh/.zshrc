@@ -85,4 +85,5 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 alias e="exit"
 alias g="git"
 alias dot="cd ~/Projects/dotfiles"
+alias update="sudo dnf update -y"
 
