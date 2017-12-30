@@ -57,9 +57,11 @@ set hlsearch
 syntax enable
 set cursorline
 let &colorcolumn = join(range(80, 999), ',')
-set highlight+=N:DiffText         " Make current line number stand out
-set highlight+=c:LineNr           " Blend vertical separators with line numbers
-set highlight+=~:ColorColumn      " Color space below the buffer
+" Vim version of highlight settings
+"   See plugins/autocommands.vim for the neovim version
+" set highlight+=N:DiffText         " Make current line number stand out
+" set highlight+=c:LineNr           " Blend vertical separators with line numbers
+" set highlight+=~:ColorColumn      " Color space below the buffer
 set spellcapcheck=                " Disable capital letter check
 " }}}
 
