@@ -89,6 +89,6 @@ alias e="exit"
 alias g="git"
 alias dot="cd ~/Projects/dotfiles"
 alias update="sudo dnf update -y"
-alias pacup="pacman -Syu"
+alias pacup="sudo pacman -Syu"
 alias trizenup="trizen -Syu"
 
