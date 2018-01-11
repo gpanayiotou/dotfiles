@@ -53,6 +53,9 @@
     # Pull all and merge only if no merge bubble is created
     pullall = pull --ff-only --all
 
+    # Push to all remotes
+    pushall = "!git remote | xargs -L1 git push --all"
+
 [advice]
     pushNonFastForward = false
     statusHints = false
