@@ -31,3 +31,7 @@ export PROJECT_HOME="$HOME/Projects"
 PS1="\u@\e[1m\h\e[0m \e[7m \w \e[0m\n\e[93mλ \e[0m"
 export PS1
 
+# Aliases
+alias e="exit"
+alias g="git"
+
