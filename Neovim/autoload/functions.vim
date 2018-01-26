@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " 'Fade' out a window
 function! functions#fade_window_out() abort
   let &l:colorcolumn = join(range(1, 999), ',')
@@ -27,5 +29,18 @@ function! RenameFile()
     exec ':silent !rm ' . old_name
     redraw!
   endif
+endfunction
+
+" Override default 'foldtext()', returning
+" »··[21ℓ]··: EXAMPLE HEADER··················
+let s:middot='·'
+let s:raquo='»'
+let s:small_l='ℓ'
+
+function! functions#foldtext() abort
+  let l:lines='[' . (v:foldend - v:foldstart + 1) . s:small_l . ']'
+  let l:first=substitute(getline(v:foldstart), '\v *', '', '')
+  let l:dashes=substitute(v:folddashes, '-', s:middot, 'g') . s:middot
+  return s:raquo . s:middot . s:middot . l:lines . l:dashes . ': ' . l:first
 endfunction
 

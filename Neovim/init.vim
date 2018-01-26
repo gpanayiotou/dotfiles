@@ -124,6 +124,7 @@ set smartindent
 " 15 Folding {{{
 set foldmethod=syntax
 set foldlevelstart=1                      " Start buffer with some folds closed
+set foldtext=functions#foldtext()
 " }}}
 
 " 18 Reading and Writing Files {{{
