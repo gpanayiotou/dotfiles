@@ -38,7 +38,8 @@ set sidescrolloff=3
 set nowrap
 set breakindent
 set breakindentopt=shift:2
-set fillchars+=vert:┃
+set fillchars+=vert:┃           " Vertical split character
+set fillchars+=fold:•           " Fold marker character
 set lazyredraw
 set list
 set listchars+=nbsp:⦸
