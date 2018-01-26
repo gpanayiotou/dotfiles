@@ -18,12 +18,12 @@ URxvt.depth: 32
 URxvt.geometry: 120x40
 URxvt.visualBell: true
 URxvt.internalBorder: 3
-URxvt.cursorBlink: true
+URxvt.cursorBlink: false
 
 ! Font
 ! ----
 
-URxvt.font: xft:PragmataPro:size=12:style=Regular
+URxvt.font: xft:Pragmata Pro Mono:size=12:style=Regular
 URxvt.allow_bold: false
 URxvt.letterSpace: -1
 
@@ -36,7 +36,7 @@ URxvt.letterSpace: -1
 ! URxvt*tintColor:                      color
 ! URxvt*fadeColor:                      color
 !
-URxvt*background:                     #2b303b
+URxvt*background:                    [90]#2b303b
 URxvt*foreground:                     #c0c5ce
 URxvt*cursorColor:                    #c0c5ce
 
