@@ -12,7 +12,7 @@ Plug 'equalsraf/neovim-gui-shim'         " NeoVim-Qt gui shim
 " Miscellaneous
 Plug 'neomake/neomake'                   " Asynchronous :make
 Plug 'xolox/vim-shell'                   " Improved integration with shells
-Plug 'benmills/vimux'                     " Tmux interaction
+Plug 'benmills/vimux'                    " Tmux interaction
 
 " File Editing
 Plug 'tpope/vim-surround'          " Edit surrounding symbols like word objects
@@ -21,7 +21,7 @@ Plug 'wellle/targets.vim'          " Provides additional text objects
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " File Navigation
-Plug 'ctrlpvim/ctrlp.vim'            " Fuzzy file finder
+Plug 'junegunn/fzf.vim'              " Fuzzy file finder (requires fzf command-line utility to be installed)
 Plug 'tpope/vim-eunuch'              " File moving/renaming
 
 " File type support
