@@ -91,3 +91,9 @@ alias dot="cd ~/Projects/dotfiles"
 alias update="sudo dnf update -y"
 alias pacup="sudo pacman -Syu"
 
+# VTE fix for Tilix on Arch
+# (See https://gnunn1.github.io/tilix-web/manual/vteconfig/)
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte.sh
+fi
+
