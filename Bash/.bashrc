@@ -32,3 +32,9 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 export NVM_DIR="/home/geo/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+# VTE fix for Tilix on Arch
+# (See https://gnunn1.github.io/tilix-web/manual/vteconfig/)
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte.sh
+fi
+
