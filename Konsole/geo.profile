@@ -5,6 +5,7 @@ Font=PragmataPro Mono,12,-1,5,50,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
 [General]
+Environment=TERM=konsole-256color,COLORTERM=truecolor
 Name=geo
 Parent=FALLBACK/
 TerminalColumns=120
