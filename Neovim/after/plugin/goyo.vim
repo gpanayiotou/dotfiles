@@ -1,7 +1,11 @@
+" Configuration file for the 'distraction-free writing in Vim' goyo plugin
+" github.com/junegunn/goyo.vim
+
 let g:goyo_width = 100       " In characters
 let g:goyo_height = 90       " In percent
-let g:goyo_linenr = 0
+let g:goyo_linenr = 0        " Show line numbers?
 
+" Runs when goyo-'mode' is started
 function! s:goyo_enter()
     silent Fullscreen
     silent !tmux set status off
@@ -12,6 +16,7 @@ function! s:goyo_enter()
     Limelight
 endfunction
 
+" Runs when goyo-'mode' is exited
 function! s:goyo_leave()
     silent Fullscreen
     silent !tmux set status on
